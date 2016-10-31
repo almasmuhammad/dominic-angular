@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Dominic &amp; Company</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta content="Dominic and Company beauty salon &amp; day spa offers services including hair, massage, skin care &amp; nail care, make-up and personalized fitness." name="description">
+  <meta content="Dominic and Compay, Bethel Road, Columbus Ohio, hair stylist, massage therapist, skin care, nail specialists, personal training, salon business, local salon" name="keywords">
+  <link rel="icon" href="images/favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/holder.min.js"></script>
+  <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/lib/angular/angular-route.min.js"></script>
+  <script src="js/lib/angular/angular-animate.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+    
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/services/authentication.js"></script>
+  <script src="js/controllers/registration.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+</head>
+<body>
+
+<div class="page">
+
+  <!--main class="cf" ng-view></main-->
+    
+<header>
+  <nav ng-include="'views/nav.html'"></nav>
+  <div ng-include="'views/header.html'"></div>
+</header>    
+    
+  <div ng-include="'views/about.html'"></div>
+  <div ng-include="'views/services.html'"></div>
+  <div ng-include="'views/featurettes.html'"></div>    
+  <div ng-include="'views/testimonials.html'"></div> 
+
+<!-- FOOTER -->
+<footer>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row" id="footer">
+                <div class="col-xs-6 col-sm-3 col-md-2">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
+                    <h3>Location</h3>
+                    <p>Dominic &amp; Company
+                        <br> 1545 Bethel Road
+                        <br> Columbus, Ohio 43220</p>
+                </div>
+                <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/Dominiconbethel"><img src="/images/twitter-512.png" alt="Twitter" height="42" width="42"></a>
+                            <a href="https://www.facebook.com/dominiconbethel"><img src="/images/Facebook_F_icon.png" alt="Facebook" height="42" width="42"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Google Map of Dominic & Co. location -->
+        <div id="googleMap" style="height:400px;width:100%;"></div>
+        <div class=" text-center"> <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a> </div>
+        <div>
+            <p class="copyright">© 2016 Dominic &amp; Company. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+    
+</div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4zO2inVZirb87NbMUiAhz9dgGHhf_JtY" type="text/javascript"></script>
+    <script>
+        var myCenter = new google.maps.LatLng(40.0631026, -83.0623581);
+
+        function initialize() {
+            var mapProp = {
+                center: myCenter
+                , zoom: 12
+                , scrollwheel: false
+                , draggable: false
+                , mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: myCenter
+            , });
+            marker.setMap(map);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</body>
+</html>
