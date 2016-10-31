@@ -1,0 +1,454 @@
+<div id="wrapper" class="container-fluid" style="background-color: #ffffff" ng-controller="ProfileFormController">        
+<form class="form-horizontal" id="servicesform">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>
+                    <br>My Profile
+                    <div class="pull-right"><strong><span id="welcome-name"></span></strong></div>
+                </legend>
+                <div class="container">
+                    <div style="text-align: center"><h2>Create and maintain your profile</h2></div>
+                    <div style="text-align: center"><span class="text-muted"><h4>Use the tabs below to create and update your personalized profile page</h4></span></div>
+                    <br>
+                              
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Hair</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Nails</a></li>
+                        <li><a data-toggle="tab" href="#menu3">Wax</a></li>
+                        <li><a data-toggle="tab" href="#menu4">Misc.</a></li>
+                        <li><a data-toggle="tab" href="#menu5">Products</a></li>
+                        <li><a data-toggle="tab" href="#menu6">Discounts</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <br>
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbActive">Activate Profile</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="toggle-0">
+                                            <input type="checkbox" name="pf_cbActive" id="pf_cbActive" value="on"> Check to display your profile on Dominic &amp; Company website.</label>
+                                    </div>
+                                </div>
+                            </div>                  
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="first_name">First Name</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtFirstName" name="textinput" type="text" placeholder="First Name" class="form-control input-md" required=""> </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="last_name">Last Name</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtLastName" name="last_name" type="text" placeholder="Last Name" class="form-control input-md" required=""> </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="email_address">Email</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtEmail" name="email_address" type="email" placeholder="Email Address" class="form-control input-md" required="" onchange="email_validate(this.value);">
+                                    <div class="status" id="status"> </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="mobile_number">Mobile Number</label>
+                                <div class="col-md-4">
+                                    <input id="pf_txtMobile" name="pf_txtMobile" type="text" placeholder="xxx-xxx-xxxx" class="form-control input-md" required="" onchange="phone_validate(this.value);">
+                                    <div class="mobile_status" id="mobile_status"></div>
+                                </div>
+                            </div>
+                            <!-- Title -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbMyTitle">Title</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="title-1">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Bridal Stylist"> Bridal Stylist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-2">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Color Specialist"> Color Specialist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-3">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Hair Stylist"> Hair Stylist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-4">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Makeup Artist"> Makeup Artist </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="title-5">
+                                            <input type="checkbox" name="pf_cbMyTitle" id="pf_cbMyTitle" value="Nail Stylist"> Nail Stylist </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Title -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="profile_picture">Upload Profile Picture</label>
+                                <div class="container">
+                                    <div class="col-md-4">
+                                        <div id="deleteProfilePicSuccess" class="alert alert-info hide">Your profile picture has been deleted.</div>
+                                        <div class="img-wrap"><input id="pf_txtProfilePic" name="pf_txtProfilePic" class="input-file" type="file" onchange="uploadProfilePicToGS(this);">
+                                        <span class="close">&times;</span><img class="img-responsive img-rounded center-block" src="images/default_avatar.png" id="pf_imgProfilePic" alt="Profile picture"></div></div>
+                                </div>
+                            </div>
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="about_info">About</label>
+                                <div class="col-md-4">
+                                    <textarea rows="20" cols="30" class="form-control" id="pf_txtareaAbout" name="pf_txtareaAbout">Enter you personal profile here. Include whatever you would like including specialties, training, years of experience, awards, accomplishments, contact information, scheduling preferences, etc.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- home tab -->
+                        <div id="menu1" class="tab-pane fade">
+                            <!-- Hair tab -->
+                            <!-- Hair Coloring -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbHairColor">Hair Color</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="hair_color-0">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Color Retouch"> Color Retouch </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-1">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Weaving"> Weaving </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-2">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Partial Weaving"> Partial Weaving </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-3">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Virgin Hair Color"> Virgin Hair Color </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-4">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Balayage"> Balayage </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-5">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Full Highlights"> Full Highlights </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-6">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Face Framing Highlights"> Face Framing Highlights </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-7">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="All Over Color"> All Over Color </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-8">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Men's Color"> Men's Color </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-9">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="T-Line Part Only Touch Up"> T-Line Part Only Touch Up </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-10">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="10 Foil"> 10 Foil </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-11">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Custom Color"> Custom Color </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_color-12">
+                                            <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Dimensional Highlights"> Dimensional Highlights </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hair Coloring -->
+                            <!-- Hair Texturizing -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbHairTexturizers">Hair Texturizers</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="hair_texturizers-0">
+                                            <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Body Wave"> Body Wave </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_texturizers-1">
+                                            <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Hair Extensions"> Hair Extensions </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_texturizers-2">
+                                            <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="KeraFusion"> KeraFusion </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_texturizers-3">
+                                            <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Relaxer"> Relaxer </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_texturizers-4">
+                                            <input type="checkbox" name="pf_cbHairTexturizers" id="pf_cbHairTexturizers" value="Reverse Perm"> Reverse Perm </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hair Texturizing -->
+                            <!-- Haircuts -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbHairCuts">Haircuts</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-0">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Haircut & Style"> Women's Haircut &amp; Style </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-1">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Haircut"> Women's Haircut </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-2">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Bang Trim"> Bang Trim </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-3">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Shampoo Style"> Shampoo Style </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-4">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Thermal Style"> Thermal Style </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-5">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Updo"> Updo </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-6">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Men's Haircut"> Men's Haircut </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-7">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Men's Haircut & Style"> Men's Haircut &amp; Style </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-8">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Children's Haircut"> Children's Haircut </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-9">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="11"> Children's Haircut &amp; Style </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-10">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Children's Haircut"> Clipper Cut </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-11">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Women's Precision Haircut"> Women's Precision Haircut </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="hair_cuts-12">
+                                            <input type="checkbox" name="pf_cbHairCuts" id="pf_cbHairCuts" value="Light Dry Trim"> Light Dry Trim </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Haircuts -->
+                            <!-- Hair Additions -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbHairAddition">Hair Additions</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="addition-0">
+                                            <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Extensions"> Extensions </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="addition-1">
+                                            <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Integration"> Integration </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="addition-2">
+                                            <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Tightening"> Tightening </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="addition-3">
+                                            <input type="checkbox" name="pf_cbHairAddition" id="pf_cbHairAddition" value="Removal"> Removal </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hair Additions -->
+                        </div>
+                        <!-- Hair tab -->
+                        <div id="menu2" class="tab-pane fade">
+                            <!-- Manicures -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbManicures">Manicures</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="manicures-0">
+                                            <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Shellac"> Shellac </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="manicures-1">
+                                            <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Spa"> Spa </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="manicures-2">
+                                            <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Polish Change"> Polish Change </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="manicures-3">
+                                            <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Bevel & Polish Change"> Bevel &amp; Polish Change </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="manicures-4">
+                                            <input type="checkbox" name="pf_cbManicures" id="pf_cbManicures" value="Paraffin Treatment"> Paraffin Treatment </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Manicures -->
+                            <!-- Pedicures -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbPedicures">Pedicures</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="pedicures-0">
+                                            <input type="checkbox" name="pf_cbPedicures" id="pf_cbPedicures" value="Spa"> Spa </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="pedicures-1">
+                                            <input type="checkbox" name="pf_cbPedicures" id="pf_cbPedicures" value="Special"> Special </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pedicures -->
+                        </div>
+                        <!-- Hair tab -->
+                        <div id="menu3" class="tab-pane fade">
+                            <!--Wax -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbWax">Wax</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="waxing-0">
+                                            <input type="checkbox" name="pf_cbWax" id="pf_cbWax" value="Brow"> Brow </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Wax -->
+                        </div>
+                        <div id="menu4" class="tab-pane fade">
+                            <!-- Misc. Services -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbMiscServices">Misc.</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="misc_services-0">
+                                            <input type="checkbox" name="pf_cbMiscServices" id="pf_cbMiscServices" value="Consultation"> Consultation </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="misc_services-1">
+                                            <input type="checkbox" name="pf_cbMiscServices" id="pf_cbMiscServices" value="Special Event (e.g. formal dance, special occasion)"> Special Event (e.g. formal dance, special occasion) </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="misc_services-2">
+                                            <input type="checkbox" name="pf_cbMiscServices" id="pf_cbMiscServices" value="Bridal"> Bridal </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Misc. Services -->
+                        </div>
+                        <!-- Misc. services -->
+                        <div id="menu5" class="tab-pane fade">
+                            <!-- Products -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbProducts">Products</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="products-0">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="American Crew"> American Crew </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-1">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Aquage"> Aquage </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-2">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Avlon"> Avlon </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-3">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Biolage"> Biolage </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-4">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="De Fabulous"> De Fabulous </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-5">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Kenra"> Kenra </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-5">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Lisap Milano"> Lisap Milano </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-6">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Matrix"> Matrix </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-7">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="MOROCCANOIL"> MOROCCANOIL </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-8">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Number 4 Hair"> Number 4 Hair </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-9">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Paul Mitchell"> Paul Mitchell </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label for="products-10">
+                                            <input type="checkbox" name="pf_cbProducts" id="pf_cbProducts" value="Pravana"> Pravana </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Products -->
+                        </div>
+                        <div id="menu6" class="tab-pane fade">
+                            <!-- Discounts -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_pcReferral">Referral Discount</label>
+                                <div class="col-md-4">
+                                    <div class="input-group"> <span class="input-group-addon">     
+                                <input type="checkbox" id="pf_cbReferral" name="pf_cbReferral">
+                            </span>
+                                        <input id="pf_txtRefDiscount" name="pf_txtRefDiscount" class="form-control" type="text" placeholder="Percent Off"> </div>
+                                    <p class="help-block">If you provide a referral discount, check this field. Optionally specify the referral discount as percent off next cut (between 1 and 100)</p>
+                                </div>
+                            </div>
+                            <!-- Prepended checkbox -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_pcNewClient">New Client Discount</label>
+                                <div class="col-md-4">
+                                    <div class="input-group"> <span class="input-group-addon">
+                                <input type="checkbox" id="pf_cbNcDiscount" name="pf_cbNcDiscount">
+                            </span>
+                                        <input id="pf_txtNcDiscount" name="pf_txtNcDiscount" class="form-control" type="text" placeholder="Percent Off"> </div>
+                                    <p class="help-block">If you provide a new-client incentive, check this box. Optionally provide a percent off (between 1 and 100 percent).</p>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <!-- Discounts -->
+                        </div>
+                        <!-- Discount tab -->
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <!-- Save My Profile button -->
+        <div style="text-align: center"><input id="btnSaveProfile" type="button" value="Save My Profile" class="btn btn-primary btn-lg"><p>Click the <strong>Save My Profile</strong> button at any time. Save persists your information to our database.</p></div>
+        
+    </div>  <!-- wrapper -->
