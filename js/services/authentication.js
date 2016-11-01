@@ -1,6 +1,6 @@
 myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject'
-  , '$location', 'FIREBASE_URL'
-  , function ($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL) {
+  , '$location', 'FIREBASE_URL', '$q'
+  , function ($rootScope, $firebaseAuth, $firebaseObject, $location, FIREBASE_URL, $q) {
         var config = {
             apiKey: "AIzaSyBClzC2i_sRSvQdFEGFshGIUyu5lkA3FNY"
             , authDomain: "dominic-and-company.firebaseapp.com"
@@ -78,8 +78,12 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                 $("#myName").text('');
             }, //logout
             
+            /* --------------------- requireAuth functionality --------------------- */
             requireAuth: function() {
-                return auth.$requireAuth();
+                // I've simulated $requireAuth since it does not appear to be supported any longer.
+                if( $rootScope.currentUser == '' ) {
+                    return $q.reject("AUTH_REQUIRED")
+                }
             }, //require Authentication
             
             

@@ -10,6 +10,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     
                     <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">Home</a></li>
                         <!--li><a href="#about">About</a></li-->
                         <!--li><a href="#services">Service</a></li-->
                         <!--li><a href="#testimonials">Testimonial</a></li-->
@@ -17,6 +18,7 @@
                         <!--li><a href="#staff">Staff</a></li-->
                         <!--li><a href="#services">Services</a></li-->
                         <!--li><a href="#schedule">Make an Appointment</a></li-->
+                        <li ng-show="currentUser"><a href="#profile">My Profile</a></li>
                         <ul id="login-dropdown" class="nav navbar-nav navbar-right" ng-hide="currentUser">
                             <!-- Drop-down nav item -->
                             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>

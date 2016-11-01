@@ -17,5 +17,9 @@ myApp.controller('RegistrationController',
   $scope.pwReset = function() {
     Authentication.pwReset($scope.user);
   }; //reset
+      
+  $scope.requireAuth = function() {
+    Authentication.requireAuth($scope.user);
+  }; //reset      
 
 }]); // Controller

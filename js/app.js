@@ -2,33 +2,30 @@ var myApp = angular.module('myApp',
   ['ngRoute', 'firebase'])
   .constant('FIREBASE_URL', 'https://dominic-and-company.firebaseio.com/');
 
-
 myApp.run(['$rootScope', '$location',
   function($rootScope, $location) {
     $rootScope.$on('$routeChangeError',
       function(event, next, previous, error) {
+        console.log('in routeChangeError!');
         if (error=='AUTH_REQUIRED') {
-          $rootScope.message = 'Sorry, you must log in to access that page';
-          $location.path('/login');
+          alert('Sorry, you must log in to access that page');
+          $location.path('/');
         } // AUTH REQUIRED
       }); //event info
-  }]); //run
+}]); //run
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    //when('/login', {
-    //  templateUrl: 'views/register.html',
-    //  controller: 'RegistrationController'
-    //}).
-    //when('/register', {
-    //  templateUrl: 'views/register.html',
-    //  controller: 'RegistrationController'
-    //}).
     when('/profile', {
       templateUrl: 'views/profile.html',
-      controller: 'ProfileFormController'
+      controller: 'ProfileFormController',
+      resolve: { 
+        currentAuth: function(Authentication) {
+            return Authentication.requireAuth();
+        } 
+      } //resolve
     }).
     otherwise({
-      redirectTo: '/login'
+      redirectTo: '/'
     });
 }]);
