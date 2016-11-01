@@ -13,7 +13,7 @@
                               
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Hair</a></li>
+                        <li><a data-toggle="tab" data-target='#menu1'>Hair</a></li>
                         <li><a data-toggle="tab" href="#menu2">Nails</a></li>
                         <li><a data-toggle="tab" href="#menu3">Wax</a></li>
                         <li><a data-toggle="tab" href="#menu4">Misc.</a></li>
@@ -34,7 +34,7 @@
                             </div>                  
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="first_name">First Name</label>
+                                <label class="col-md-4 control-label" ng-model="firstname" for="first_name">First Name</label>
                                 <div class="col-md-4">
                                     <input id="pf_txtFirstName" name="textinput" type="text" placeholder="First Name" class="form-control input-md" required=""> </div>
                             </div>
