@@ -53,6 +53,12 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                         var welcomeMessage = 'Welcome ' + firstname + '!';
                         displaySuccess('Login Successful', welcomeMessage, '');
                         $("#myName").text(firstname);
+                        
+                        // Is this an employee logging in?
+                        $rootScope.$apply(function () {
+                            $rootScope.isAssociate = snapshot.val().associate;
+                        });
+           
                     });
                     
                     // We've successfully logged in, so close the drop-down!
@@ -74,6 +80,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
             logout: function() {
                 console.log('logout success!');
                 auth.signOut();
+                                  
                 displaySuccess('Logout Successful', 'Please visit us again soon!', '');
                 $("#myName").text('');
             }, //logout

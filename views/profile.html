@@ -452,3 +452,20 @@
         <div style="text-align: center"><input id="btnSaveProfile" type="button" value="Save My Profile" class="btn btn-primary btn-lg"><p>Click the <strong>Save My Profile</strong> button at any time. Save persists your information to our database.</p></div>
         
     </div>  <!-- wrapper -->
+
+    <!-- Delete Confirm Modal -->
+    <div class="modal fade" id="modalDeleteConfirm">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p><span id="modalSuccessAlert-body">Ok to delete?  The picture will be removed from your profile immediately by clicking Yes!</span></p>
+                </div>
+                <div class="modal-footer"> <span class="pull-left" id="modalDeleteConfirm-footer"></span>
+                    <button type="button" id="pf_modalYes" class="btn btn-warning btn-md" data-dismiss="modal" >Yes</button>
+                    <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>  <!-- Success Modal -->  
