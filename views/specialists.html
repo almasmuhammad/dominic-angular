@@ -1,12 +1,13 @@
 <!-- Container (Testimonials Section) -->
-<div id="specialists" class="container text-center marketing" ng-controller="SpecialistsController">
+<div style="backgroung-color:#c6c6c6" id="specialists" class="container text-center marketing" ng-controller="SpecialistsController">
     <h2 class="featurette-heading">Our Staff</h2>
     <p>(Under construction...the following is test data!)</p>
     
     <div class="row">
         <div ng-repeat="staffmember in staffers">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
+                <div class="myPadding"><img class="img-circle  center-block" id={{staffmember.regUID}} width='220' height='220'></div>
                 <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
                 <h4>{{ staffmember.title[0] }}</h4>
                 <h5>Mobile Number: {{staffmember.mobile}} </h5>
