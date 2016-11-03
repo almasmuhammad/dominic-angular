@@ -448,3 +448,11 @@ body { padding-top: 50px; }
     font-size: 1.4em;
     margin-top: 3px;
 }
+
+#specialists h3 {
+    font-size: 1.5em;
+}
+
+#specialists h4 {
+    font-size: 1.2em;
+}
