@@ -81,7 +81,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                 console.log('logout success!');
                 auth.signOut();
                                   
-                displaySuccess('Logout Successful', 'Please visit us again soon!', '');
+                $('#modalLogout').modal('show');             
+                
                 $("#myName").text('');
             }, //logout
             
@@ -130,7 +131,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
       
         function displaySuccess(titleMsg, message, footerMsg) {
             $('#modalSuccessAlert-title').text(titleMsg);
-            $('#modalSuccessAlert-body').text(message);
+            $('#modalSuccessAlert-body').text(message); 
             $('#modalSuccessAlert-footer').text(footerMsg);
             $('#modalSuccessAlert').modal('show');
         }

@@ -1,0 +1,17 @@
+<!-- Container (Testimonials Section) -->
+<div id="specialists" class="container text-center marketing" ng-controller="SpecialistsController">
+    <h2 class="featurette-heading">Our Staff</h2>
+    <p>(Under construction...the following is test data!)</p>
+    
+    <div class="row">
+        <div ng-repeat="staffmember in staffers">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
+                <h4>{{ staffmember.title[0] }}</h4>
+                <h5>Mobile Number: {{staffmember.mobile}} </h5>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

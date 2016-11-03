@@ -25,6 +25,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
         } 
       } //resolve
     }).
+    when('/specialists', {
+      templateUrl: 'views/specialists.html',
+      controller: 'SpecialistsController',
+    }).
     otherwise({
       redirectTo: '/'
     });

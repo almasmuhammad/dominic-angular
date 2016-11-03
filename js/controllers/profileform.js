@@ -160,8 +160,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
             });
-            $('#modalSuccessAlert-body').text('Your profile has been saved!');
-            $('#modalSuccessAlert').modal('show');
+            $('#modalProfileSave-body').text('Your profile has been saved!');
+            $('#modalProfileSave').modal('show');
             
             
             // return checkbox values
