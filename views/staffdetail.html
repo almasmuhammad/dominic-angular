@@ -1,0 +1,23 @@
+<!-- Staff Member Page -->
+<div id="staffdetail" class="container-fluid text-center marketing" ng-controller="StaffDetailController">
+    <h2 class="featurette-heading">Profile</h2>
+    <p>(Under construction...the following is test data!)</p>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img class="img-responsive pull-left" id={{staffmember.regUID}}></a></div>
+                <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
+                <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
+                <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
+                <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h5>
+                <p>{{staffmember.about}}</p>
+                <ul>
+                    <div ng-repeat="hair in staffmember.hairCut">
+                        <li>{{hair}}</li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

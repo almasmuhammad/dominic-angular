@@ -159,6 +159,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , newClient: pf_newClient
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
+                , regUID: profUID
             });
             $('#modalProfileSave-body').text('Your profile has been saved!');
             $('#modalProfileSave').modal('show');

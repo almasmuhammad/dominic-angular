@@ -1,9 +1,9 @@
-myApp.controller('SpecialistsController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',
+myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',
 
   function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {
       
         /* ------------------- Load profile data --------------------- */
-        console.log('in specialists controller!');
+        console.log('in staff controller!');
         
         // Retrieve all associates
         ref = firebase.database().ref('/associates');
@@ -17,7 +17,7 @@ myApp.controller('SpecialistsController', ['$scope', '$rootScope', '$firebaseAut
                 console.log(value.regUID);
                 var storageRef = firebase.storage().ref().child('/images/' + value.regUID);
                 storageRef.getDownloadURL().then(function (url) {
-                    console.log('url='+url);
+                    console.log('url=' + url);
                     document.getElementById(value.regUID).src = url;
                 }).catch(function (error) {
                     console.log("error getting user's profile pic:");

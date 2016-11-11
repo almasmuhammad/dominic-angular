@@ -15,8 +15,8 @@ myApp.run(['$rootScope', '$location',
 }]); //run
 
 myApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-    when('/profile', {
+  $routeProvider
+    .when('/profile', {
       templateUrl: 'views/profile.html',
       controller: 'ProfileFormController',
       resolve: { 
@@ -24,12 +24,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
             return Authentication.requireAuth();
         } 
       } //resolve
-    }).
-    when('/specialists', {
-      templateUrl: 'views/specialists.html',
-      controller: 'SpecialistsController',
-    }).
-    otherwise({
+    })
+    .when('/staff', {
+      templateUrl: 'views/staff.html',
+      controller: 'StaffController',
+    })
+    .when('/staffdetail/:uID', {
+      templateUrl: 'views/staffdetail.html',
+      controller: 'StaffDetailController',
+    })
+    .otherwise({
       redirectTo: '/'
     });
 }]);

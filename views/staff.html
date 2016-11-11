@@ -1,5 +1,5 @@
-<!-- Container (Testimonials Section) -->
-<div style="backgroung-color:#c6c6c6" id="specialists" class="container text-center marketing" ng-controller="SpecialistsController">
+<!-- Staff Member Page -->
+<div id="staffdetail" class="container text-center marketing" ng-controller="StaffController">
     <h2 class="featurette-heading">Our Staff</h2>
     <p>(Under construction...the following is test data!)</p>
     
@@ -7,11 +7,11 @@
         <div ng-repeat="staffmember in staffers">
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
-                <div class="myPadding"><a href="#home"><img class="img-circle  center-block" id={{staffmember.regUID}} width='220' height='220'></a></div>
+                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img class="img-circle  center-block" id={{staffmember.regUID}} width='220' height='220'></a></div>
                 <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
                 <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
                 <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
-                <h5><span class="glyphicon glyphicon-envelope"></span> {{staffmember.email}}</h5>
+                <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{staffmember.email}}">{{staffmember.email}}</a></h5>
             </div>
         </div>
         </div>
