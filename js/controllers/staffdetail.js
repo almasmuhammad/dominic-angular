@@ -1,6 +1,6 @@
-myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseObject', '$routeParams', 'FIREBASE_URL',
+myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObject', '$routeParams',
 
-  function ($scope, $rootScope, $firebaseAuth, $firebaseObject, $routeParams, FIREBASE_URL) {
+  function ($scope, $rootScope, $firebaseObject, $routeParams) {
       
         /* ------------------- Load profile data --------------------- */
         console.log('in staff detail controller!');
@@ -23,29 +23,6 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseAut
         }).catch(function (error) {
             console.log("error getting user's profile pic:");
             console.log(error);
-        });
-
-
-        // Retrieve all associates
-        /*ref = firebase.database().ref('/associates');
-        var staffList = $firebaseArray(ref);
-        $scope.staffers = staffList;
-
-        staffList.$loaded()
-        .then(function(data){
-            angular.forEach(data, function(value, key) {
-                console.log('**************************')
-                console.log(value.regUID);
-                var storageRef = firebase.storage().ref().child('/images/' + value.regUID);
-                storageRef.getDownloadURL().then(function (url) {
-                    console.log('url=' + url);
-                    myID = "SD" + value.regUID;
-                    document.getElementById(myID).src = url;
-                }).catch(function (error) {
-                    console.log("error getting user's profile pic:");
-                    console.log(error);
-                });                
-            })
-        });     */         
+        });        
       
 }]); // Controller
