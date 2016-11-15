@@ -25,6 +25,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
         } 
       } //resolve
     })
+    .when('/header', {
+      templateUrl: 'views/header.html',
+    })
+    .when('/about', {
+      templateUrl: 'views/about.html',
+    })
+    .when('/services', {
+      templateUrl: 'views/services.html',
+    })
     .when('/staff', {
       templateUrl: 'views/staff.html',
       controller: 'StaffController',
@@ -34,6 +43,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'StaffDetailController',
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/header'
     });
 }]);

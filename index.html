@@ -33,59 +33,45 @@
 <body>
 
 <div class="page">
-
-  <main class="cf" ng-view></main>
     
 <header>
   <nav ng-include="'views/nav.html'"></nav>
-  <div ng-include="'views/header.html'"></div>
 </header>    
     
-  <div ng-include="'views/about.html'"></div>
-  <div ng-include="'views/services.html'"></div>
-  <div ng-include="'views/featurettes.html'"></div>    
-  <div ng-include="'views/testimonials.html'"></div> 
-
+    <main class="cf" ng-view></main>
+    
 <!-- FOOTER -->
 <footer>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row" id="footer">
-                <div class="col-xs-6 col-sm-3 col-md-2">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
-                    <h3>Location</h3>
-                    <p>Dominic &amp; Company
-                        <br> 1545 Bethel Road
-                        <br> Columbus, Ohio 43220</p>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li>
-                            <a href="https://twitter.com/Dominiconbethel"><img src="/images/twitter-512.png" alt="Twitter" height="42" width="42"></a>
-                            <a href="https://www.facebook.com/dominiconbethel"><img src="/images/Facebook_F_icon.png" alt="Facebook" height="42" width="42"></a>
-                        </li>
-                    </ul>
-                </div>
+    <div id="about" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h1>About</h1>
+                <p class="lead"><strong>Dominic &amp; Company</strong> is an inclusive day spa and salon located in northwest Columbus, Ohio. Our hair, nail, massage and spa specialists provide the ultimate in beauty and relaxation.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h1>Location</h1>
+                <p class="lead"> We are located at:
+                    <br> 1545 Bethel Road
+                    <br> Columbus, Ohio 43220
+                    <br>
+                    <br> Call <strong>614-459-5848</strong> for an appointment
+                    <br> </p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h1>Connect</h1>
+                <a href="https://twitter.com/Dominiconbethel"><img src="/images/twitter-512.png" alt="Twitter" height="42" width="42"></a>
+                <a href="https://www.facebook.com/dominiconbethel"><img src="/images/Facebook_F_icon.png" alt="Facebook" height="42" width="42"></a>
             </div>
         </div>
-        <!-- Google Map of Dominic & Co. location -->
-        <div id="googleMap" style="height:400px;width:100%;"></div>
-        <div class=" text-center"> <a href="#myPage" title="To Top"><span class="glyphicon glyphicon-chevron-up"></span></a> </div>
-        <div>
-            <p class="copyright">© 2016 Dominic &amp; Company. All Rights Reserved.</p>
-        </div>
+    </div>
+    <!-- Google Map of Dominic & Co. location -->
+    <div class="container-fluid" style="background-color: #4e4e4f">
+        <!--div id="googleMap" style="height:400px;width:100%;"></div-->
+        <p class="copyright">© 2016 Dominic &amp; Company. All Rights Reserved.</p>
     </div>
 </footer>
-    
 </div>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4zO2inVZirb87NbMUiAhz9dgGHhf_JtY" type="text/javascript"></script>
     <script src="js/spin.min.js"></script>
     <script>

@@ -256,7 +256,7 @@ body {
 }
 
 footer > div {
-    background-color: grey
+    background-color: #4e4e4f
 }
 
 footer p {
@@ -279,7 +279,10 @@ footer ul {
 } 
 
 .copyright {
-    /* font-size: 1.2em; */
+    background-size: #4e4e4f;
+    font-size: .8em;
+    padding-top: 24px;
+    color: #c6c6c6;
 }
 
 body { padding-top: 50px; }
