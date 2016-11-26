@@ -399,10 +399,10 @@ body { padding-top: 50px; }
       color: #fff;
   }
 
-.myBanner {    /* ad9377 */
+.myBanner h1 {    /* ad9377 */
   color: #c6c6c6;
   text-align: center;
-  font-size:1.2em;
+  font-size: 3.0em;
   font-family:fantasy;  
 }
 

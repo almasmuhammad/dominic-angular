@@ -22,4 +22,11 @@ myApp.controller('RegistrationController',
     Authentication.requireAuth($scope.user);
   }; //reset      
 
+  $(document).ready(function(){
+    $("a").click(function(){
+        $("#myNavbar").removeClass('navbar-collapse collapse in').addClass('navbar-collapse collapse');
+    });
+  }); 
+
 }]); // Controller
+
