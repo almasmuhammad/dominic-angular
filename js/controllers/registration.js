@@ -22,6 +22,7 @@ myApp.controller('RegistrationController',
     Authentication.requireAuth($scope.user);
   }; //reset      
 
+  // Handler closes hamburger menu once item (anchor) is selected
   $(document).ready(function(){
     $("a").click(function(){
         $("#myNavbar").removeClass('navbar-collapse collapse in').addClass('navbar-collapse collapse');

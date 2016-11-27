@@ -278,8 +278,19 @@ footer ul {
     font-family: sans-serif;
 } 
 
+#super-footer {
+    background-color: #4e4e4f;
+}
+
 .copyright {
-    background-size: #4e4e4f;
+    /* background-color: #4e4e4f; */
+    font-size: .8em;
+    /*padding-top: 24px;*/
+    color: #c6c6c6;
+}
+
+.fineprint {
+    /* background-color: #4e4e4f; */
     font-size: .8em;
     padding-top: 24px;
     color: #c6c6c6;
@@ -308,9 +319,22 @@ body { padding-top: 50px; }
 
 #imgLogo {
     width: 100%; 
-    padding-top: 80px; 
+    padding-top: 220px; 
     padding-right: 10px;
 }
+
+@media(max-width:1224px){
+    #imgLogo {
+        padding-top: 100px;
+    }
+}
+
+@media(max-width:768px){
+    #imgLogo {
+        padding-top: 60px;
+    }
+}
+
 
   .carousel-control.right, .carousel-control.left {
       background-image: none;
@@ -407,11 +431,12 @@ body { padding-top: 50px; }
 }
 
 .tagline {
-    color: #c6c6c6;
-    font-size: 1.4em;
+    /*background-color: #fff;*/
+    color: dimgrey;
+    font-size: 1.5em;
     text-align: center;
     font-family:fantasy;
-    margin-bottom: 40px;
+    padding: 5px;
 }
 
 .myFlash {
