@@ -13,5 +13,4 @@ myApp.controller('MapController', ['$scope'
             position: myCenter
         , });
         marker.setMap(map);
-        console.log(map);
 }]); // Controller
