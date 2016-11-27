@@ -25,6 +25,7 @@ myApp.controller('RegistrationController',
   // Handler closes hamburger menu once item (anchor) is selected
   $(document).ready(function(){
     $("a").click(function() {
+        console.log(this);
         $("#myNavbar").removeClass('navbar-collapse collapse in').addClass('navbar-collapse collapse');
     });
   }); 
