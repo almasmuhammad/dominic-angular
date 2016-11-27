@@ -26,10 +26,14 @@ myApp.config(['$routeProvider', function($routeProvider) {
       } //resolve
     })
     .when('/header', {
-      templateUrl: 'views/header.html',
+      templateUrl: 'views/header.html'
     })
     .when('/about', {
-      templateUrl: 'views/about.html',
+      templateUrl: 'views/about.html'
+    })
+    .when('/map', {
+      templateUrl: 'views/map.html',
+      controller: 'MapController'
     })
     .when('/services', {
       templateUrl: 'views/services.html',
