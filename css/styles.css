@@ -443,7 +443,7 @@ body { padding-top: 50px; }
 
 .tagline {
     color: dimgrey;
-    font-size: 1.5em;
+    font-size: 2.0em;
     text-align: center;
     font-family:fantasy;
     padding: 5px;
@@ -452,7 +452,7 @@ body { padding-top: 50px; }
 .tagline-sm {
     color: dimgrey;
     background-color: grey;
-    font-size: 1.2em;
+    font-size: 1.6em;
     text-align: center;
     font-family:fantasy;
     padding: 5px;

@@ -25,8 +25,10 @@ myApp.controller('RegistrationController',
   // Handler closes hamburger menu once item (anchor) is selected
   $(document).ready(function(){
     $("a").click(function() {
-        console.log(this);
-        $("#myNavbar").removeClass('navbar-collapse collapse in').addClass('navbar-collapse collapse');
+        // Check for "login" menu item.  Do not close "login" menu, rather let it expand.  Close menu for any other selection
+        if( !$(this).hasClass('dropdown-toggle') ) {
+            $("#myNavbar").removeClass('navbar-collapse collapse in').addClass('navbar-collapse collapse');
+        }
     });
   }); 
 
