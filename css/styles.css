@@ -442,12 +442,21 @@ body { padding-top: 50px; }
 }
 
 .tagline {
-    /*background-color: #fff;*/
     color: dimgrey;
     font-size: 1.5em;
     text-align: center;
     font-family:fantasy;
     padding: 5px;
+}
+
+.tagline-sm {
+    color: dimgrey;
+    background-color: grey;
+    font-size: 1.2em;
+    text-align: center;
+    font-family:fantasy;
+    padding: 5px;
+    padding-bottom: 60px;
 }
 
 .myFlash {
