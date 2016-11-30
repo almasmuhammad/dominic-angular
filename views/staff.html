@@ -5,6 +5,7 @@
     
     <div class="row">
         <div ng-repeat="staffmember in staffers">
+        <div ng-if="staffmember.profile=='on'">
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
                 <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img class="img-circle  center-block" id={{staffmember.regUID}} width='220' height='220'></a></div>
@@ -13,6 +14,7 @@
                 <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
                 <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{staffmember.email}}">{{staffmember.email}}</a></h5>
             </div>
+        </div>
         </div>
         </div>
     </div>
