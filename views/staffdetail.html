@@ -3,51 +3,103 @@
     <p>(Under construction...the following is test data!)</p>
     
     <div class="row panel panel-default">
-        <div class="col-lg-6">
-            <div class="myPadding"><img class="img-responsive" style="border-radius: 25px" id={{staffmember.regUID}}></div>
-        <!--/div>
-        <div class="col-lg-4"-->
+        <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+            <div><img class="img-responsive staffPadding" style="border-radius: 25px" id={{staffmember.regUID}}></div>
+        </div>
+        <div class="visible-xs">
+            <div><img class="img-circle  center-block" id={{staffmember.regUID}}'sm'></div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h1>{{ staffmember.firstname }} {{ staffmember.lastname }}</h1>
             <h2><span class="text-muted">{{ staffmember.title[0] }}</span></h2>
             <h4><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h4>
             <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h4>
             <br>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h1>About</h1>
             <p class="text-muted">{{staffmember.about}}</p>
             <p class="text-muted">Referral: {{staffmember.referral}}  Discount: {{staffmember.refdiscountPct}}%</p>
             <p class="text-muted">New Client Discount: {{staffmember.newClient}}  Discount: {{staffmember.ncdiscountPct}}%</p>
-        </div>            
-        <div class="col-lg-6">
-            <h1>Services</h1>
-            <ul class="text-muted" style="text-align: left;">
+        </div>
+        <h1 style="clear: left; text-align: center">Services</h1>
+        <div ng-if="staffmember.hairCut">
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Haircut &amp; Styling</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="hair in staffmember.hairCut">
                 <li>{{hair}}</li>
             </div>
+            </ul>
+        </div>
+        <div ng-if="staffmember.hairColor">
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Hair Color</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="color in staffmember.hairColor">
                 <li>{{color}}</li>    
             </div>
+            </ul>
+        </div>
+        </div>
+        <div ng-if="staffmember.hairText">
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Hair Texturizer</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="texturizer in staffmember.hairText">
                 <li>{{texturizer}}</li>    
             </div>
-            <h2>Hair Addition</h2>
+            </ul>
+        </div>
+        </div>
+        <div ng-if="staffmember.hairAddition">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+            <h2>Hair Enhancements</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="addon in staffmember.hairAddition">
                 <li>{{addon}}</li>    
             </div>
+            </ul>            
+        </div>
+        </div>
+            
+        <div style="clear: left;" ng-if="staffmember.wax">
+            <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Wax</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="waxSrvc in staffmember.wax">
                 <li>{{waxSrvc}}</li>    
             </div>
+            </ul>            
+        </div>
+        </div>
+            
+        <div ng-if="staffmember.mani">
+            <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Manicure</h2>
+            <ul class="text-muted" style="text-align: left;">
             <div ng-repeat="manicure in staffmember.mani">
                 <li>{{manicure}}</li>    
             </div>
+            </ul>            
+        </div>
+        </div>     
+
+        <div ng-if="staffmember.pedi">
+            <div class="col-lg-4 col-md-4 col-sm-4">
             <h2>Pedicure</h2>
-            <div ng-repeat="pedicure in staffmember.pedi">
+            <ul class="text-muted" style="text-align: left;">
+            <div ng-repeat="pedicure in staffmember.mani">
                 <li>{{pedicure}}</li>    
             </div>
+            </ul>            
+        </div>
+        </div>            
+            
+    </div>
+</div>
+
+<!--div>
             <h2>Additional Services</h2>
             <div ng-repeat="additionalSrvc in staffmember.miscSvcs">
                 <li>{{additionalSrvc}}</li>    
@@ -56,7 +108,5 @@
             <div ng-repeat="product in staffmember.products">
                 <li>{{product}}</li>    
             </div>
-            </ul>
-        </div>
-    </div>
-</div>
+        </div-->
+
