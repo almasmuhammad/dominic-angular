@@ -20,8 +20,6 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
             console.log('url=' + url);
             myID = $routeParams.uID;
             document.getElementById(myID).src = url;
-            console.log('MYID!!!!!!!');
-            //console.log($('#'+myID+'sm'));
         }).catch(function (error) {
             console.log("error getting user's profile pic:");
             console.log(error);
