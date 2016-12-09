@@ -22,7 +22,7 @@
         </div>
         
         <!-- Only display "Services" if there are at least one service specified -->
-        <div ng-if="staffmember.hairCut || staffmember.hairText">
+        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs">
             <h1 style="clear: left; text-align: center">Services</h1>
             <div ng-if="staffmember.hairCut">
                 <div class="col-lg-4 col-md-4 col-sm-4">
