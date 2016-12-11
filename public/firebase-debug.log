@@ -3,10 +3,21 @@
 [debug] CLI Version:  3.2.0
 [debug] Platform:     darwin
 [debug] Node Version: v6.9.1
-[debug] Time:         Sat Dec 10 2016 19:09:39 GMT-0500 (EST)
+[debug] Time:         Sun Dec 11 2016 16:09:46 GMT-0500 (EST)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token
+[debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/dominic-and-company 
 [debug] <<< HTTP RESPONSE 200
 [debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/dominic-and-company/tokens 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'dominic-and-company'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing public directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/dominic-and-company/uploads/-KYji5QmBo4YLUJ8QmDK?fileCount=122&message= 
