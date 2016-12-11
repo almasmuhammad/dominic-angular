@@ -513,3 +513,19 @@ body { padding-top: 50px; }
 #myMap {
     background-color: grey;
 }
+
+.specialistPic {
+    border-radius: 25px; 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.tab-pane {
+    height:300px;
+    overflow-y:scroll;
+    border:1px solid #ccc;
+}
+
+.svrcStyle {
+    font-size: 1.5em;
+}
