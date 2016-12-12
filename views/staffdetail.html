@@ -12,8 +12,8 @@
         <div ng-if="staffmember.about" class="col-lg-4 col-md-4 col-sm-4">
             <h1>About</h1>
             <div class="text-muted tab-pane" style="text-align:left;font-size: 1em;">
-                <p style="text-align:left;font-size: 1.1em;">{{staffmember.about}}</p>
-                <div ng-if="staffmember.referral == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.refdiscountPct">{{staffmember.refdiscountPct}}% </span>Referral fee for new clients!</span></div>
+                <p style="text-align:left;font-size: 1em;">{{staffmember.about}}</p>
+                <div ng-if="staffmember.referral == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.refdiscountPct">{{staffmember.refdiscountPct}}% </span>Referral discount when you refer a friend or family member!</span></div>
                 <div ng-if="staffmember.newClient == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.ncdiscountPct">{{staffmember.ncdiscountPct}}% </span>New client discount!</span></div>
             </div>
         </div>
