@@ -35,6 +35,9 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             populateCheckbox('pf_cbMiscServices', miscServices);
             var products = snapshot.val().products;
             populateCheckbox('pf_cbProducts', products);
+            var massage = snapshot.val().massage;
+            populateCheckbox('pf_cbMassage', massage);          
+            
             var referralOn = snapshot.val().referral;
             if (referralOn == "on") {
                 $("input[id='pf_cbReferral']").each(function (index, element) {
@@ -112,6 +115,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_hairCuts = getCheckedCheckboxesFor('pf_cbHairCuts');
             const pf_hairAddition = getCheckedCheckboxesFor('pf_cbHairAddition');
             const pf_wax = getCheckedCheckboxesFor('pf_cbWax');
+            const pf_massage = getCheckedCheckboxesFor('pf_cbMassage');           
             const pf_manicures = getCheckedCheckboxesFor('pf_cbManicures');
             const pf_pedicures = getCheckedCheckboxesFor('pf_cbPedicures');
             const pf_miscSvcs = getCheckedCheckboxesFor('pf_cbMiscServices');
@@ -120,6 +124,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_newClient = getCheckedCheckboxesFor('pf_cbNcDiscount');
             const pf_refDiscount = pf_txtRefDiscount.value;
             const pf_ncDiscount = pf_txtNcDiscount.value;
+            
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
             if (fileToUpload != null) {
@@ -151,6 +156,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , hairCut: pf_hairCuts
                 , hairAddition: pf_hairAddition
                 , wax: pf_wax
+                , massage: pf_massage
                 , mani: pf_manicures
                 , pedi: pf_pedicures
                 , miscSvcs: pf_miscSvcs

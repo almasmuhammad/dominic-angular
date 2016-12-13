@@ -12,7 +12,7 @@
         <div ng-if="staffmember.about" class="col-lg-4 col-md-4 col-sm-4">
             <h1>About</h1>
             <div class="text-muted tab-pane" style="text-align:left;font-size: 1em;">
-                <p style="text-align:left;font-size: 1em;">{{staffmember.about}}</p>
+                <p style="text-align:left;font-size: 1em; padding-top:20px;">{{staffmember.about}}</p>
                 <div ng-if="staffmember.referral == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.refdiscountPct">{{staffmember.refdiscountPct}}% </span>Referral discount when you refer a friend or family member!</span></div>
                 <div ng-if="staffmember.newClient == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.ncdiscountPct">{{staffmember.ncdiscountPct}}% </span>New client discount!</span></div>
             </div>
@@ -75,7 +75,15 @@
                     <li>{{waxSrvc}}</li>    
                 </div>
                 </ul>            
-            </div>          
+            </div>
+            <div ng-if="staffmember.massage">
+                <h2 style="text-align: left;">Massage</h2>
+                <ul class="text-muted list-unstyled">
+                <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
+                    <li>{{aMassage}}</li>    
+                </div>
+                </ul>            
+            </div>
             <div ng-if="staffmember.miscSvcs">  <!-- Additional Services -->
                 <h2 style="text-align: left;">Additional Services</h2>
                 <ul class="text-muted list-unstyled">
