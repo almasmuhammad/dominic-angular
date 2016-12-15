@@ -28,7 +28,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             var waxing = snapshot.val().wax;
             populateCheckbox('pf_cbWax', waxing);
             var manicures = snapshot.val().mani;
-            populateCheckbox('pf_cbManicures', manicures);
+            populateCheckbox('pf_cbManicures', manicures);          
             var pedicures = snapshot.val().pedi;
             populateCheckbox('pf_cbPedicures', pedicures);
             var miscServices = snapshot.val().miscSvcs;
