@@ -1,15 +1,17 @@
 <!-- Staff Member Page -->
 <div id="staffdetail" class="container marketing" ng-controller="StaffDetailController">
     
-    <div class="row panel panel-default">
+    <div class="row panel panel-default" style="padding-bottom: 25px;">
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div><img class="img-responsive center-block specialistPic" id={{staffmember.regUID}}></div>
+            <div style="border:1px solid #ccc; border-radius: 8px;">
             <h1>{{ staffmember.firstname }} {{ staffmember.lastname }}</h1>
             <span ng-if="staffmember.title" ng-repeat="myTitle in staffmember.title">
-                <h4 style="font-size:1.2em;"><span class="text-muted">{{ myTitle }}</span></h4>
+                <h4 style="font-size:1.2em; color: #ccc;"><span class="text-muted">{{ myTitle }}</span></h4>
             </span>
             <h4><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h4>
             <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h4>
+            </div>
         </div>
         <div ng-if="staffmember.about" class="col-lg-4 col-md-4 col-sm-4">
             <h1>About</h1>
