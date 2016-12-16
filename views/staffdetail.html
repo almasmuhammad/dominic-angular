@@ -21,7 +21,7 @@
                 <div ng-if="staffmember.newClient == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.ncdiscountPct">{{staffmember.ncdiscountPct}}% </span>New client discount!</span></div>
             </div>
         </div>
-        <!-- Only display "Services" if there are at least one service specified -->
+        <!-- Only display "Services" if there's at least one service specified -->
         <h1 ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" style="text-align: center">Services</h1>
         <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" class="tab-pane" style="margin-right:25px; margin-left:20px;">
             <div ng-if="staffmember.hairCut">
