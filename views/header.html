@@ -20,16 +20,11 @@
     var today = new Date();
     var day = today.getDate();
     var month = today.getMonth() + 1;  // returns zero-based month so normalize
-    
-    // Put up the xmas lights if the date is December 15th thru the 26th
-    if((month == 12) && (day > 18 && day < 26)) {
-        //$('#xmasDecoration').show();
-        document.getElementById('xmasDecoration').style.visibility='visible';
-        document.getElementById('xmasDecoration2').style.visibility='visible';
-    } else {
-        //$('#xmasDecoration').hide();
-        document.getElementById('xmasDecoration').style.visibility='hidden';
-        document.getElementById('xmasDecoration2').style.visibility='hidden';
+
+    // Take down the xmas lights if the date does not fall within December 16th thru the 26th
+    if( !((month == 12) && (day > 15 && day < 26)) ) {
+        $('#xmasDecoration').remove();
+        $('#xmasDecoration2').remove();
     }
 </script>
 

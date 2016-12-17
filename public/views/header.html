@@ -5,7 +5,7 @@
             <div class="row">
                 
                 <div class="col-lg-6 col-md-6 col-sm-6 " style="margin-bottom: 50px;"> <img id="imgLogo" src="/images/dominic_white.png"> </div>
-                <div><img height="140" width="378" class="pull-right hidden-xs" style="margin-top: -80px;" src="images/Christmas-holiday-clipart.png"></div>
+                <div><img id='xmasDecoration' height="140" width="378" class="pull-right hidden-xs" style="margin-top: -80px;" src="images/Christmas-holiday-clipart.png"></div>
                 <div class="myBanner hidden-xs">
                     <br><br><br><br><br><p class="tagline"><strong>encompassing health &amp; beauty with excellence</strong></p>
                 </div>
@@ -15,6 +15,16 @@
         </div>
     </div>
 </div><!-- Page header -->
-<img height="140" width="378" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Christmas-holiday-clipart.png">
+<img id='xmasDecoration2' height="140" width="378" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Christmas-holiday-clipart.png">
+<script>
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1;  // returns zero-based month so normalize
 
+    // Take down the xmas lights if the date does not fall within December 16th thru the 26th
+    if( !((month == 12) && (day > 15 && day < 26)) ) {
+        $('#xmasDecoration').remove();
+        $('#xmasDecoration2').remove();
+    }
+</script>
 
