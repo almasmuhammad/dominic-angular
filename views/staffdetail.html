@@ -1,7 +1,7 @@
 <!-- Staff Member Page -->
 <div id="staffdetail" class="container marketing" ng-controller="StaffDetailController">
     
-    <div class="row panel panel-default" style="padding-bottom: 25px; border-radius: 5px; background:grey">
+    <div class="row panel panel-default" style="padding-bottom: 25px; background:grey">
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div><img class="img-responsive center-block specialistPic" id={{staffmember.regUID}}></div>
             <div style="border:1px solid #ccc; border-radius: 8px; background: #fff">
@@ -26,7 +26,7 @@
             <h1 class="orange">Services</h1>
             <div class="text-muted tab-pane" style="text-align:left; font-size: .75em; background: #fff;">
                 <div ng-if="staffmember.hairCut">
-                    <h2>Haircut &amp; Styling</h2>
+                    <h2 class="panel-heading">Haircut &amp; Styling</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="hair in staffmember.hairCut" class="svrcStyle">
                         <li>{{hair}}</li>
@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                 <div ng-if="staffmember.hairColor">
-                    <h2>Hair Color</h2>
+                    <h2 class="panel-heading">Hair Color</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="color in staffmember.hairColor" class="svrcStyle">
                         <li>{{color}}</li>    
@@ -42,7 +42,7 @@
                     </ul>
                 </div>
                 <div ng-if="staffmember.hairText">
-                    <h2>Hair Texturizer</h2>
+                    <h2 class="panel-heading">Hair Texturizer</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="texturizer in staffmember.hairText" class="svrcStyle">
                         <li>{{texturizer}}</li>    
@@ -50,7 +50,7 @@
                     </ul>
                 </div>
                 <div ng-if="staffmember.hairAddition">
-                    <h2>Hair Enhancements</h2>
+                    <h2 class="panel-heading">Hair Enhancements</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="addon in staffmember.hairAddition" class="svrcStyle">
                         <li>{{addon}}</li>    
@@ -58,7 +58,7 @@
                     </ul>            
                 </div>
                 <div ng-if="staffmember.mani">
-                    <h2>Manicure</h2>
+                    <h2 class="panel-heading">Manicure</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="manicure in staffmember.mani" class="svrcStyle">
                         <li>{{manicure}}</li>    
@@ -66,7 +66,7 @@
                     </ul>            
                 </div>     
                 <div ng-if="staffmember.pedi">
-                    <h2>Pedicure</h2>
+                    <h2 class="panel-heading">Pedicure</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="pedicure in staffmember.pedi" class="svrcStyle">
                         <li>{{pedicure}}</li>    
@@ -74,7 +74,7 @@
                     </ul>            
                 </div>    
                 <div ng-if="staffmember.wax">
-                    <h2>Wax</h2>
+                    <h2 class="panel-heading">Wax</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="waxSrvc in staffmember.wax" class="svrcStyle">
                         <li>{{waxSrvc}}</li>    
@@ -82,7 +82,7 @@
                     </ul>            
                 </div>
                 <div ng-if="staffmember.massage">
-                    <h2>Massage</h2>
+                    <h2 class="panel-heading">Massage</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
                         <li>{{aMassage}}</li>    
@@ -90,7 +90,7 @@
                     </ul>            
                 </div>
                 <div ng-if="staffmember.miscSvcs">  <!-- Additional Services -->
-                    <h2>Additional Services</h2>
+                    <h2 class="panel-heading">Additional Services</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="additionalSrvc in staffmember.miscSvcs" class="svrcStyle">
                         <li>{{additionalSrvc}}</li>    
@@ -100,7 +100,7 @@
             
                 <!-- Products -->
                 <div ng-if="staffmember.products">
-                    <h2>Products</h2>
+                    <h2 class="panel-heading">Products</h2>
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="product in staffmember.products" class="svrcStyle">
                         <li>{{product}}</li>    
