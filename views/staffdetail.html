@@ -22,91 +22,92 @@
             </div>
         </div>
         <!-- Only display "Services" if there's at least one service specified -->
-        <h1 class="orange" ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" style="text-align: center">Services</h1>
-        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" class="tab-pane" style="margin-right:25px; margin-left:20px;">
-            <div ng-if="staffmember.hairCut">
-                <h2 style="text-align: left;">Haircut &amp; Styling</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="hair in staffmember.hairCut" class="svrcStyle">
-                    <li>{{hair}}</li>
+        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" class="col-lg-4 col-md-4 col-sm-4">
+            <h1 class="orange">Services</h1>
+            <div class="text-muted tab-pane" style="text-align:left; font-size: .75em;">
+                <div ng-if="staffmember.hairCut">
+                    <h2>Haircut &amp; Styling</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="hair in staffmember.hairCut" class="svrcStyle">
+                        <li>{{hair}}</li>
+                    </div>
+                    </ul>
                 </div>
-                </ul>
-            </div>
-            <div ng-if="staffmember.hairColor">
-                <h2 style="text-align: left;">Hair Color</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="color in staffmember.hairColor" class="svrcStyle">
-                    <li>{{color}}</li>    
+                <div ng-if="staffmember.hairColor">
+                    <h2>Hair Color</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="color in staffmember.hairColor" class="svrcStyle">
+                        <li>{{color}}</li>    
+                    </div>
+                    </ul>
                 </div>
-                </ul>
-            </div>
-            <div ng-if="staffmember.hairText">
-                <h2 style="text-align: left;">Hair Texturizer</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="texturizer in staffmember.hairText" class="svrcStyle">
-                    <li>{{texturizer}}</li>    
+                <div ng-if="staffmember.hairText">
+                    <h2>Hair Texturizer</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="texturizer in staffmember.hairText" class="svrcStyle">
+                        <li>{{texturizer}}</li>    
+                    </div>
+                    </ul>
                 </div>
-                </ul>
-            </div>
-            <div ng-if="staffmember.hairAddition">
-                <h2 style="text-align: left;">Hair Enhancements</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="addon in staffmember.hairAddition" class="svrcStyle">
-                    <li>{{addon}}</li>    
+                <div ng-if="staffmember.hairAddition">
+                    <h2>Hair Enhancements</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="addon in staffmember.hairAddition" class="svrcStyle">
+                        <li>{{addon}}</li>    
+                    </div>
+                    </ul>            
                 </div>
-                </ul>            
-            </div>
-            <div ng-if="staffmember.mani">
-                <h2 style="text-align: left;">Manicure</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="manicure in staffmember.mani" class="svrcStyle">
-                    <li>{{manicure}}</li>    
+                <div ng-if="staffmember.mani">
+                    <h2>Manicure</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="manicure in staffmember.mani" class="svrcStyle">
+                        <li>{{manicure}}</li>    
+                    </div>
+                    </ul>            
+                </div>     
+                <div ng-if="staffmember.pedi">
+                    <h2>Pedicure</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="pedicure in staffmember.pedi" class="svrcStyle">
+                        <li>{{pedicure}}</li>    
+                    </div>
+                    </ul>            
+                </div>    
+                <div ng-if="staffmember.wax">
+                    <h2>Wax</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="waxSrvc in staffmember.wax" class="svrcStyle">
+                        <li>{{waxSrvc}}</li>    
+                    </div>
+                    </ul>            
                 </div>
-                </ul>            
-            </div>     
-            <div ng-if="staffmember.pedi">
-                <h2 style="text-align: left;">Pedicure</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="pedicure in staffmember.pedi" class="svrcStyle">
-                    <li>{{pedicure}}</li>    
+                <div ng-if="staffmember.massage">
+                    <h2>Massage</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
+                        <li>{{aMassage}}</li>    
+                    </div>
+                    </ul>            
                 </div>
-                </ul>            
-            </div>    
-            <div ng-if="staffmember.wax">
-                <h2 style="text-align: left;">Wax</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="waxSrvc in staffmember.wax" class="svrcStyle">
-                    <li>{{waxSrvc}}</li>    
-                </div>
-                </ul>            
-            </div>
-            <div ng-if="staffmember.massage">
-                <h2 style="text-align: left;">Massage</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
-                    <li>{{aMassage}}</li>    
-                </div>
-                </ul>            
-            </div>
-            <div ng-if="staffmember.miscSvcs">  <!-- Additional Services -->
-                <h2 style="text-align: left;">Additional Services</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="additionalSrvc in staffmember.miscSvcs" class="svrcStyle">
-                    <li>{{additionalSrvc}}</li>    
-                </div>
-                </ul>
-            </div>            
+                <div ng-if="staffmember.miscSvcs">  <!-- Additional Services -->
+                    <h2>Additional Services</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="additionalSrvc in staffmember.miscSvcs" class="svrcStyle">
+                        <li>{{additionalSrvc}}</li>    
+                    </div>
+                    </ul>
+                </div>            
             
-            <!-- Products -->
-            <div ng-if="staffmember.products">
-                <h2 style="text-align: left;">Products</h2>
-                <ul class="text-muted list-unstyled">
-                <div ng-repeat="product in staffmember.products" class="svrcStyle">
-                    <li>{{product}}</li>    
-                </div>
-                </ul>            
-            </div> 
-            
+                <!-- Products -->
+                <div ng-if="staffmember.products">
+                    <h2>Products</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="product in staffmember.products" class="svrcStyle">
+                        <li>{{product}}</li>    
+                    </div>
+                    </ul>            
+                </div> 
+            </div>
         </div> <!-- ngif there are services -->
     </div>     <!-- Panel -->
 </div>         <!-- StaffDetailController -->
