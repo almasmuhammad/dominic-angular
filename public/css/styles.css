@@ -531,3 +531,9 @@ body { padding-top: 50px; }
 .svrcStyle {
     font-size: 1.3em;
 }
+
+.orange {
+    color: #fff;
+    background-color: #d56e2f;
+    border-radius: 8px;
+}
