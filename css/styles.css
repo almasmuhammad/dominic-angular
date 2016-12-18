@@ -396,7 +396,7 @@ body { padding-top: 50px; }
 
   .panel {
       border: 1px solid #d56e2f;
-      border-radius:0 !important;
+      border-radius:8px !important;
       transition: box-shadow 0.5s;
   }
   .panel:hover {
@@ -536,9 +536,4 @@ body { padding-top: 50px; }
     color: #fff;
     background-color: #d56e2f;
     border-radius: 8px;
-}
-
-.styleHeader h2 {
-    text-align: left; 
-    font-weight: bold;
 }
