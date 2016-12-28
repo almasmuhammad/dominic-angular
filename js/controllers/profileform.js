@@ -1,6 +1,6 @@
 myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',
 
-  function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {
+  function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {    
       
         /* ------------------- Load profile data --------------------- */
         console.log('in profile controller!');

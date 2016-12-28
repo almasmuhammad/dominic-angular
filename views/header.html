@@ -6,16 +6,17 @@
                 
                 <div class="col-lg-6 col-md-6 col-sm-6 " style="margin-bottom: 50px;"> <img id="imgLogo" src="/images/dominic_white.png"> </div>
                 <div><img id='xmasDecoration' height="140" width="378" class="pull-right hidden-xs" style="margin-top: -80px;" src="images/Christmas-holiday-clipart.png"></div>
+                <div><img id='newYearsDecoration' height="200" width="200" class="pull-right hidden-xs" style="margin-top: -30px;" src="images/Happy New Year.png"></div>
                 <div class="myBanner hidden-xs">
                     <br><br><br><br><br><p class="tagline"><strong>encompassing health &amp; beauty with excellence</strong></p>
                 </div>
                 <div class="hidden-lg hidden-md hidden-sm tagline-sm"><strong>encompassing health &amp; beauty with excellence</strong></div>
-
             </div>
         </div>
     </div>
 </div><!-- Page header -->
 <img id='xmasDecoration2' height="140" width="378" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Christmas-holiday-clipart.png">
+<div><img id='newYearsDecoration' height="100" width="100" class="pull-right visible-xs" style="margin-top: -60px;" src="images/Happy New Year.png"></div>
 <script>
     var today = new Date();
     var day = today.getDate();
@@ -25,6 +26,11 @@
     if( !((month == 12) && (day > 15 && day < 26)) ) {
         $('#xmasDecoration').remove();
         $('#xmasDecoration2').remove();
+    }
+    
+    if( !((month == 1) && (day > 0 && day < 3)) ) {
+        //$('#newYearsDecoration').remove();
+        //$('#newYearsDecoration').remove();
     }
 </script>
 
