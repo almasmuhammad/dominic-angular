@@ -22,7 +22,7 @@
             </div>
         </div>
         <!-- Only display "Services" if there's at least one service specified -->
-        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage" class="col-lg-4 col-md-4 col-sm-4">
+        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage || staffmember.spa" class="col-lg-4 col-md-4 col-sm-4">
             <h1 class="orange">Services</h1>
             <div class="text-muted tab-pane" style="text-align:left; font-size: .75em; background: #fff;">
                 <div ng-if="staffmember.hairCut">
@@ -86,6 +86,14 @@
                     <ul class="text-muted list-unstyled">
                     <div ng-repeat="aMassage in staffmember.massage" class="svrcStyle">
                         <li>{{aMassage}}</li>    
+                    </div>
+                    </ul>            
+                </div>
+                <div ng-if="staffmember.spa">
+                    <h2 class="panel-heading">Spa Services</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="aSpa in staffmember.spa" class="svrcStyle">
+                        <li>{{aSpa}}</li>    
                     </div>
                     </ul>            
                 </div>

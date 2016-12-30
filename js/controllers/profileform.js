@@ -36,7 +36,10 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             var products = snapshot.val().products;
             populateCheckbox('pf_cbProducts', products);
             var massage = snapshot.val().massage;
-            populateCheckbox('pf_cbMassage', massage);          
+            populateCheckbox('pf_cbMassage', massage);
+            var spaSrvcs = snapshot.val().spa;
+            populateCheckbox('pf_cbSpa', spaSrvcs);          
+                
             
             var referralOn = snapshot.val().referral;
             if (referralOn == "on") {
@@ -115,7 +118,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_hairCuts = getCheckedCheckboxesFor('pf_cbHairCuts');
             const pf_hairAddition = getCheckedCheckboxesFor('pf_cbHairAddition');
             const pf_wax = getCheckedCheckboxesFor('pf_cbWax');
-            const pf_massage = getCheckedCheckboxesFor('pf_cbMassage');           
+            const pf_massage = getCheckedCheckboxesFor('pf_cbMassage');
+            const pf_spa = getCheckedCheckboxesFor('pf_cbSpa'); 
             const pf_manicures = getCheckedCheckboxesFor('pf_cbManicures');
             const pf_pedicures = getCheckedCheckboxesFor('pf_cbPedicures');
             const pf_miscSvcs = getCheckedCheckboxesFor('pf_cbMiscServices');
@@ -157,6 +161,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , hairAddition: pf_hairAddition
                 , wax: pf_wax
                 , massage: pf_massage
+                , spa: pf_spa
                 , mani: pf_manicures
                 , pedi: pf_pedicures
                 , miscSvcs: pf_miscSvcs
