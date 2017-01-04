@@ -2,12 +2,13 @@
 <div id="staffdetail" class="container text-center marketing bg-grey" ng-controller="StaffController">
     <h2 class="mySplash">Our Staff</h2>
     
-    <div class="row">
+    <!--div class="row"-->
         <div ng-repeat="staffmember in staffers">
-        <div ng-if="staffmember.profile=='on'">
+<div class="clearfix" ng-if="$index % 3 == 0"></div>
+        <!--div ng-if="staffmember.profile=='on'"-->            
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
-                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
+                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img src="/images/default-profile-pic.png" class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
                 <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
                 <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
                 <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
@@ -17,5 +18,5 @@
         </div>
         </div>
         </div>
-    </div>
+    <!--/div-->
 </div>

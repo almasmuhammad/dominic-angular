@@ -24,6 +24,6 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
                     console.log(error);
                 });                
             })
-        });              
+        });          
       
 }]); // Controller
