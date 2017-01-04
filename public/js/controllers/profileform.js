@@ -1,9 +1,15 @@
 myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',
-
+                                           
   function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {    
+      
+   $scope.tinymceOptions = {
+        plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste code',
+        toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+    };      
       
         /* ------------------- Load profile data --------------------- */
         console.log('in profile controller!');
+            
         profUID = $rootScope.currentUser.uid;
         var spinner = startSpinner();
         firebase.database().ref('/associates/' + profUID).once('value').then(function (snapshot) {
