@@ -16,7 +16,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $('#pf_txtMobile').val(snapshot.val().mobile);
             var myTitle = snapshot.val().title;
             populateCheckbox('pf_cbMyTitle', myTitle);
-            $('#pf_txtareaAbout').val(snapshot.val().about);
             var hairColor = snapshot.val().hairColor;
             populateCheckbox('pf_cbHairColor', hairColor);
             var hairTexturizers = snapshot.val().hairText;
@@ -38,8 +37,10 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             var massage = snapshot.val().massage;
             populateCheckbox('pf_cbMassage', massage);
             var spaSrvcs = snapshot.val().spa;
-            populateCheckbox('pf_cbSpa', spaSrvcs);          
+            populateCheckbox('pf_cbSpa', spaSrvcs);       
                 
+            /* About textarea is now a tinymce editor allowing for rich text */
+            $scope.tinymceModel = snapshot.val().about;
             
             var referralOn = snapshot.val().referral;
             if (referralOn == "on") {
@@ -112,7 +113,10 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_mobile = pf_txtMobile.value;
             const pf_myTitle = getCheckedCheckboxesFor('pf_cbMyTitle');
             const pf_profilePic = pf_txtProfilePic;
-            const pf_about = pf_txtareaAbout.value;
+            
+            /* About text is created from a "tinymce" embedded editor */
+            const pf_about = $scope.tinymceModel;
+            
             const pf_hairColor = getCheckedCheckboxesFor('pf_cbHairColor');
             const pf_hairTexturizer = getCheckedCheckboxesFor('pf_cbHairTexturizers');
             const pf_hairCuts = getCheckedCheckboxesFor('pf_cbHairCuts');
