@@ -23,7 +23,7 @@
             </div>
         </div>
         <!-- Only display "Services" if there's at least one service specified -->
-        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.miscSvcs || staffmember.massage || staffmember.spa" class="col-lg-4 col-md-4 col-sm-4">
+        <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.makeup || staffmember.massage || staffmember.spa" class="col-lg-4 col-md-4 col-sm-4">
             <h1 class="orange">Services</h1>
             <div class="text-muted tab-pane" style="text-align:left; font-size: .75em; background: #fff;">
                 <div ng-if="staffmember.hairCut">
@@ -98,10 +98,10 @@
                     </div>
                     </ul>            
                 </div>
-                <div ng-if="staffmember.miscSvcs">  <!-- Additional Services -->
-                    <h2 class="panel-heading">Additional Services</h2>
+                <div ng-if="staffmember.makeup">  <!-- Makeup Services -->
+                    <h2 class="panel-heading">Makeup</h2>
                     <ul class="text-muted list-unstyled">
-                    <div ng-repeat="additionalSrvc in staffmember.miscSvcs" class="svrcStyle">
+                    <div ng-repeat="additionalSrvc in staffmember.makeup" class="svrcStyle">
                         <li>{{additionalSrvc}}</li>    
                     </div>
                     </ul>
