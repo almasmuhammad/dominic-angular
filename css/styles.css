@@ -539,3 +539,9 @@ body { padding-top: 50px; }
     background-color: #d56e2f;
     border-radius: 8px;
 }
+
+.specialistSearch {
+    background-color: bg-grey;
+    margin: 10px;
+    padding: 10px;
+}

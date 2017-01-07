@@ -2,8 +2,27 @@
 <div id="staffdetail" class="container text-center marketing bg-grey" ng-controller="StaffController">
     <h2 class="mySplash">Our Staff</h2>
     
+    <div class="specialistSearch text-muted">
+    <!--label>Find: </label-->
+    <!--input ng-model="query" placeholder="search on name or title" autofocus-->
+    <label class="formgroup">Sort by 
+    <select ng-model="staffOrder">
+        <option value="firstname">Name</option>
+        <option value="title">Title</option>
+    </select>
+    </label>
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" checked>
+      ascending
+    </label>
+    <label class="formgroup">
+      <input type="radio" ng-model="direction" name="direction" value="reverse">
+      descending
+    </label>
+    </div>
+    
     <div class="row">
-        <div ng-repeat="staffmember in staffers">
+        <div ng-repeat="staffmember in staffers | filter: query | orderBy: staffOrder:direction">
         <div class="clearfix" ng-if="$index % 3 == 0"></div>
         <div ng-if="staffmember.profile=='on'">            
         <div class="col-lg-4 col-md-4 col-sm-6">

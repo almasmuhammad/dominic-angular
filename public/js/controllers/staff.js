@@ -9,6 +9,7 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
         ref = firebase.database().ref('/associates');
         var staffList = $firebaseArray(ref);
         $scope.staffers = staffList;
+        $scope.staffOrder = "firstname";
 
         staffList.$loaded()
         .then(function(data){
@@ -24,6 +25,6 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
                     console.log(error);
                 });                
             })
-        });          
-      
+        });    
+
 }]); // Controller
