@@ -25,6 +25,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
         } 
       } //resolve
     })
+  .when('/admin', {
+      templateUrl: 'views/admin.html',
+      controller: 'AdminController',
+      resolve: { 
+        currentAuth: function(Authentication) {
+            return Authentication.requireAuth();
+        } 
+      } //resolve
+    })
     .when('/header', {
       templateUrl: 'views/header.html'
     })

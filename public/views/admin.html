@@ -1,0 +1,37 @@
+<div id="wrapper" class="container-fluid" style="background-color: #ffffff" ng-controller="AdminController">
+    
+    <div class="container">
+        <div style="text-align: center; background-color: #d56e2f; border-radius:5px;"><h1 style="color: #fff;">Administator Control Panel</h1></div>
+        
+        <h2>Staff Table</h2>
+        <p>The Staff Table displays current staff members including both active and disabled profiles.</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Mobile #</th>
+                        <th>email</th>
+                        <th>regUID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="staffmember in staffers">
+                        <td>{{staffmember.firstname}}</td>
+                        <td>{{staffmember.lastname}}</td>
+                        <td>{{staffmember.mobile}}</td>
+                        <td>{{staffmember.email}}</td>
+                        <td>{{staffmember.regUID}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- wrapper -->
+
+
+
+
+    

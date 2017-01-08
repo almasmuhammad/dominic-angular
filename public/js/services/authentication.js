@@ -57,6 +57,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                         // Is this an employee logging in?
                         $rootScope.$apply(function () {
                             $rootScope.isAssociate = snapshot.val().associate;
+                            $rootScope.isAdmin = snapshot.val().admin;
                         });
            
                     });

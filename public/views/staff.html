@@ -5,6 +5,7 @@
     <div class="specialistSearch text-muted pull-right">
     <!--label>Find: </label-->
     <!--input ng-model="query" placeholder="search on name or title" autofocus-->
+           
     <label class="formgroup">Sort by 
     <select ng-model="staffOrder">
         <option value="firstname">Name</option>
@@ -19,12 +20,14 @@
       <input type="radio" ng-model="direction" name="direction" value="reverse">
       descending
     </label>
+
     </div>
     
     <div class="row">
-        <div ng-repeat="staffmember in staffers | filter: query | orderBy: staffOrder:direction">
+        <div ng-repeat="staffmember in staffers  | filter: query | orderBy: staffOrder:direction" ng-if="staffmember.profile=='on'">
+
         <div class="clearfix" ng-if="$index % 3 == 0"></div>
-        <div ng-if="staffmember.profile=='on'">            
+                    
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
                 <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img src="/images/default-profile-pic.png" class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
@@ -34,7 +37,6 @@
                 <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{staffmember.email}}">{{staffmember.email}}</a></h5>
                 <a style="margin-top:12px; margin-bottom:10px;" href="#staffdetail/{{staffmember.regUID}}" class="btn btn-default btn-md" role="button">View my profile</a>
             </div>
-        </div>
         </div>
         </div>
     </div>

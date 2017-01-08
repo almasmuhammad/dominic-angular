@@ -545,3 +545,11 @@ body { padding-top: 50px; }
     margin: 10px;
     padding: 10px;
 }
+
+#circle {
+    background: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.7;
+}
