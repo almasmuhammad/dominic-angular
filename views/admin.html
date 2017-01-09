@@ -3,8 +3,8 @@
     <div class="container">
         <div style="text-align: center; background-color: #d56e2f; border-radius:5px;"><h1 style="color: #fff;">Administator Control Panel</h1></div>
         
-        <h2>Staff Table</h2>
-        <p>The Staff Table displays current staff members including both active and disabled profiles.</p>
+        <h2>Staff</h2>
+        <p>The Staff table displays current staff members including both active and disabled profiles.</p>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -23,6 +23,33 @@
                         <td>{{staffmember.mobile}}</td>
                         <td>{{staffmember.email}}</td>
                         <td>{{staffmember.regUID}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Users</h2>
+        <p>The User table displays registered users including staff and customers.</p>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>email</th>
+                        <th>Associate</th>
+                        <th>regUser</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.lastname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.associate}}</td>
+                        <td>{{user.regUser}}</td>
                     </tr>
                 </tbody>
             </table>
