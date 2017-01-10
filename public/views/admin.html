@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="staffmember in staffers">
-                        <td><button class="btn" ng-click="deleteThis()">Delete</button></td>
+                        <td><button class="btn btn-primary btn-sm" ng-click="deleteStaffmember(staffmember)">Delete</button></td>
                         <td>{{staffmember.firstname}}</td>
                         <td>{{staffmember.lastname}}</td>
                         <td>{{staffmember.mobile}}</td>
@@ -38,6 +38,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Action</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>email</th>
@@ -47,6 +48,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in users">
+                        <td><button class="btn btn-primary btn-sm" ng-click="deleteUser(user)">Delete</button></td>
                         <td>{{user.firstname}}</td>
                         <td>{{user.lastname}}</td>
                         <td>{{user.email}}</td>
@@ -59,6 +61,24 @@
     </div>
 </div>
 <!-- wrapper -->
+
+<!-- Delete Confirm Modal -->
+<div class="modal fade" id="modalDeleteConfirm">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p><span id="modalSuccessAlert-body">Ok to delete <span id="fullName"></span>?  The data will be permanently removed from the database by clicking Yes!</span></p>
+            </div>
+            <div class="modal-footer"> <span class="pull-left" id="modalDeleteConfirm-footer"></span>
+                <button type="button" id="pf_modalYes" class="btn btn-warning btn-md" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Success Modal -->
 
 
 

@@ -1,44 +1,42 @@
 myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',            
   function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {
       
-      /* Get Associates */
       console.log('in admin controller!');
       
+      /* Get staff */
       ref = firebase.database().ref('/associates');
       var staffList = $firebaseArray(ref);
       $scope.staffers = staffList;
-
-      /* staffList.$loaded()
-          .then(function(data){
-          angular.forEach(data, function(value, key) {
-              console.log('**************************')
-                console.log(value.regUID);
-                console.log(value.firstname + ' ' + value.lastname);
-                console.log(value.createdate);
-                console.log(value.email);
-                console.log(value.title);
-                console.log(value.mobile);
-            })
-        }); */
       
+      /* Get registered users (staff and customers) */
       uref = firebase.database().ref('/users');
       var userList = $firebaseArray(uref);
       $scope.users = userList;
       
-      /* userList.$loaded()
-          .then(function(data){
-          angular.forEach(data, function(value, key) {
-              console.log('********** Users *************')
-                console.log(value.regUser);
-                console.log(value.firstname + ' ' + value.lastname);
-                console.log(value.createdate);
-                console.log(value.associate);
-            })
-        }); */
-      
-  $scope.deleteThis = function(id, name, message){
-      console.log('deleteThis!!');
-    //$scope.list.$remove(id);
-  }      
-      
+      /* Delete staff member handler */
+      $scope.deleteStaffmember = function(item){
+          console.log('delete staff member!!');
+          console.log(item);
+          
+          // Confirm staffer delete
+          $('#fullName').text(item.firstname + " " + item.lastname);
+          $('#modalDeleteConfirm').modal('show');
+          $('#pf_modalYes').on('click', function () {
+              $scope.staffers.$remove(item);
+          });
+      }   
+  
+      /* Delete user handler */
+      $scope.deleteUser = function(item){
+          console.log('delete user!!');
+          console.log(item);
+          
+          // Confirm user delete
+          $('#fullName').text(item.firstname + " " + item.lastname);
+          $('#modalDeleteConfirm').modal('show');
+          $('#pf_modalYes').on('click', function () {
+              $scope.users.$remove(item);
+          });
+      } 
+
 }]); // Controller
