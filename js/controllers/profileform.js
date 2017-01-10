@@ -38,12 +38,14 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             populateCheckbox('pf_cbPedicures', pedicures);
             var makeup = snapshot.val().makeup;
             populateCheckbox('pf_cbMakeup', makeup);
+            var brow = snapshot.val().brow;
+            populateCheckbox('pf_cbBrow', brow);
             var products = snapshot.val().products;
             populateCheckbox('pf_cbProducts', products);
             var massage = snapshot.val().massage;
             populateCheckbox('pf_cbMassage', massage);
-            var spaSrvcs = snapshot.val().spa;
-            populateCheckbox('pf_cbSpa', spaSrvcs);       
+            var facial = snapshot.val().facial;
+            populateCheckbox('pf_cbFacial', facial);       
                 
             /* About textarea is now a tinymce editor allowing for rich text */
             $scope.tinymceModel = snapshot.val().about;
@@ -129,10 +131,11 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_hairAddition = getCheckedCheckboxesFor('pf_cbHairAddition');
             const pf_wax = getCheckedCheckboxesFor('pf_cbWax');
             const pf_massage = getCheckedCheckboxesFor('pf_cbMassage');
-            const pf_spa = getCheckedCheckboxesFor('pf_cbSpa'); 
+            const pf_facial = getCheckedCheckboxesFor('pf_cbFacial'); 
             const pf_manicures = getCheckedCheckboxesFor('pf_cbManicures');
             const pf_pedicures = getCheckedCheckboxesFor('pf_cbPedicures');
             const pf_makeup = getCheckedCheckboxesFor('pf_cbMakeup');
+            const pf_brow = getCheckedCheckboxesFor('pf_cbBrow');
             const pf_products = getCheckedCheckboxesFor('pf_cbProducts');
             const pf_referral = getCheckedCheckboxesFor('pf_cbReferral');
             const pf_newClient = getCheckedCheckboxesFor('pf_cbNcDiscount');
@@ -171,10 +174,11 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , hairAddition: pf_hairAddition
                 , wax: pf_wax
                 , massage: pf_massage
-                , spa: pf_spa
+                , facial: pf_facial
                 , mani: pf_manicures
                 , pedi: pf_pedicures
                 , makeup: pf_makeup
+                , brow: pf_brow
                 , products: pf_products
                 , referral: pf_referral
                 , newClient: pf_newClient

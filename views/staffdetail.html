@@ -90,23 +90,31 @@
                     </div>
                     </ul>            
                 </div>
-                <div ng-if="staffmember.spa">
-                    <h2 class="panel-heading">Spa Services</h2>
+                <div ng-if="staffmember.facial">
+                    <h2 class="panel-heading">Facials</h2>
                     <ul class="text-muted list-unstyled">
-                    <div ng-repeat="aSpa in staffmember.spa" class="svrcStyle">
-                        <li>{{aSpa}}</li>    
+                    <div ng-repeat="afacial in staffmember.facial" class="svrcStyle">
+                        <li>{{afacial}}</li>    
                     </div>
                     </ul>            
                 </div>
                 <div ng-if="staffmember.makeup">  <!-- Makeup Services -->
                     <h2 class="panel-heading">Makeup</h2>
                     <ul class="text-muted list-unstyled">
-                    <div ng-repeat="additionalSrvc in staffmember.makeup" class="svrcStyle">
-                        <li>{{additionalSrvc}}</li>    
+                    <div ng-repeat="amakeup in staffmember.makeup" class="svrcStyle">
+                        <li>{{amakeup}}</li>    
                     </div>
                     </ul>
                 </div>            
-            
+                <div ng-if="staffmember.brow">  <!-- Eye Brow Services -->
+                    <h2 class="panel-heading">Brows</h2>
+                    <ul class="text-muted list-unstyled">
+                    <div ng-repeat="abrow in staffmember.brow" class="svrcStyle">
+                        <li>{{abrow}}</li>    
+                    </div>
+                    </ul>
+                </div> 
+                
                 <!-- Products -->
                 <div ng-if="staffmember.products">
                     <h2 class="panel-heading"x`>Products</h2>

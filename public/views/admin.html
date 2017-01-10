@@ -9,6 +9,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Action</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Mobile #</th>
@@ -18,6 +19,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="staffmember in staffers">
+                        <td><button class="btn" ng-click="deleteThis()">Delete</button></td>
                         <td>{{staffmember.firstname}}</td>
                         <td>{{staffmember.lastname}}</td>
                         <td>{{staffmember.mobile}}</td>

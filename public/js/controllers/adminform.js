@@ -36,4 +36,9 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
             })
         }); */
       
+  $scope.deleteThis = function(id, name, message){
+      console.log('deleteThis!!');
+    //$scope.list.$remove(id);
+  }      
+      
 }]); // Controller
