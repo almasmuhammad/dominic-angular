@@ -16,7 +16,6 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
       /* Delete staff member handler */
       $scope.deleteStaffmember = function(item){
           console.log('delete staff member!!');
-          console.log(item);
           
           // Confirm staffer delete
           $('#fullName').text(item.firstname + " " + item.lastname);
@@ -29,7 +28,6 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
       /* Delete user handler */
       $scope.deleteUser = function(item){
           console.log('delete user!!');
-          console.log(item);
           
           // Confirm user delete
           $('#fullName').text(item.firstname + " " + item.lastname);
@@ -39,4 +37,16 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
           });
       } 
 
+      /* Toggle user associate handler */
+      $scope.toggleAssociate = function(item){
+          console.log('toggle user associate flag!!');
+          console.log(item);
+          if( item.associate == 'on' ) {
+              item.associate = 'off';
+          } else {
+              item.associate = 'on';
+          }
+          $scope.users.$save(item);
+      }      
+      
 }]); // Controller

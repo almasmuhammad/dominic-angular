@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="staffmember in staffers">
-                        <td><button class="btn btn-primary btn-sm" ng-click="deleteStaffmember(staffmember)">Delete</button></td>
+                        <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteStaffmember(staffmember)">Delete</button></td>
                         <td>{{staffmember.firstname}}</td>
                         <td>{{staffmember.lastname}}</td>
                         <td>{{staffmember.mobile}}</td>
@@ -48,11 +48,12 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in users">
-                        <td><button class="btn btn-primary btn-sm" ng-click="deleteUser(user)">Delete</button></td>
+                        <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteUser(user)">Delete</button></td>
                         <td>{{user.firstname}}</td>
                         <td>{{user.lastname}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.associate}}</td>
+                        <!--td>{{user.associate}}</td-->
+                        <td><input type="checkbox" ng-checked="user.associate == 'on'" ng-click="toggleAssociate(user)"></td>
                         <td>{{user.regUser}}</td>
                     </tr>
                 </tbody>
