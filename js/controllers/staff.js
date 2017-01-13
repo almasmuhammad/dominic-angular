@@ -10,7 +10,7 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
         var staffList = $firebaseArray(ref);
         $scope.staffers = staffList;
         $scope.staffOrder = "firstname";
-
+      
         staffList.$loaded()
         .then(function(data){
             angular.forEach(data, function(value, key) {
@@ -23,8 +23,8 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
                 }).catch(function (error) {
                     console.log("error getting user's profile pic:");
                     console.log(error);
-                });                
+                });
             })
-        });    
-
+        });
+      
 }]); // Controller
