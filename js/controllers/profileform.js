@@ -62,8 +62,16 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                     element.setAttribute("checked", true);
                 });
             }
+            var LoyalDiscountOn = snapshot.val().loyalty;           
+            if (LoyalDiscountOn == "on") {
+                $("input[id='pf_cbLoyalDiscount']").each(function (index, element) {
+                    element.setAttribute("checked", true);
+                });
+            }
             $('#pf_txtRefDiscount').val(snapshot.val().refdiscountPct);
             $('#pf_txtNcDiscount').val(snapshot.val().ncdiscountPct);
+            $('#pf_txtLoyalDiscount').val(snapshot.val().loyaldiscountPct);           
+            
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
             console.log(storageRef);
@@ -139,8 +147,10 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_products = getCheckedCheckboxesFor('pf_cbProducts');
             const pf_referral = getCheckedCheckboxesFor('pf_cbReferral');
             const pf_newClient = getCheckedCheckboxesFor('pf_cbNcDiscount');
+            const pf_loyalty = getCheckedCheckboxesFor('pf_cbLoyalDiscount');
             const pf_refDiscount = pf_txtRefDiscount.value;
             const pf_ncDiscount = pf_txtNcDiscount.value;
+            const pf_loyalDiscount = pf_txtLoyalDiscount.value;
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
@@ -182,8 +192,10 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , products: pf_products
                 , referral: pf_referral
                 , newClient: pf_newClient
+                , loyalty: pf_loyalty
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
+                , loyaldiscountPct: pf_loyalDiscount
                 , regUID: profUID
             });
             $('#modalProfileSave-body').text('Your profile has been saved!');

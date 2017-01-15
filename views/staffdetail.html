@@ -13,14 +13,13 @@
             <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h4>
             </div>
         </div>
+        
         <div ng-if="staffmember.about" class="col-lg-4 col-md-4 col-sm-4">
             <h1 class="orange">About</h1>
             <div class="text-muted tab-pane" style="text-align:left;font-size: 1em; background: #fff;">
                 <!--p style="text-align:left;font-size: 1em; padding-top:20px;">{{staffmember.about}}</p-->
                 <div style="text-align:left;font-size: 1em; padding-top:20px;" ng-bind-html=staffmember.about></div>
-                <div ng-if="staffmember.referral == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.refdiscountPct">{{staffmember.refdiscountPct}}% </span>Referral discount when you refer a friend or family member!</span></div>
-                <div ng-if="staffmember.newClient == 'on'"><span class="text-muted"><img src='/images/glossy-dollar-sign.png' height='28' width='28'> <span ng-if="staffmember.ncdiscountPct">{{staffmember.ncdiscountPct}}% </span>New client discount!</span></div>
-            </div>
+            </div>          
         </div>
         <!-- Only display "Services" if there's at least one service specified -->
         <div ng-if="staffmember.hairCut || staffmember.hairColor || staffmember.hairText || staffmember.hairAddition || staffmember.mani || staffmember.pedi || staffmember.wax || staffmember.makeup || staffmember.massage || staffmember.spa" class="col-lg-4 col-md-4 col-sm-4">
@@ -124,9 +123,27 @@
                     </div>
                     </ul>            
                 </div> 
-            </div>
+            </div>           
         </div> <!-- ngif there are services -->
-    </div>     <!-- Panel -->
-</div>         <!-- StaffDetailController -->
+        
+        <!-- SPECIALS are listed here! -->
+        <div class="clearfix"></div>
+        <div ng-if="staffmember.newClient == 'on'">
+            <h2 class="orange specialPad">New Client Discount Special!<span ng-if="staffmember.ncdiscountPct" class="badge specialBadge">  {{staffmember.ncdiscountPct}}% Off</span></h2>
+        </div>
+        <div ng-if="staffmember.referral == 'on'">
+            <h2 class="orange specialPad">Referral discount when you refer a friend or family member!<span ng-if="staffmember.refdiscountPct" class="badge specialBadge"> {{staffmember.refdiscountPct}}% Off</span></h2>
+        </div>
+        <div ng-if="staffmember.loyalty == 'on'">
+            <h2 class="orange specialPad">Now offering a loyalty discount!<span ng-if="staffmember.loyaldiscountPct" class="badge specialBadge"> {{staffmember.loyaldiscountPct}}% Off</span></h2>
+        </div>
+        
+        <!--div ng-if="staffmember.referral == 'on'" <span ng-if="staffmember.refdiscountPct">{{staffmember.refdiscountPct}}% </span>Referral discount when you refer a friend or family member!</span></div-->
+        
+  </div> <!-- Panel -->    
+    
+</div> <!-- StaffDetailController -->
+ 
+     
 
 
