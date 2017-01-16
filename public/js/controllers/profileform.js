@@ -68,9 +68,16 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                     element.setAttribute("checked", true);
                 });
             }
+            var squareOn = snapshot.val().square;           
+            if (squareOn == "on") {
+                $("input[id='pf_cbSquare']").each(function (index, element) {
+                    element.setAttribute("checked", true);
+                });
+            }
             $('#pf_txtRefDiscount').val(snapshot.val().refdiscountPct);
             $('#pf_txtNcDiscount').val(snapshot.val().ncdiscountPct);
-            $('#pf_txtLoyalDiscount').val(snapshot.val().loyaldiscountPct);           
+            $('#pf_txtLoyalDiscount').val(snapshot.val().loyaldiscountPct);   
+            $('#pf_txtSquareID').val(snapshot.val().squareID);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -148,9 +155,14 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_referral = getCheckedCheckboxesFor('pf_cbReferral');
             const pf_newClient = getCheckedCheckboxesFor('pf_cbNcDiscount');
             const pf_loyalty = getCheckedCheckboxesFor('pf_cbLoyalDiscount');
+            const pf_square = getCheckedCheckboxesFor('pf_cbSquare');
             const pf_refDiscount = pf_txtRefDiscount.value;
             const pf_ncDiscount = pf_txtNcDiscount.value;
             const pf_loyalDiscount = pf_txtLoyalDiscount.value;
+            const pf_squareID = pf_txtSquareID.value;
+            
+            console.log(pf_squareID);
+            console.log(pf_square);
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
@@ -193,6 +205,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , referral: pf_referral
                 , newClient: pf_newClient
                 , loyalty: pf_loyalty
+                , square: pf_square
+                , squareID: pf_squareID
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
                 , loyaldiscountPct: pf_loyalDiscount

@@ -560,6 +560,13 @@ body { padding-top: 50px; }
     text-align: center;
 }
 
+.buttonPad {
+    margin-top:20px;
+    margin-left:15px;
+    margin-right:15px;
+    text-align: center;
+}
+
 .specialBadge {
     margin-left:5px;
     margin-bottom: 2px;
