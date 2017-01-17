@@ -36,8 +36,12 @@
                 <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
                 <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
                 <h5><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{staffmember.email}}">{{staffmember.email}}</a></h5>
-                <a style="margin-top:12px; margin-bottom:10px;" href="#staffdetail/{{staffmember.regUID}}" class="btn btn-default btn-md" role="button">View my profile</a>
-                <span ng-if="staffmember.square == 'on' && staffmember.squareID"><a href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-primary btn-md" role="button">Book now</a></span>
+                
+                <div class="btn-group" role="group" style="margin-top:8px; margin-bottom:10px;">
+                    <a href="#staffdetail/{{staffmember.regUID}}" class="btn btn-default">View Profile</a>
+                    <a ng-if="staffmember.square == 'on' && staffmember.squareID" href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-default">Book Now</a>
+                </div>
+  
             </div>
         </div>
         </div>
