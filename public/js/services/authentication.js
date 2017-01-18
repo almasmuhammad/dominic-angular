@@ -52,6 +52,9 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                         firstname = snapshot.val().firstname;
                         var welcomeMessage = 'Welcome ' + firstname + '!';
                         displaySuccess('Login Successful', welcomeMessage, '');
+                        
+                        // Update nav brand to welcome message
+                        $("#myBrand").text("Welcome ");
                         $("#myName").text(firstname);
                         
                         // Is this an employee logging in?
@@ -84,7 +87,9 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                                   
                 $('#modalLogout').modal('show');             
                 
+                $("#myBrand").text("Dominic & Company Spa");
                 $("#myName").text('');
+                
             }, //logout
             
             /* --------------------- requireAuth functionality --------------------- */
