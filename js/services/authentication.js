@@ -54,8 +54,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                         displaySuccess('Login Successful', welcomeMessage, '');
                         
                         // Update nav brand to welcome message
-                        $("#myBrand").text("Welcome ");
-                        $("#myName").text(firstname);
+                        $("#myBrand").text("Welcome " + firstname);
+                        // $("#myName").text(firstname);
                         
                         // Is this an employee logging in?
                         $rootScope.$apply(function () {
@@ -88,7 +88,6 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                 $('#modalLogout').modal('show');             
                 
                 $("#myBrand").text("Dominic & Company Spa");
-                $("#myName").text('');
                 
             }, //logout
             
