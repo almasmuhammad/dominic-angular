@@ -2,6 +2,8 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
 
   function ($scope, $rootScope, $firebaseObject, $routeParams) {
       
+      window.scrollTo(0, 0);
+      
         /* ------------------- Load profile data --------------------- */
         console.log('in staff detail controller!');
         
