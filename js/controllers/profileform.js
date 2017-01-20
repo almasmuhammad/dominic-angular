@@ -74,10 +74,17 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                     element.setAttribute("checked", true);
                 });
             }
+            var styleseatOn = snapshot.val().styleseat;           
+            if (styleseatOn == "on") {
+                $("input[id='pf_cbStyleSeat']").each(function (index, element) {
+                    element.setAttribute("checked", true);
+                });
+            }
             $('#pf_txtRefDiscount').val(snapshot.val().refdiscountPct);
             $('#pf_txtNcDiscount').val(snapshot.val().ncdiscountPct);
             $('#pf_txtLoyalDiscount').val(snapshot.val().loyaldiscountPct);   
             $('#pf_txtSquareID').val(snapshot.val().squareID);
+            $('#pf_txtStyleSeatID').val(snapshot.val().styleseatID);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -156,13 +163,12 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_newClient = getCheckedCheckboxesFor('pf_cbNcDiscount');
             const pf_loyalty = getCheckedCheckboxesFor('pf_cbLoyalDiscount');
             const pf_square = getCheckedCheckboxesFor('pf_cbSquare');
+            const pf_styleseat = getCheckedCheckboxesFor('pf_cbStyleSeat');
             const pf_refDiscount = pf_txtRefDiscount.value;
             const pf_ncDiscount = pf_txtNcDiscount.value;
             const pf_loyalDiscount = pf_txtLoyalDiscount.value;
             const pf_squareID = pf_txtSquareID.value;
-            
-            console.log(pf_squareID);
-            console.log(pf_square);
+            const pf_styleseatID = pf_txtStyleSeatID.value;
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
@@ -207,6 +213,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , loyalty: pf_loyalty
                 , square: pf_square
                 , squareID: pf_squareID
+                , styleseat: pf_styleseat
+                , styleseatID: pf_styleseatID
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
                 , loyaldiscountPct: pf_loyalDiscount

@@ -53,9 +53,8 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                         var welcomeMessage = 'Welcome ' + firstname + '!';
                         displaySuccess('Login Successful', welcomeMessage, '');
                         
-                        // Update nav brand to welcome message
+                        // Update nav brand to welcome message when user logged in
                         $("#myBrand").text("Welcome " + firstname);
-                        // $("#myName").text(firstname);
                         
                         // Is this an employee logging in?
                         $rootScope.$apply(function () {
@@ -87,6 +86,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                                   
                 $('#modalLogout').modal('show');             
                 
+                // Replace welcome message in navigate brand area with company name
                 $("#myBrand").text("Dominic & Company Spa");
                 
             }, //logout
