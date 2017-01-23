@@ -1,5 +1,6 @@
 myApp.controller('MapController', ['$scope'
   , function ($scope) {
+        window.scrollTo(0, 0);
         var myCenter = new google.maps.LatLng(40.0631026, -83.0623581);
         var mapProp = {
             center: myCenter
