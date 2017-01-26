@@ -573,3 +573,7 @@ body { padding-top: 50px; }
     margin-bottom: 2px;
     font-size: .8em;
 }
+
+.myHours {
+    color: darkgray;
+}
