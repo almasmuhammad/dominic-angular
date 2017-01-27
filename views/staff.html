@@ -3,8 +3,8 @@
     <h2 class="mySplash">Our Staff</h2>
     
     <div class="specialistSearch text-muted pull-right">
-    <!--label>Find: </label-->
-    <!--input ng-model="query" placeholder="search on name or title" autofocus-->
+    <label>Find: </label>
+    <input ng-model="query" placeholder="search on name or title" autofocus>
            
     <label class="formgroup">Sort by 
     <select ng-model="staffOrder">
@@ -24,7 +24,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="row">
-        <div ng-repeat="staffmember in staffers  | filter: {profile:'on'} | orderBy: staffOrder:direction">
+        <div ng-repeat="staffmember in staffers | filter:query | filter: {profile:'on'} | orderBy: staffOrder:direction">
          
         <!-- TODO: adjust for screen breakpoints -->
         <div class="clearfix" ng-if="$index % 3 == 0"></div>
