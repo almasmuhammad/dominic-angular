@@ -5,8 +5,8 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
       window.scrollTo(0, 0);
       
         /* ------------------- Load profile data --------------------- */
-        console.log('in staff detail controller!');
-        
+        console.log('in staff detail controller!');     
+      
         // retrieve the requested staff member's info
         ref = firebase.database().ref('/associates/' + $routeParams.uID);
         var staffmember = $firebaseObject(ref);
@@ -15,6 +15,12 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
         staffmember.$loaded().then(function() {
             console.log("loaded record:", staffmember.$id, staffmember.firstname);
             $scope.staffmember = staffmember;
+            
+            // Create date objects (today and loyalty expiration)
+            $scope.today = new Date();
+            $scope.loyaltyExpiration = new Date(staffmember.loyaltyDiscountExpiration);
+            console.log($scope.loyaltyExpiration);
+            console.log($scope.today);
         });
       
         var storageRef = firebase.storage().ref().child('/images/' + $routeParams.uID);

@@ -1105,7 +1105,7 @@
                                     <div class="input-group"> <span class="input-group-addon">
                                 <input type="checkbox" id="pf_cbNcDiscount" name="pf_cbNcDiscount">
                             </span>
-                                        <input id="pf_txtNcDiscount" name="pf_txtNcDiscount" class="form-control" type="text" placeholder="offer message"> </div>
+                                        <input id="pf_txtNcDiscount" name="pf_txtNcDiscount" class="form-control" style="z-index: 1;" type="text" placeholder="offer message"> </div>
                                     <p class="help-block">If you provide a new client incentive, check this box. Optionally specify a message to describe the offer. For example, "20% off" or "20% off with coupon code NEW20".</p>
                                 </div>
                             </div>
@@ -1116,9 +1116,13 @@
                                 <div class="col-md-4">
                                     <div class="input-group"> <span class="input-group-addon">
                                     <input type="checkbox" id="pf_cbLoyalDiscount" name="pf_cbLoyalDiscount"></span>
-                                    <input id="pf_txtLoyalDiscount" name="pf_txtLoyalDiscount" class="form-control" type="text" placeholder="offer message"> 
+                                    <input id="pf_txtLoyalDiscount" name="pf_txtLoyalDiscount" class="form-control" style="z-index: 1;" type="text" placeholder="offer message"> 
                                     </div>
-                                    <p class="help-block">If you provide a loyalty incentive, check this box. Optionally specify a message to describe the offer. For example, "20% off" or "20% off with coupon code LOYAL20".</p>
+                                    <label class="control-label">Expires on: </label><input id="pf_loyaltydp" name="pf_loyaltydp" placeholder="expiration date" class="form-control input-md"  type="text">
+                                    <p class="help-block">Check this box to provide a loyalty discount.</p>
+                                    <p class="help-block">Optionally specify a message to describe the offer. For example, "20% off" or "20% off with coupon code LOYAL20".</p>
+                                    <p class="help-block">Optionally specify an expiration date for the promotion.  Use the datepicker to select the expiry date.</p>
+                                    
                                 </div>
                             </div>
                             
@@ -1195,3 +1199,10 @@
         </div>
         <!-- /.modal-dialog -->
     </div>  <!-- Success Modal -->  
+
+
+  <script>
+  $( function() {
+    $( "#pf_loyaltydp" ).datepicker();
+  } );
+  </script>

@@ -85,6 +85,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $('#pf_txtLoyalDiscount').val(snapshot.val().loyaldiscountPct);   
             $('#pf_txtSquareID').val(snapshot.val().squareID);
             $('#pf_txtStyleSeatID').val(snapshot.val().styleseatID);
+            $('#pf_loyaltydp').val(snapshot.val().loyaltyDiscountExpiration);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -169,6 +170,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_loyalDiscount = pf_txtLoyalDiscount.value;
             const pf_squareID = pf_txtSquareID.value;
             const pf_styleseatID = pf_txtStyleSeatID.value;
+            const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
@@ -218,6 +220,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
                 , loyaldiscountPct: pf_loyalDiscount
+                , loyaltyDiscountExpiration: pf_loyaltyDiscountExpiration
                 , regUID: profUID
             });
             $('#modalProfileSave-body').text('Your profile has been saved!');

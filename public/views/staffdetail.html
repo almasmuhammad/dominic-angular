@@ -134,7 +134,7 @@
         <div ng-if="staffmember.referral == 'on'">
             <h2 class="orange specialPad">Referral discount when you refer a friend or family member!<span ng-if="staffmember.refdiscountPct" class="badge specialBadge"> {{staffmember.refdiscountPct}}</span></h2>
         </div>
-        <div ng-if="staffmember.loyalty == 'on'">
+        <div ng-if="staffmember.loyalty == 'on' && today <= loyaltyExpiration">
             <h2 class="orange specialPad">Now offering a loyalty discount!<span ng-if="staffmember.loyaldiscountPct" class="badge specialBadge"> {{staffmember.loyaldiscountPct}}</span></h2>
         </div>
         
