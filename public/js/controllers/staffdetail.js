@@ -18,9 +18,10 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
             
             // Create date objects (today and loyalty expiration)
             $scope.today = new Date();
-            $scope.loyaltyExpiration = new Date(staffmember.loyaltyDiscountExpiration);
-            console.log($scope.loyaltyExpiration);
-            console.log($scope.today);
+            staffmember.loyaltyDiscountExpiration.length > 0 ? 
+                $scope.loyaltyExpiration = new Date(staffmember.loyaltyDiscountExpiration) :
+                $scope.loyaltyExpiration = $scope.today;
+
         });
       
         var storageRef = firebase.storage().ref().child('/images/' + $routeParams.uID);
