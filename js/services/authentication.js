@@ -87,7 +87,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
                 $('#modalLogout').modal('show');             
                 
                 // Replace welcome message in navigate brand area with company name
-                $("#myBrand").text("Dominic & Company Spa");
+                $("#myBrand").text("Salon and Spa");
                 
             }, //logout
             
