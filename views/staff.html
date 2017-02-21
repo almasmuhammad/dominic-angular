@@ -4,7 +4,7 @@
     
     <div class="specialistSearch text-muted pull-right">
     <label>Find: </label>
-    <input ng-model="query" placeholder="search on name or title" autofocus>
+    <input ng-model="query" placeholder="keyword search" data-toggle="tooltip" data-placement="bottom" title='Search on a specialist&#39;s name, hair style, massage technique, product, spa service, etc.  For example, "Amanda" or "balayage" or "microdermabrasion"'>
            
     <label class="formgroup">Sort by 
     <select ng-model="staffOrder">
@@ -48,4 +48,8 @@
         </div>
     </div>
 </div>
-
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
