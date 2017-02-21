@@ -1,7 +1,7 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
 html {
-    color: gray;
+    color: grey;
 }
 
 body {
@@ -49,7 +49,7 @@ body {
   padding-left: 15px;
 }
 .navbar-wrapper .navbar .container {
-  width: auto;
+  /*width: auto;*/
 }
 
 /* MARKETING CONTENT
@@ -276,6 +276,7 @@ footer ul {
 } 
 
 #myFooter {
+    background-color: #4e4e4f;
     padding-bottom: 30px;
 }
 
@@ -324,6 +325,14 @@ body { padding-top: 50px; }
     height: 100vh;
 }
 
+/* fill margins around header image */
+#mainHeader {
+    background-color: grey;
+    /*height: 100vh;*/
+    height: 588px;
+    background-image: url(/images/banner.png); 
+    background-repeat: no-repeat;
+}
 
 /* header styles */
 #imgStylist {
@@ -333,7 +342,7 @@ body { padding-top: 50px; }
 #imgLogo {
     width: 100%; 
     padding-top: 220px; 
-    padding-right: 10px;
+    padding-right: 40px;
 }
 
 @media(max-width:1224px){
@@ -598,4 +607,8 @@ body { padding-top: 50px; }
     .parallax {
         background-attachment: scroll;
     }
+}
+
+.fullWidthBGColor {
+    background-color: #828282;
 }
