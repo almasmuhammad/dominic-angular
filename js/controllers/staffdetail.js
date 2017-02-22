@@ -18,10 +18,11 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
             
             // Create date objects (today and loyalty expiration)
             $scope.today = new Date();
-            staffmember.loyaltyDiscountExpiration.length > 0 ? 
-                $scope.loyaltyExpiration = new Date(staffmember.loyaltyDiscountExpiration) :
-                $scope.loyaltyExpiration = $scope.today;
-
+            if( staffmember.hasOwnProperty( "loyaltyDiscountExpiration" ) ) {
+                staffmember.loyaltyDiscountExpiration.length > 0 ? 
+                    $scope.loyaltyExpiration = new Date(staffmember.loyaltyDiscountExpiration) :
+                    $scope.loyaltyExpiration = $scope.today;
+            }
         });
       
         var storageRef = firebase.storage().ref().child('/images/' + $routeParams.uID);
@@ -32,6 +33,6 @@ myApp.controller('StaffDetailController', ['$scope', '$rootScope', '$firebaseObj
         }).catch(function (error) {
             console.log("error getting user's profile pic:");
             console.log(error);
-        });        
+        });
       
 }]); // Controller

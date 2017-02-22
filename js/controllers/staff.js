@@ -9,6 +9,7 @@ myApp.controller('StaffController', ['$scope', '$rootScope', '$firebaseAuth', '$
         ref = firebase.database().ref('/associates');
         var staffList = $firebaseArray(ref);
         $scope.staffers = staffList;
+        console.log(staffList);
         $scope.staffOrder = "firstname";
       
         staffList.$loaded()

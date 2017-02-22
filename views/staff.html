@@ -4,7 +4,7 @@
     
     <div class="specialistSearch text-muted pull-right">
     <label>Find: </label>
-    <input ng-model="query" placeholder="keyword search" data-toggle="tooltip" data-placement="bottom" title='Search on a specialist&#39;s name, hair style, massage technique, product, spa service, etc.  For example, "Amanda" or "balayage" or "microdermabrasion"'>
+    <input ng-model="query" placeholder="keyword search" data-toggle="tooltip" data-placement="bottom" title='Search by name, service or product.  For example, "Amanda" or "hair stylist" or "Biolage"'>
            
     <label class="formgroup">Sort by 
     <select ng-model="staffOrder">
@@ -31,7 +31,7 @@
             
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="panel panel-default">
-                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img src="/images/default-profile-pic.png" class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
+                <div class="myPadding"><a href="#staffdetail/{{staffmember.regUID}}"><img ng-src="/images/default-profile-pic.png" class="img-responsive img-circle center-block"  id={{staffmember.regUID}} width='220' height='220'></a></div>
                 <h3>{{ staffmember.firstname }} {{ staffmember.lastname }}</h3>
                 <h4><span class="text-muted">{{ staffmember.title[0] }}</span></h4>
                 <h5><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h5>
