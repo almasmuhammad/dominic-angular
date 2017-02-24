@@ -613,3 +613,13 @@ body { padding-top: 50px; }
 .fullWidthBGColor {
     background-color: #828282;
 }
+
+table#hours-tab {
+    width: 90%; 
+    color: #fff;
+    padding: 1px;
+    font-size: 1.3em;
+}
+
+
+

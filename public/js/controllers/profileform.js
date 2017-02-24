@@ -172,6 +172,20 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_styleseatID = pf_txtStyleSeatID.value;
             const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
             
+            // Create master list of services (to be used for advanced configuration)
+            pf_hairCuts.forEach( function(s) { 
+                hairService = {category: "hairCut", 
+                              service: s,
+                              duration: 60};
+            });
+            pf_hairTexturizer.forEach( function(s) { 
+                hairTexturizer = {category: "hairTexturizer", 
+                              service: s,
+                              duration: 60};
+                console.log(hairTexturizer);
+            });
+            
+            
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
             if (fileToUpload != null) {
