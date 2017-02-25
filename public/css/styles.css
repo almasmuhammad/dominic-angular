@@ -586,6 +586,7 @@ body { padding-top: 50px; }
 }
 
 .myHours {
+    font-size: .9em;
     color: darkgray;
 }
 
