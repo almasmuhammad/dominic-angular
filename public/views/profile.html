@@ -146,6 +146,7 @@
                                     <div class="checkbox">
                                         <label for="hair_color-0">
                                             <input type="checkbox" name="pf_cbHairColor" id="pf_cbHairColor" value="Color Retouch"> Color Retouch </label>
+                                            
                                     </div>
                                     <div class="checkbox">
                                         <label for="hair_color-1">
@@ -533,8 +534,8 @@
                                 </div>
                             </div>
                             <!-- Hair Additions -->
-                        </div>
-                        <!-- Hair tab -->
+                        </div>  <!-- Hair tab -->
+                        
                         <div id="menu2" class="tab-pane fade">
                             <!-- Manicures -->
                             <div class="form-group">
@@ -1159,10 +1160,36 @@
                         <div id="menu11" class="tab-pane fade">
                             <!-- Advanced tab -->
                             
-
-                        </div>  <!-- Advanced tab -->                        
-                        
-                        
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_service" ></label>
+                                <div class="col-md-4">
+                                    <h2>Service Times</h2>
+                                    <p><strong>Service</strong>, <strong>Process</strong>, and <strong>Finish</strong> times are shown in minutes and incremented/decremented in 15-minute steps.</p>
+                                    <ul>
+                                    <li><strong>Service</strong> time the amount of time to block on your calendar when a client books a particular service.</li>
+                                    <li><strong>Process</strong> time opens up a gap in your schedule for booking another client (overlapping clients).</li>
+                                    <li><strong>Finish</strong> time blocks out time from your schedule to finish up a client that requires a processing time.</li>
+                                    </ul>
+                                    <span class="badge"> Service </span><span class="specialBadge servPad"> Process (optional) </span><span class="specialBadge servPad"> Finish (optional)</span><br><br>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label> Color Retouch <span class="badge">{{(rzColorRetouch.start + rzColorRetouch.finish) / 60}} hours</span></label>
+                                        <div><input type="number" name="input" ng-model="rzColorRetouch.start" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Start minutes'><input type="number" name="input" ng-model="rzColorRetouch.process" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Process minutes'><input type="number" name="input" ng-model="rzColorRetouch.finish" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Finish minutes'></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Weaving <span class="badge">{{(rzWeaving.start + rzWeaving.finish) / 60}} hours</span></label>
+                                        <div><input type="number" name="input" ng-model="rzWeaving.start" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Start minutes'><input type="number" name="input" ng-model="rzWeaving.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaving.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Virgin Hair Color <span class="badge">{{(rzVirginHairColor.start + rzVirginHairColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzVirginHairColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzVirginHairColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzVirginHairColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div><br>                                  
+                                </div>
+                            </div>
+                              
+                        </div><!-- Advanced tab --> 
                     </div>
                 </div>
             </fieldset>
@@ -1209,9 +1236,17 @@
         <!-- /.modal-dialog -->
     </div>  <!-- Success Modal -->  
 
-
   <script>
   $( function() {
-    $( "#pf_loyaltydp" ).datepicker();
+   
+    $( "#pf_loyaltydp" ).datepicker();  
+      
   } );
+            
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
   </script>

@@ -140,7 +140,7 @@
             <h2 class="orange specialPad">Referral discount when you refer a friend or family member!<span ng-if="staffmember.refdiscountPct" class="badge specialBadge"> {{staffmember.refdiscountPct}}</span></h2>
         </div>
         <div ng-if="staffmember.loyalty == 'on' && today <= loyaltyExpiration">
-            <h2 class="orange specialPad">Now offering a loyalty discount!<span ng-if="staffmember.loyaldiscountPct" class="badge specialBadge"> {{staffmember.loyaldiscountPct}}</span></h2>
+            <h2 class="grey specialPad">Now offering a loyalty discount!<span ng-if="staffmember.loyaldiscountPct" class="badge specialBadge hidden-xs"> {{staffmember.loyaldiscountPct}}</span></h2><h3><span class="badge specialBadge visible-xs">{{staffmember.loyaldiscountPct}}</span></h3>
         </div>
         
         <div class="buttonPad" ng-if="staffmember.square == 'on' && staffmember.squareID"><a href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>

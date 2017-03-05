@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp',
-  ['ngRoute', 'firebase', 'ui.tinymce', 'ngSanitize'])
+  ['ngRoute', 'firebase', 'ui.tinymce', 'ngSanitize', 'rzModule'])
   .constant('FIREBASE_URL', 'https://dominic-and-company.firebaseio.com/');
 
 myApp.run(['$rootScope', '$location',

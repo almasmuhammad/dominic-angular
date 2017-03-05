@@ -1,7 +1,7 @@
-myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL',
+myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'FIREBASE_URL', 
                                            
   function ($scope, $rootScope, $firebaseAuth, $firebaseArray, FIREBASE_URL) {    
-      
+                                           
         $scope.tinymceOptions = {
             plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste code',
             toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
@@ -9,7 +9,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
       
         /* ------------------- Load profile data --------------------- */
         console.log('in profile controller!');
-            
+                
         profUID = $rootScope.currentUser.uid;
         var spinner = startSpinner();
         firebase.database().ref('/associates/' + profUID).once('value').then(function (snapshot) {
@@ -87,9 +87,56 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $('#pf_txtStyleSeatID').val(snapshot.val().styleseatID);
             $('#pf_loyaltydp').val(snapshot.val().loyaltyDiscountExpiration);
             
+            
+            // Service times specify the time it takes a specialist to complete a service (ombre, men's haircut, etc)
+            serviceTimes = snapshot.val().serviceTimes;
+            if( serviceTimes === undefined ) {
+                serviceTimes = [];
+            }
+            
+            var start = 60;
+            var process= 0;
+            var finish = 0;
+            if( serviceTimes.rzColorRetouch ) {
+                start = serviceTimes.rzColorRetouch.start;
+                process = serviceTimes.rzColorRetouch.process;
+                finish = serviceTimes.rzColorRetouch.finish;
+            }
+            $scope.rzColorRetouch = {
+                'start': start,
+                'process': process,
+                'finish': finish
+            };    
+            
+            start = 60; process = finish = 0;
+            if( serviceTimes.rzWeaving ) {
+                start = serviceTimes.rzWeaving.start;
+                process = serviceTimes.rzWeaving.process;
+                finish = serviceTimes.rzWeaving.finish;
+            }
+            $scope.rzWeaving = {
+                'start': start,
+                'process': process,
+                'finish': finish
+            }; 
+            
+            start = 60; process = finish = 0;
+            if( serviceTimes.rzVirginHairColor ) {
+                start = serviceTimes.rzVirginHairColor.start;
+                process = serviceTimes.rzVirginHairColor.process;
+                finish = serviceTimes.rzVirginHairColor.finish;
+            }
+            $scope.rzVirginHairColor = {
+                'start': start,
+                'process': process,
+                'finish': finish
+            }; 
+    
+            
+            
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
-            console.log(storageRef);
+            
             storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("pf_imgProfilePic").src = url;
                 // profile pic handler for deleting
@@ -146,7 +193,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_profilePic = pf_txtProfilePic;
             
             /* About text is created from a "tinymce" embedded editor */
-            const pf_about = $scope.tinymceModel;
+            const pf_about = $scope.tinymceModel;    
             
             const pf_hairColor = getCheckedCheckboxesFor('pf_cbHairColor');
             const pf_hairTexturizer = getCheckedCheckboxesFor('pf_cbHairTexturizers');
@@ -172,18 +219,27 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_styleseatID = pf_txtStyleSeatID.value;
             const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
             
-            // Create master list of services (to be used for advanced configuration)
-            pf_hairCuts.forEach( function(s) { 
-                hairService = {category: "hairCut", 
-                              service: s,
-                              duration: 60};
-            });
-            pf_hairTexturizer.forEach( function(s) { 
-                hairTexturizer = {category: "hairTexturizer", 
-                              service: s,
-                              duration: 60};
-                console.log(hairTexturizer);
-            });
+            
+            
+            // handle Service times (Advanced tab)
+            srvcTimes = {'rzColorRetouch':
+                            {'start': $scope.rzColorRetouch.start,
+                             'process': $scope.rzColorRetouch.process,
+                             'finish': $scope.rzColorRetouch.finish
+                            },
+                         'rzWeaving':
+                            {'start': $scope.rzWeaving.start,
+                             'process': $scope.rzWeaving.process,
+                             'finish': $scope.rzWeaving.finish
+                            },
+                         'rzVirginHairColor':
+                            {'start': $scope.rzVirginHairColor.start,
+                             'process': $scope.rzVirginHairColor.process,
+                             'finish': $scope.rzVirginHairColor.finish
+                            }                         
+                        };
+            
+            
             
             
             // upload profile pic to Google Storage
@@ -235,6 +291,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , ncdiscountPct: pf_ncDiscount
                 , loyaldiscountPct: pf_loyalDiscount
                 , loyaltyDiscountExpiration: pf_loyaltyDiscountExpiration
+                , serviceTimes: srvcTimes
                 , regUID: profUID
             });
             $('#modalProfileSave-body').text('Your profile has been saved!');
@@ -249,6 +306,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 });
                 return values;
             }
+            
         });  // Save profile data
       
       

@@ -552,6 +552,12 @@ body { padding-top: 50px; }
     border-radius: 8px;
 }
 
+.grey {
+    color: #fff;
+    background-color: grey;
+    border-radius: 8px;
+}
+
 .specialistSearch {
     background-color: bg-grey;
     margin: 10px;
@@ -622,5 +628,15 @@ table#hours-tab {
     font-size: 1.3em;
 }
 
+.serviceTime {
+    color: #d56e2f;
+}
 
+.servPad {
+    padding: 10px;
+}
+
+.timePad {
+    padding-left: 5px;
+}
 
