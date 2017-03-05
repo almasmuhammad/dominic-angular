@@ -93,46 +93,26 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             if( serviceTimes === undefined ) {
                 serviceTimes = [];
             }
-            
-            var start = 60;
-            var process= 0;
-            var finish = 0;
-            if( serviceTimes.rzColorRetouch ) {
-                start = serviceTimes.rzColorRetouch.start;
-                process = serviceTimes.rzColorRetouch.process;
-                finish = serviceTimes.rzColorRetouch.finish;
-            }
-            $scope.rzColorRetouch = {
-                'start': start,
-                'process': process,
-                'finish': finish
-            };    
-            
-            start = 60; process = finish = 0;
-            if( serviceTimes.rzWeaving ) {
-                start = serviceTimes.rzWeaving.start;
-                process = serviceTimes.rzWeaving.process;
-                finish = serviceTimes.rzWeaving.finish;
-            }
-            $scope.rzWeaving = {
-                'start': start,
-                'process': process,
-                'finish': finish
-            }; 
-            
-            start = 60; process = finish = 0;
-            if( serviceTimes.rzVirginHairColor ) {
-                start = serviceTimes.rzVirginHairColor.start;
-                process = serviceTimes.rzVirginHairColor.process;
-                finish = serviceTimes.rzVirginHairColor.finish;
-            }
-            $scope.rzVirginHairColor = {
-                'start': start,
-                'process': process,
-                'finish': finish
-            }; 
-    
-            
+            $scope.rzColorRetouch = loadServiceTimes(serviceTimes.rzColorRetouch);
+            $scope.rzWeaving = loadServiceTimes(serviceTimes.rzWeaving);
+            $scope.rzVirginHairColor = loadServiceTimes(serviceTimes.rzVirginHairColor);
+            $scope.rzPartialWeaving = loadServiceTimes(serviceTimes.rzPartialWeaving);
+            $scope.rzBalayage = loadServiceTimes(serviceTimes.rzBalayage);
+            $scope.rzFullHighlights = loadServiceTimes(serviceTimes.rzFullHighlights);
+            $scope.rzFaceFramingHighlights = loadServiceTimes(serviceTimes.rzFaceFramingHighlights);
+            $scope.rzAllOverColor = loadServiceTimes(serviceTimes.rzAllOverColor);
+            $scope.rzTLinePartOnlyTouchUp = loadServiceTimes(serviceTimes.rzTLinePartOnlyTouchUp);
+            $scope.rz10Foil = loadServiceTimes(serviceTimes.rz10Foil);
+            $scope.rzCustomColor = loadServiceTimes(serviceTimes.rzCustomColor);
+            $scope.rzDimensionalHighlights = loadServiceTimes(serviceTimes.rzDimensionalHighlights);
+            $scope.rzOmbre = loadServiceTimes(serviceTimes.rzOmbre);
+            $scope.rzEyebrowTinting = loadServiceTimes(serviceTimes.rzEyebrowTinting);
+            $scope.rzExpressColor = loadServiceTimes(serviceTimes.rzExpressColor);
+            $scope.rzCorrectiveColor = loadServiceTimes(serviceTimes.rzCorrectiveColor);
+            $scope.rzWeaveSlicing = loadServiceTimes(serviceTimes.rzWeaveSlicing);
+            $scope.rzClearShineColorTreatment = loadServiceTimes(serviceTimes.rzClearShineColorTreatment);
+            $scope.rzColorEnhancingShineTreatment = loadServiceTimes(serviceTimes.rzColorEnhancingShineTreatment);
+            $scope.rzMensColor = loadServiceTimes(serviceTimes.rzMensColor);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -222,25 +202,28 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             
             
             // handle Service times (Advanced tab)
-            srvcTimes = {'rzColorRetouch':
-                            {'start': $scope.rzColorRetouch.start,
-                             'process': $scope.rzColorRetouch.process,
-                             'finish': $scope.rzColorRetouch.finish
-                            },
-                         'rzWeaving':
-                            {'start': $scope.rzWeaving.start,
-                             'process': $scope.rzWeaving.process,
-                             'finish': $scope.rzWeaving.finish
-                            },
-                         'rzVirginHairColor':
-                            {'start': $scope.rzVirginHairColor.start,
-                             'process': $scope.rzVirginHairColor.process,
-                             'finish': $scope.rzVirginHairColor.finish
-                            }                         
-                        };
+            srvcTimes = {};
             
-            
-            
+            srvcTimes["rzColorRetouch"] = createServiceObj($scope.rzColorRetouch);
+            srvcTimes["rzWeaving"] = createServiceObj($scope.rzWeaving);
+            srvcTimes["rzVirginHairColor"] = createServiceObj($scope.rzVirginHairColor);
+            srvcTimes["rzPartialWeaving"] = createServiceObj($scope.rzPartialWeaving);
+            srvcTimes["rzBalayage"] = createServiceObj($scope.rzBalayage);
+            srvcTimes["rzFullHighlights"] = createServiceObj($scope.rzFullHighlights);
+            srvcTimes["rzFaceFramingHighlights"] = createServiceObj($scope.rzFaceFramingHighlights);
+            srvcTimes["rzAllOverColor"] = createServiceObj($scope.rzAllOverColor);
+            srvcTimes["rzTLinePartOnlyTouchUp"] = createServiceObj($scope.rzTLinePartOnlyTouchUp);
+            srvcTimes["rz10Foil"] = createServiceObj($scope.rz10Foil);
+            srvcTimes["rzCustomColor"] = createServiceObj($scope.rzCustomColor);
+            srvcTimes["rzDimensionalHighlights"] = createServiceObj($scope.rzDimensionalHighlights);
+            srvcTimes["rzOmbre"] = createServiceObj($scope.rzOmbre);
+            srvcTimes["rzEyebrowTinting"] = createServiceObj($scope.rzEyebrowTinting);
+            srvcTimes["rzExpressColor"] = createServiceObj($scope.rzExpressColor);
+            srvcTimes["rzCorrectiveColor"] = createServiceObj($scope.rzCorrectiveColor);
+            srvcTimes["rzWeaveSlicing"] = createServiceObj($scope.rzWeaveSlicing);
+            srvcTimes["rzClearShineColorTreatment"] = createServiceObj($scope.rzClearShineColorTreatment);
+            srvcTimes["rzColorEnhancingShineTreatment"] = createServiceObj($scope.rzColorEnhancingShineTreatment);
+            srvcTimes["rzMensColor"] = createServiceObj($scope.rzMensColor);
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
@@ -336,8 +319,6 @@ function uploadProfilePicToGS(input) {
     
 }
 
-
-
 function populateCheckbox(checkboxID, myKwArray) {
     if (myKwArray == null) {
         return;
@@ -349,6 +330,32 @@ function populateCheckbox(checkboxID, myKwArray) {
             }
         });
     });
+}
+
+function createServiceObj(n) {
+   obj = { 'start': n.start,
+           'process': n.process,
+           'finish': n.finish
+         };
+    return obj;
+}
+
+
+function loadServiceTimes(serviceIn) {
+    var start = 60;
+    var process= 0;
+    var finish = 0;
+    if( serviceIn ) {
+        start = serviceIn.start;
+        process = serviceIn.process;
+        finish = serviceIn.finish;
+    }
+    serviceOut = {
+        'start': start,
+        'process': process,
+        'finish': finish
+    }; 
+    return serviceOut;
 }
       
 function startSpinner() {

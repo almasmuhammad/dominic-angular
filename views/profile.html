@@ -1168,7 +1168,7 @@
                                     <ul>
                                     <li><strong>Service</strong> time the amount of time to block on your calendar when a client books a particular service.</li>
                                     <li><strong>Process</strong> time opens up a gap in your schedule for booking another client (overlapping clients).</li>
-                                    <li><strong>Finish</strong> time blocks out time from your schedule to finish up a client that requires a processing time.</li>
+                                    <li><strong>Finish</strong> time blocks out time from your calendar to finish up a client that requires a processing time.</li>
                                     </ul>
                                     <span class="badge"> Service </span><span class="specialBadge servPad"> Process (optional) </span><span class="specialBadge servPad"> Finish (optional)</span><br><br>
                                     <div class="panel panel-default">
@@ -1179,13 +1179,99 @@
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                         <label>Weaving <span class="badge">{{(rzWeaving.start + rzWeaving.finish) / 60}} hours</span></label>
-                                        <div><input type="number" name="input" ng-model="rzWeaving.start" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Start minutes'><input type="number" name="input" ng-model="rzWeaving.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaving.finish" min="0" max="480" step="15"></div></div>
+                                        <div><input type="number" name="input" ng-model="rzWeaving.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaving.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaving.finish" min="0" max="480" step="15"></div></div>
                                     </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Partial Weaving <span class="badge">{{(rzPartialWeaving.start + rzPartialWeaving.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzPartialWeaving.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPartialWeaving.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPartialWeaving.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                         <label>Virgin Hair Color <span class="badge">{{(rzVirginHairColor.start + rzVirginHairColor.finish) / 60}} hours</span></label>
                                             <div><input type="number" name="input" ng-model="rzVirginHairColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzVirginHairColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzVirginHairColor.finish" min="0" max="480" step="15"></div></div>
-                                    </div><br>                                  
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Balayage <span class="badge">{{(rzBalayage.start + rzBalayage.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzBalayage.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalayage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalayage.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Full Highlights <span class="badge">{{(rzFullHighlights.start + rzFullHighlights.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzFullHighlights.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalrzFullHighlightsayage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullHighlights.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Face Framing Highlights <span class="badge">{{(rzFaceFramingHighlights.start + rzFaceFramingHighlights.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzFaceFramingHighlights.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFaceFramingHighlights.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFaceFramingHighlights.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>All Over Color <span class="badge">{{(rzAllOverColor.start + rzAllOverColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzAllOverColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzAllOverColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzAllOverColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Men's Color <span class="badge">{{(rzMensColor.start + rzMensColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzMensColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMensColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMensColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                     
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>T-Line Part Only Touch Up <span class="badge">{{(rzTLinePartOnlyTouchUp.start + rzTLinePartOnlyTouchUp.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzTLinePartOnlyTouchUp.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzTLinePartOnlyTouchUp.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzTLinePartOnlyTouchUp.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>10 Foil <span class="badge">{{(rz10Foil.start + rz10Foil.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rz10Foil.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz10Foil.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz10Foil.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Custom Color <span class="badge">{{(rzCustomColor.start + rzCustomColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzCustomColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCustomColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCustomColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Dimensional Highlights <span class="badge">{{(rzDimensionalHighlights.start + rzDimensionalHighlights.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzDimensionalHighlights.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzDimensionalHighlights.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzDimensionalHighlights.finish" min="0" max="480" step="15"></div></div>
+                                    </div>            
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Ombre <span class="badge">{{(rzOmbre.start + rzOmbre.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzOmbre.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOmbre.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOmbre.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Eyebrow Tinting <span class="badge">{{(rzEyebrowTinting.start + rzEyebrowTinting.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzEyebrowTinting.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyebrowTinting.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyebrowTinting.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Express Color <span class="badge">{{(rzExpressColor.start + rzExpressColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzExpressColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzExpressColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzExpressColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Corrective Color <span class="badge">{{(rzCorrectiveColor.start + rzCorrectiveColor.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzCorrectiveColor.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCorrectiveColor.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCorrectiveColor.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Weave Slicing <span class="badge">{{(rzWeaveSlicing.start + rzWeaveSlicing.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzWeaveSlicing.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaveSlicing.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzWeaveSlicing.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Clear Shine Color Treatment <span class="badge">{{(rzClearShineColorTreatment.start + rzClearShineColorTreatment.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzClearShineColorTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzClearShineColorTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzClearShineColorTreatment.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Color Enhancing Shine Treatment <span class="badge">{{(rzColorEnhancingShineTreatment.start + rzColorEnhancingShineTreatment.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    
                                 </div>
                             </div>
                               
