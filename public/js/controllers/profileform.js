@@ -93,6 +93,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             if( serviceTimes === undefined ) {
                 serviceTimes = [];
             }
+            
+            // Hair Color
             $scope.rzColorRetouch = loadServiceTimes(serviceTimes.rzColorRetouch);
             $scope.rzWeaving = loadServiceTimes(serviceTimes.rzWeaving);
             $scope.rzVirginHairColor = loadServiceTimes(serviceTimes.rzVirginHairColor);
@@ -113,6 +115,17 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzClearShineColorTreatment = loadServiceTimes(serviceTimes.rzClearShineColorTreatment);
             $scope.rzColorEnhancingShineTreatment = loadServiceTimes(serviceTimes.rzColorEnhancingShineTreatment);
             $scope.rzMensColor = loadServiceTimes(serviceTimes.rzMensColor);
+            
+            // Hair Texturizers
+            $scope.rzBodyWave = loadServiceTimes(serviceTimes.rzBodyWave);
+            $scope.rzPermanent = loadServiceTimes(serviceTimes.rzPermanent);
+            $scope.rzPermanentWave = loadServiceTimes(serviceTimes.rzPermanentWave);
+            $scope.rzKeratinTreatment = loadServiceTimes(serviceTimes.rzKeratinTreatment);
+            $scope.rzKeraFusion = loadServiceTimes(serviceTimes.rzKeraFusion);
+            $scope.rzRelaxer = loadServiceTimes(serviceTimes.rzRelaxer);
+            $scope.rzReversePerm = loadServiceTimes(serviceTimes.rzReversePerm);
+            $scope.rzNaturalHairStraighteningIronWork = loadServiceTimes(serviceTimes.rzNaturalHairStraighteningIronWork);
+            
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -204,6 +217,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             // handle Service times (Advanced tab)
             srvcTimes = {};
             
+            // Hair Color
             srvcTimes["rzColorRetouch"] = createServiceObj($scope.rzColorRetouch);
             srvcTimes["rzWeaving"] = createServiceObj($scope.rzWeaving);
             srvcTimes["rzVirginHairColor"] = createServiceObj($scope.rzVirginHairColor);
@@ -224,6 +238,17 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzClearShineColorTreatment"] = createServiceObj($scope.rzClearShineColorTreatment);
             srvcTimes["rzColorEnhancingShineTreatment"] = createServiceObj($scope.rzColorEnhancingShineTreatment);
             srvcTimes["rzMensColor"] = createServiceObj($scope.rzMensColor);
+            
+            // Hair Texturizers
+            srvcTimes["rzBodyWave"] = createServiceObj($scope.rzBodyWave);
+            srvcTimes["rzPermanent"] = createServiceObj($scope.rzPermanent);
+            srvcTimes["rzPermanentWave"] = createServiceObj($scope.rzPermanentWave);
+            srvcTimes["rzKeratinTreatment"] = createServiceObj($scope.rzKeratinTreatment);
+            srvcTimes["rzKeraFusion"] = createServiceObj($scope.rzKeraFusion);
+            srvcTimes["rzRelaxer"] = createServiceObj($scope.rzRelaxer);
+            srvcTimes["rzReversePerm"] = createServiceObj($scope.rzReversePerm);
+            srvcTimes["rzNaturalHairStraighteningIronWork"] = createServiceObj($scope.rzNaturalHairStraighteningIronWork);
+            
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];

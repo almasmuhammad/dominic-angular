@@ -1164,6 +1164,7 @@
                                 <label class="col-md-4 control-label" for="pf_service" ></label>
                                 <div class="col-md-4">
                                     <h2>Service Times</h2>
+                                    
                                     <p><strong>Service</strong>, <strong>Process</strong>, and <strong>Finish</strong> times are shown in minutes and incremented/decremented in 15-minute steps.</p>
                                     <ul>
                                     <li><strong>Service</strong> time the amount of time to block on your calendar when a client books a particular service.</li>
@@ -1171,6 +1172,9 @@
                                     <li><strong>Finish</strong> time blocks out time from your calendar to finish up a client that requires a processing time.</li>
                                     </ul>
                                     <span class="badge"> Service </span><span class="specialBadge servPad"> Process (optional) </span><span class="specialBadge servPad"> Finish (optional)</span><br><br>
+                                    
+                                    <h4>Hair Color</h4>
+                                    
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                         <label> Color Retouch <span class="badge">{{(rzColorRetouch.start + rzColorRetouch.finish) / 60}} hours</span></label>
@@ -1272,6 +1276,47 @@
                                             <div><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzColorEnhancingShineTreatment.finish" min="0" max="480" step="15"></div></div>
                                     </div> 
                                     
+                                    <h4>Hair Texturizers</h4>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Body Wave <span class="badge">{{(rzBodyWave.start + rzBodyWave.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzBodyWave.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBodyWave.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBodyWave.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Permanent <span class="badge">{{(rzPermanent.start + rzPermanent.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzPermanent.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPermanent.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPermanent.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                  
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Permanent Wave <span class="badge">{{(rzPermanentWave.start + rzPermanentWave.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzPermanentWave.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPermanentWave.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPermanentWave.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Keratin Treatment <span class="badge">{{(rzKeratinTreatment.start + rzKeratinTreatment.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzKeratinTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzKeratinTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzKeratinTreatment.finish" min="0" max="480" step="15"></div></div>
+                                    </div>            
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>KeraFusion <span class="badge">{{(rzKeraFusion.start + rzKeraFusion.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzKeraFusion.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzKeraFusion.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzKeraFusion.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Relaxer <span class="badge">{{(rzRelaxer.start + rzRelaxer.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzRelaxer.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzRelaxer.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzRelaxer.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Reverse Perm <span class="badge">{{(rzReversePerm.start + rzReversePerm.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzReversePerm.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzReversePerm.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzReversePerm.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label>Natural Hair Straightening/Iron Work <span class="badge">{{(rzNaturalHairStraighteningIronWork.start + rzNaturalHairStraighteningIronWork.finish) / 60}} hours</span></label>
+                                            <div><input type="number" name="input" ng-model="rzNaturalHairStraighteningIronWork.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNaturalHairStraighteningIronWork.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNaturalHairStraighteningIronWork.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
                                 </div>
                             </div>
                               
