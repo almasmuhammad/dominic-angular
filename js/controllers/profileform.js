@@ -126,6 +126,18 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzReversePerm = loadServiceTimes(serviceTimes.rzReversePerm);
             $scope.rzNaturalHairStraighteningIronWork = loadServiceTimes(serviceTimes.rzNaturalHairStraighteningIronWork);
             
+            // Hair Cuts
+            $scope.rzWomensHaircutStyle = loadServiceTimes(serviceTimes.rzWomensHaircutStyle);
+            $scope.rzWomensHaircut = loadServiceTimes(serviceTimes.rzWomensHaircut);
+            $scope.rzBangTrim = loadServiceTimes(serviceTimes.rzBangTrim);
+            $scope.rzShampooStyle = loadServiceTimes(serviceTimes.rzShampooStyle);
+            $scope.rzThermalStyle = loadServiceTimes(serviceTimes.rzThermalStyle);
+            $scope.rzUpdo = loadServiceTimes(serviceTimes.rzUpdo);
+            $scope.rzMensHaircut = loadServiceTimes(serviceTimes.rzMensHaircut);
+            $scope.rzChildrensHaircut = loadServiceTimes(serviceTimes.rzChildrensHaircut);
+            $scope.rzChildrensHaircutStyle = loadServiceTimes(serviceTimes.rzChildrensHaircutStyle);   
+            $scope.rzClipperCut = loadServiceTimes(serviceTimes.rzClipperCut); 
+            
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -248,6 +260,18 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzRelaxer"] = createServiceObj($scope.rzRelaxer);
             srvcTimes["rzReversePerm"] = createServiceObj($scope.rzReversePerm);
             srvcTimes["rzNaturalHairStraighteningIronWork"] = createServiceObj($scope.rzNaturalHairStraighteningIronWork);
+            
+            // Hair Cuts
+            srvcTimes["rzWomensHaircutStyle"] = createServiceObj($scope.rzWomensHaircutStyle);
+            srvcTimes["rzWomensHaircut"] = createServiceObj($scope.rzWomensHaircut);
+            srvcTimes["rzBangTrim"] = createServiceObj($scope.rzBangTrim);
+            srvcTimes["rzShampooStyle"] = createServiceObj($scope.rzShampooStyle);
+            srvcTimes["rzThermalStyle"] = createServiceObj($scope.rzThermalStyle);
+            srvcTimes["rzUpdo"] = createServiceObj($scope.rzUpdo);
+            srvcTimes["rzMensHaircut"] = createServiceObj($scope.rzMensHaircut);
+            srvcTimes["rzChildrensHaircut"] = createServiceObj($scope.rzChildrensHaircut);
+            srvcTimes["rzChildrensHaircutStyle"] = createServiceObj($scope.rzChildrensHaircutStyle);
+            srvcTimes["rzClipperCut"] = createServiceObj($scope.rzClipperCut);
             
             
             // upload profile pic to Google Storage
