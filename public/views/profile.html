@@ -1633,6 +1633,59 @@
                                             <div><input type="number" name="input" ng-model="rzCinderellaHairExtensions.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCinderellaHairExtensions.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCinderellaHairExtensions.finish" min="0" max="480" step="15"></div></div>
                                     </div> 
                                     
+                                    <br><h4>Manicures</h4>
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Shellac <span class="badge">{{(rzShellac.start + rzShellac.finish) / 60}} hour<span ng-if="rzShellac.start + rzShellac.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzShellac.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShellac.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShellac.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Spa <span class="badge">{{(rzSpa.start + rzSpa.finish) / 60}} hour<span ng-if="rzShellac.start + rzSpa.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzSpa.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpa.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpa.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Polish <span class="badge">{{(rzPolish.start + rzPolish.finish) / 60}} hour<span ng-if="rzPolish.start + rzPolish.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzPolish.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPolish.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPolish.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Polish Change <span class="badge">{{(rzPolishChange.start + rzPolishChange.finish) / 60}} hour<span ng-if="rzPolishChange.start + rzPolishChange.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzPolishChange.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPolishChange.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPolishChange.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bevel + Polish Change <span class="badge">{{(rzBevelPolishChange.start + rzBevelPolishChange.finish) / 60}} hour<span ng-if="rzBevelPolishChange.start + rzBevelPolishChange.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBevelPolishChange.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBevelPolishChange.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBevelPolishChange.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Paraffin Treatment <span class="badge">{{(rzParaffinTreatment.start + rzParaffinTreatment.finish) / 60}} hour<span ng-if="rzParaffinTreatment.start + rzParaffinTreatment.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzParaffinTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzParaffinTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzParaffinTreatment.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>New Set Acrylic Pink &amp; White <span class="badge">{{(rzNewSetAcrylicPinkWhite.start + rzNewSetAcrylicPinkWhite.finish) / 60}} hour<span ng-if="rzNewSetAcrylicPinkWhite.start + rzNewSetAcrylicPinkWhite.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzNewSetAcrylicPinkWhite.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNewSetAcrylicPinkWhite.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNewSetAcrylicPinkWhite.finish" min="0" max="480" step="15"></div></div>
+                                    </div>  
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Pink &amp; White Balance <span class="badge">{{(rzPinkWhiteBalance.start + rzPinkWhiteBalance.finish) / 60}} hour<span ng-if="rzPinkWhiteBalance.start + rzPinkWhiteBalance.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzPinkWhiteBalance.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPinkWhiteBalance.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPinkWhiteBalance.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                  
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Balance <span class="badge">{{(rzBalance.start + rzBalance.finish) / 60}} hour<span ng-if="rzBalance.start + rzBalance.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBalance.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalance.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalance.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Nail Repair <span class="badge">{{(rzNailRepair.start + rzNailRepair.finish) / 60}} hour<span ng-if="rzNailRepair.start + rzNailRepair.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzNailRepair.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNailRepair.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNailRepair.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    
                                     
                                 </div>
                             </div>
