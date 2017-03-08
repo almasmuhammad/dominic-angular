@@ -150,6 +150,22 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzGlossingCutStyle = loadServiceTimes(serviceTimes.rzGlossingCutStyle); 
             $scope.rzGlossingStyle = loadServiceTimes(serviceTimes.rzGlossingStyle);   
             $scope.rzBalayageCutStyle = loadServiceTimes(serviceTimes.rzBalayageCutStyle); 
+            $scope.rzBalayageStyle = loadServiceTimes(serviceTimes.rzBalayageStyle); 
+            $scope.rzFaceFramingHighlightsCutStyle = loadServiceTimes(serviceTimes.rzFaceFramingHighlightsCutStyle); 
+            $scope.rzFaceFramingHighlightsStyle = loadServiceTimes(serviceTimes.rzFaceFramingHighlightsStyle);
+            $scope.rzPermCutStyle = loadServiceTimes(serviceTimes.rzPermCutStyle);
+            $scope.rzPermStyle = loadServiceTimes(serviceTimes.rzPermStyle);
+            $scope.rzRelaxerRetouch = loadServiceTimes(serviceTimes.rzRelaxerRetouch);
+            $scope.rzRelaxerRetouchHaircut = loadServiceTimes(serviceTimes.rzRelaxerRetouchHaircut); 
+            $scope.rzRelaxerColor = loadServiceTimes(serviceTimes.rzRelaxerColor);
+            $scope.rzRelaxerRetouchColorCut = loadServiceTimes(serviceTimes.rzRelaxerRetouchColorCut);
+            $scope.rzLiftAndTone = loadServiceTimes(serviceTimes.rzLiftAndTone);
+            $scope.rzBangTrimComplimentary = loadServiceTimes(serviceTimes.rzBangTrimComplimentary);
+
+
+
+
+            
             
             
             // Retrieve profile pic URL from Google Storage
@@ -298,6 +314,21 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzGlossingCutStyle"] = createServiceObj($scope.rzGlossingCutStyle);
             srvcTimes["rzGlossingStyle"] = createServiceObj($scope.rzGlossingStyle);
             srvcTimes["rzBalayageCutStyle"] = createServiceObj($scope.rzBalayageCutStyle);
+            srvcTimes["rzBalayageStyle"] = createServiceObj($scope.rzBalayageStyle);
+            srvcTimes["rzFaceFramingHighlightsCutStyle"] = createServiceObj($scope.rzFaceFramingHighlightsCutStyle);
+            srvcTimes["rzFaceFramingHighlightsStyle"] = createServiceObj($scope.rzFaceFramingHighlightsStyle);
+            srvcTimes["rzPermCutStyle"] = createServiceObj($scope.rzPermCutStyle);
+            srvcTimes["rzPermStyle"] = createServiceObj($scope.rzPermStyle);
+            srvcTimes["rzRelaxerRetouch"] = createServiceObj($scope.rzRelaxerRetouch);
+            srvcTimes["rzRelaxerRetouchHaircut"] = createServiceObj($scope.rzRelaxerRetouchHaircut);
+            srvcTimes["rzRelaxerColor"] = createServiceObj($scope.rzRelaxerColor);
+            srvcTimes["rzRelaxerRetouchColorCut"] = createServiceObj($scope.rzRelaxerRetouchColorCut);
+            srvcTimes["rzLiftAndTone"] = createServiceObj($scope.rzLiftAndTone);
+            srvcTimes["rzBangTrimComplimentary"] = createServiceObj($scope.rzBangTrimComplimentary);            
+            
+
+
+            
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
