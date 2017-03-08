@@ -1490,6 +1490,71 @@
                                             <label>Bang Trim - Complimentary Current Clients only <span class="badge">{{(rzBangTrimComplimentary.start + rzBangTrimComplimentary.finish) / 60}} hour<span ng-if="rzBangTrimComplimentary.start + rzBangTrimComplimentary.finish != 60">s</span></span></label>
                                             <div><input type="number" name="input" ng-model="rzBangTrimComplimentary.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBangTrimComplimentary.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBangTrimComplimentary.finish" min="0" max="480" step="15"></div></div>
                                     </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Full Keratin + Cut + Style <span class="badge">{{(rzFullKeratinCutStyle.start + rzFullKeratinCutStyle.finish) / 60}} hour<span ng-if="rzFullKeratinCutStyle.start + rzFullKeratinCutStyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzFullKeratinCutStyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullKeratinCutStyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullKeratinCutStyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                     
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Express Color + Cut + Style <span class="badge">{{(rzExpressColorCutStyle.start + rzExpressColorCutStyle.finish) / 60}} hour<span ng-if="rzExpressColorCutStyle.start + rzExpressColorCutStyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzExpressColorCutStyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzExpressColorCutStyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzExpressColorCutStyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>     
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Fringe/Bang Trim <span class="badge">{{(rzFringeBangTrim.start + rzFringeBangTrim.finish) / 60}} hour<span ng-if="rzFringeBangTrim.start + rzFringeBangTrim.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzFringeBangTrim.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFringeBangTrim.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFringeBangTrim.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                        
+                                   <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Retouch Ombre <span class="badge">{{(rzRetouchOmbre.start + rzRetouchOmbre.finish) / 60}} hour<span ng-if="rzRetouchOmbre.start + rzRetouchOmbre.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzRetouchOmbre.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzRetouchOmbre.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzRetouchOmbre.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                   <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Partial Balayage + Haircut <span class="badge">{{(rzPartialBalayageHaircut.start + rzPartialBalayageHaircut.finish) / 60}} hour<span ng-if="rzPartialBalayageHaircut.start + rzPartialBalayageHaircut.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzPartialBalayageHaircut.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPartialBalayageHaircut.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPartialBalayageHaircut.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>OLAPLEX Add-in <span class="badge">{{(rzOLAPLEXAddin.start + rzOLAPLEXAddin.finish) / 60}} hour<span ng-if="rzOLAPLEXAddin.start + rzOLAPLEXAddin.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzOLAPLEXAddin.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOLAPLEXAddin.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOLAPLEXAddin.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                   
+                                     <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>L'anza Ultimate Treatment <span class="badge">{{(rzLanzaUltimateTreatment.start + rzLanzaUltimateTreatment.finish) / 60}} hour<span ng-if="rzLanzaUltimateTreatment.start + rzLanzaUltimateTreatment.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLanzaUltimateTreatment.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLanzaUltimateTreatment.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLanzaUltimateTreatment.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                  
+                                      <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>L'anza Healing Service <span class="badge">{{(rzLanzaHealingService.start + rzLanzaHealingService.finish) / 60}} hour<span ng-if="rzLanzaHealingService.start + rzLanzaHealingService.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLanzaHealingService.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLanzaHealingService.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLanzaHealingService.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                      <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Special Occasion Downstyle <span class="badge">{{(rzSpecialOccasionDownstyle.start + rzSpecialOccasionDownstyle.finish) / 60}} hour<span ng-if="rzSpecialOccasionDownstyle.start + rzSpecialOccasionDownstyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzSpecialOccasionDownstyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecialOccasionDownstyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecialOccasionDownstyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Special Occasion Upstyle <span class="badge">{{(rzSpecialOccasionUpstyle.start + rzSpecialOccasionUpstyle.finish) / 60}} hour<span ng-if="rzSpecialOccasionUpstyle.start + rzSpecialOccasionUpstyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzSpecialOccasionUpstyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecialOccasionUpstyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecialOccasionUpstyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Shampoo, Blow dry + Style <span class="badge">{{(rzShampooBlowdryStyle.start + rzShampooBlowdryStyle.finish) / 60}} hour<span ng-if="rzShampooBlowdryStyle.start + rzShampooBlowdryStyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzShampooBlowdryStyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShampooBlowdryStyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShampooBlowdryStyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Shampoo, Wrap + Style <span class="badge">{{(rzShampooWrapStyle.start + rzShampooWrapStyle.finish) / 60}} hour<span ng-if="rzShampooWrapStyle.start + rzShampooWrapStyle.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzShampooWrapStyle.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShampooWrapStyle.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzShampooWrapStyle.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Dry Styling <span class="badge">{{(rzDryStyling.start + rzDryStyling.finish) / 60}} hour<span ng-if="rzDryStyling.start + rzDryStyling.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzDryStyling.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzDryStyling.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzDryStyling.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
                                     
                                     
                                 </div>
