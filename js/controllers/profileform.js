@@ -227,6 +227,22 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzEyebrowShaping = loadServiceTimes(serviceTimes.rzEyebrowShaping); 
             $scope.rzEarWax = loadServiceTimes(serviceTimes.rzEarWax);
             
+            // Massage
+            $scope.rz30MinuteMassage = loadServiceTimes(serviceTimes.rz30MinuteMassage);
+            $scope.rz60MinuteMassage = loadServiceTimes(serviceTimes.rz60MinuteMassage); 
+            $scope.rz90MinuteMassage = loadServiceTimes(serviceTimes.rz90MinuteMassage); 
+            $scope.rz120MinuteMassage = loadServiceTimes(serviceTimes.rz120MinuteMassage); 
+            $scope.rz30MinuteHotStone = loadServiceTimes(serviceTimes.rz30MinuteHotStone);            
+            $scope.rz60MinuteHotStone = loadServiceTimes(serviceTimes.rz60MinuteHotStone);
+            $scope.rz90MinuteHotStone = loadServiceTimes(serviceTimes.rz90MinuteHotStone); 
+            $scope.rz120MinuteHotStone = loadServiceTimes(serviceTimes.rz120MinuteHotStone); 
+            $scope.rz30MinuteReflexology = loadServiceTimes(serviceTimes.rz30MinuteReflexology); 
+            $scope.rz60MinuteReflexology = loadServiceTimes(serviceTimes.rz60MinuteReflexology);              
+            
+
+
+            
+            
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
             
@@ -449,6 +465,19 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzBrowShapingandLipWaxCombo"] = createServiceObj($scope.rzBrowShapingandLipWaxCombo);
             srvcTimes["rzEyebrowShaping"] = createServiceObj($scope.rzEyebrowShaping);
             srvcTimes["rzEarWax"] = createServiceObj($scope.rzEarWax);
+            
+            // Massage
+            srvcTimes["rz30MinuteMassage"] = createServiceObj($scope.rz30MinuteMassage);
+            srvcTimes["rz60MinuteMassage"] = createServiceObj($scope.rz60MinuteMassage);
+            srvcTimes["rz90MinuteMassage"] = createServiceObj($scope.rz90MinuteMassage);
+            srvcTimes["rz120MinuteMassage"] = createServiceObj($scope.rz120MinuteMassage);
+            srvcTimes["rz30MinuteHotStone"] = createServiceObj($scope.rz30MinuteHotStone);
+            srvcTimes["rz60MinuteHotStone"] = createServiceObj($scope.rz60MinuteHotStone);
+            srvcTimes["rz90MinuteHotStone"] = createServiceObj($scope.rz90MinuteHotStone);
+            srvcTimes["rz120MinuteHotStone"] = createServiceObj($scope.rz120MinuteHotStone);
+            srvcTimes["rz30MinuteReflexology"] = createServiceObj($scope.rz30MinuteReflexology);
+            srvcTimes["rz60MinuteReflexology"] = createServiceObj($scope.rz60MinuteReflexology);
+            
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];

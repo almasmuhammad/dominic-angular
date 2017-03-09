@@ -1701,6 +1701,7 @@
                                     </div>                                    
                                     
                                     <br><h4>Wax</h4>
+                                    
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                             <label>Brow Shaping/Wax <span class="badge">{{(rzBrowShapingWax.start + rzBrowShapingWax.finish) / 60}} hour<span ng-if="rzBrowShapingWax.start + rzBrowShapingWax.finish != 60">s</span></span></label>
@@ -1785,7 +1786,63 @@
                                         <div class="servPad">
                                             <label>Ear Wax <span class="badge">{{(rzEarWax.start + rzEarWax.finish) / 60}} hour<span ng-if="rzEarWax.start + rzEarWax.finish != 60">s</span></span></label>
                                             <div><input type="number" name="input" ng-model="rzEarWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEarWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEarWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    
+                                    <br><h4>Massage</h4>
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>30 Minute Massage <span class="badge">{{(rz30MinuteMassage.start + rz30MinuteMassage.finish) / 60}} hour<span ng-if="rz30MinuteMassage.start + rz30MinuteMassage.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz30MinuteMassage.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteMassage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteMassage.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                                                        
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>60 Minute Massage <span class="badge">{{(rz60MinuteMassage.start + rz60MinuteMassage.finish) / 60}} hour<span ng-if="rz60MinuteMassage.start + rz60MinuteMassage.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz60MinuteMassage.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteMassage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteMassage.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>90 Minute Massage <span class="badge">{{(rz90MinuteMassage.start + rz90MinuteMassage.finish) / 60}} hour<span ng-if="rz90MinuteMassage.start + rz90MinuteMassage.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz90MinuteMassage.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz90MinuteMassage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz90MinuteMassage.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>120 Minute Massage <span class="badge">{{(rz120MinuteMassage.start + rz120MinuteMassage.finish) / 60}} hour<span ng-if="rz120MinuteMassage.start + rz120MinuteMassage.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz120MinuteMassage.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz120MinuteMassage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz120MinuteMassage.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                   
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>30 Minute Hot Stone <span class="badge">{{(rz30MinuteHotStone.start + rz30MinuteHotStone.finish) / 60}} hour<span ng-if="rz30MinuteHotStone.start + rz30MinuteHotStone.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz30MinuteHotStone.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteHotStone.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteHotStone.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                      
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>60 Minute Hot Stone <span class="badge">{{(rz60MinuteHotStone.start + rz60MinuteHotStone.finish) / 60}} hour<span ng-if="rz60MinuteHotStone.start + rz60MinuteHotStone.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz60MinuteHotStone.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteHotStone.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteHotStone.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>90 Minute Hot Stone <span class="badge">{{(rz90MinuteHotStone.start + rz90MinuteHotStone.finish) / 60}} hour<span ng-if="rz90MinuteHotStone.start + rz90MinuteHotStone.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz90MinuteHotStone.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz90MinuteHotStone.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz90MinuteHotStone.finish" min="0" max="480" step="15"></div></div>
                                     </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>120 Minute Hot Stone <span class="badge">{{(rz120MinuteHotStone.start + rz120MinuteHotStone.finish) / 60}} hour<span ng-if="rz120MinuteHotStone.start + rz120MinuteHotStone.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz120MinuteHotStone.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz120MinuteHotStone.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz120MinuteHotStone.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>30 Minute Reflexology <span class="badge">{{(rz30MinuteReflexology.start + rz30MinuteReflexology.finish) / 60}} hour<span ng-if="rz30MinuteReflexology.start + rz30MinuteReflexology.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz30MinuteReflexology.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteReflexology.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz30MinuteReflexology.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>60 Minute Reflexology <span class="badge">{{(rz60MinuteReflexology.start + rz60MinuteReflexology.finish) / 60}} hour<span ng-if="rz60MinuteReflexology.start + rz30MinuteReflexology.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rz60MinuteReflexology.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteReflexology.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rz60MinuteReflexology.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    
+                                    
+                                    
                                     
                                 </div>
                             </div>
