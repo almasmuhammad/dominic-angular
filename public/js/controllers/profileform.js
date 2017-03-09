@@ -191,6 +191,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzKlixExtensionTightening = loadServiceTimes(serviceTimes.rzKlixExtensionTightening);
             $scope.rzColoredExtensionAccents = loadServiceTimes(serviceTimes.rzColoredExtensionAccents); 
             $scope.rzCinderellaHairExtensions = loadServiceTimes(serviceTimes.rzCinderellaHairExtensions);
+            
+            // Mani
             $scope.rzShellac = loadServiceTimes(serviceTimes.rzShellac);
             $scope.rzSpa = loadServiceTimes(serviceTimes.rzSpa);            
             $scope.rzPolish = loadServiceTimes(serviceTimes.rzPolish);
@@ -200,9 +202,30 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzNewSetAcrylicPinkWhite = loadServiceTimes(serviceTimes.rzNewSetAcrylicPinkWhite);            
             $scope.rzPinkWhiteBalance = loadServiceTimes(serviceTimes.rzPinkWhiteBalance);
             $scope.rzBalance = loadServiceTimes(serviceTimes.rzBalance); 
-            $scope.rzNailRepair = loadServiceTimes(serviceTimes.rzNailRepair);            
-
-
+            $scope.rzNailRepair = loadServiceTimes(serviceTimes.rzNailRepair);
+            
+            // Pedi
+            $scope.rzPediSpa = loadServiceTimes(serviceTimes.rzPediSpa); 
+            $scope.rzSpecial = loadServiceTimes(serviceTimes.rzSpecial);            
+            
+            // Wax
+            $scope.rzBrowShapingWax = loadServiceTimes(serviceTimes.rzBrowShapingWax);
+            $scope.rzBikiniWax = loadServiceTimes(serviceTimes.rzBikiniWax);            
+            $scope.rzBikiniWaxBrazilian = loadServiceTimes(serviceTimes.rzBikiniWaxBrazilian);
+            $scope.rzFullLegWax = loadServiceTimes(serviceTimes.rzFullLegWax); 
+            $scope.rzFullLegWaxHalfLeg = loadServiceTimes(serviceTimes.rzFullLegWaxHalfLeg);
+            $scope.rzBackWax = loadServiceTimes(serviceTimes.rzBackWax);
+            $scope.rzUnderarms = loadServiceTimes(serviceTimes.rzUnderarms);            
+            $scope.rzArms = loadServiceTimes(serviceTimes.rzArms);
+            $scope.rzLipCheeksorChin = loadServiceTimes(serviceTimes.rzLipCheeksorChin); 
+            $scope.rzBrowWax = loadServiceTimes(serviceTimes.rzBrowWax);             
+            $scope.rzBrows = loadServiceTimes(serviceTimes.rzBrows);
+            $scope.rzLipWax = loadServiceTimes(serviceTimes.rzLipWax);            
+            $scope.rzCheekWax = loadServiceTimes(serviceTimes.rzCheekWax);
+            $scope.rzChinWax = loadServiceTimes(serviceTimes.rzChinWax); 
+            $scope.rzBrowShapingandLipWaxCombo = loadServiceTimes(serviceTimes.rzBrowShapingandLipWaxCombo); 
+            $scope.rzEyebrowShaping = loadServiceTimes(serviceTimes.rzEyebrowShaping); 
+            $scope.rzEarWax = loadServiceTimes(serviceTimes.rzEarWax);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -402,9 +425,30 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzNewSetAcrylicPinkWhite"] = createServiceObj($scope.rzNewSetAcrylicPinkWhite);
             srvcTimes["rzPinkWhiteBalance"] = createServiceObj($scope.rzPinkWhiteBalance);
             srvcTimes["rzBalance"] = createServiceObj($scope.rzBalance);
-            srvcTimes["rzNailRepair"] = createServiceObj($scope.rzNailRepair);          
-
+            srvcTimes["rzNailRepair"] = createServiceObj($scope.rzNailRepair);  
             
+            // Pedi
+            srvcTimes["rzPediSpa"] = createServiceObj($scope.rzPediSpa);
+            srvcTimes["rzSpecial"] = createServiceObj($scope.rzSpecial); 
+            
+            // Wax
+            srvcTimes["rzBrowShapingWax"] = createServiceObj($scope.rzBrowShapingWax);
+            srvcTimes["rzBikiniWax"] = createServiceObj($scope.rzBikiniWax);
+            srvcTimes["rzBikiniWaxBrazilian"] = createServiceObj($scope.rzBikiniWaxBrazilian);
+            srvcTimes["rzFullLegWax"] = createServiceObj($scope.rzFullLegWax);
+            srvcTimes["rzFullLegWaxHalfLeg"] = createServiceObj($scope.rzFullLegWaxHalfLeg);
+            srvcTimes["rzBackWax"] = createServiceObj($scope.rzBackWax);
+            srvcTimes["rzUnderarms"] = createServiceObj($scope.rzUnderarms);
+            srvcTimes["rzArms"] = createServiceObj($scope.rzArms);
+            srvcTimes["rzLipCheeksorChin"] = createServiceObj($scope.rzLipCheeksorChin);
+            srvcTimes["rzBrowWax"] = createServiceObj($scope.rzBrowWax);
+            srvcTimes["rzBrows"] = createServiceObj($scope.rzBrows);
+            srvcTimes["rzLipWax"] = createServiceObj($scope.rzLipWax);
+            srvcTimes["rzCheekWax"] = createServiceObj($scope.rzCheekWax);
+            srvcTimes["rzChinWax"] = createServiceObj($scope.rzChinWax);
+            srvcTimes["rzBrowShapingandLipWaxCombo"] = createServiceObj($scope.rzBrowShapingandLipWaxCombo);
+            srvcTimes["rzEyebrowShaping"] = createServiceObj($scope.rzEyebrowShaping);
+            srvcTimes["rzEarWax"] = createServiceObj($scope.rzEarWax);
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];

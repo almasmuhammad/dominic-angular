@@ -1203,7 +1203,7 @@
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                             <label>Full Highlights <span class="badge">{{(rzFullHighlights.start + rzFullHighlights.finish) / 60}} hour<span ng-if="rzFullHighlights.start + rzFullHighlights.finish != 60">s</span></span></label>
-                                            <div><input type="number" name="input" ng-model="rzFullHighlights.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBalrzFullHighlightsayage.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullHighlights.finish" min="0" max="480" step="15"></div></div>
+                                            <div><input type="number" name="input" ng-model="rzFullHighlights.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullHighlights.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullHighlights.finish" min="0" max="480" step="15"></div></div>
                                     </div>
                                     <div class="panel panel-default">
                                         <div class="servPad">
@@ -1319,6 +1319,7 @@
                                     </div> 
                                     
                                     <br><h4>Haircuts</h4>
+                                    
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                             <label>Women's Haircut &amp; Style <span class="badge">{{(rzWomensHaircutStyle.start + rzWomensHaircutStyle.finish) / 60}} hour<span ng-if="rzWomensHaircutStyle.start + rzWomensHaircutStyle.finish != 60">s</span></span></label>
@@ -1686,6 +1687,105 @@
                                             <div><input type="number" name="input" ng-model="rzNailRepair.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNailRepair.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzNailRepair.finish" min="0" max="480" step="15"></div></div>
                                     </div> 
                                     
+                                    <br><h4>Pedicures</h4>
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Pedi Spa <span class="badge">{{(rzPediSpa.start + rzPediSpa.finish) / 60}} hour<span ng-if="rzPediSpa.start + rzPediSpa.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzPediSpa.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPediSpa.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzPediSpa.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Special <span class="badge">{{(rzSpecial.start + rzSpecial.finish) / 60}} hour<span ng-if="rzSpecial.start + rzSpecial.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzSpecial.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecial.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSpecial.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    
+                                    <br><h4>Wax</h4>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Shaping/Wax <span class="badge">{{(rzBrowShapingWax.start + rzBrowShapingWax.finish) / 60}} hour<span ng-if="rzBrowShapingWax.start + rzBrowShapingWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowShapingWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShapingWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShapingWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>      
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bikini Wax <span class="badge">{{(rzBikiniWax.start + rzBikiniWax.finish) / 60}} hour<span ng-if="rzBikiniWax.start + rzBikiniWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBikiniWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBikiniWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBikiniWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                   
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bikini Wax (Brazilian) <span class="badge">{{(rzBikiniWaxBrazilian.start + rzBikiniWaxBrazilian.finish) / 60}} hour<span ng-if="rzBikiniWaxBrazilian.start + rzBikiniWaxBrazilian.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBikiniWaxBrazilian.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBikiniWaxBrazilian.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBikiniWaxBrazilian.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Full Leg Wax <span class="badge">{{(rzFullLegWax.start + rzFullLegWax.finish) / 60}} hour<span ng-if="rzFullLegWax.start + rzFullLegWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzFullLegWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullLegWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullLegWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Full Leg Wax (Half Leg) <span class="badge">{{(rzFullLegWaxHalfLeg.start + rzFullLegWaxHalfLeg.finish) / 60}} hour<span ng-if="rzFullLegWaxHalfLeg.start + rzFullLegWaxHalfLeg.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzFullLegWaxHalfLeg.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullLegWaxHalfLeg.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzFullLegWaxHalfLeg.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Back Wax <span class="badge">{{( rzBackWax.start + rzBackWax.finish) / 60}} hour<span ng-if="rzBackWax.start + rzBackWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBackWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBackWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBackWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Underarms <span class="badge">{{(rzUnderarms.start + rzUnderarms.finish) / 60}} hour<span ng-if="rzUnderarms.start + rzUnderarms.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzUnderarms.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzUnderarms.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzUnderarms.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Arms <span class="badge">{{(rzArms.start + rzArms.finish) / 60}} hour<span ng-if="rzArms.start + rzArms.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzArms.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzArms.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzArms.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Lip, Cheeks or Chin <span class="badge">{{(rzLipCheeksorChin.start + rzLipCheeksorChin.finish) / 60}} hour<span ng-if="rzLipCheeksorChin.start + rzLipCheeksorChin.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLipCheeksorChin.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLipCheeksorChin.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLipCheeksorChin.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Wax <span class="badge">{{(rzBrowWax.start + rzBrowWax.finish) / 60}} hour<span ng-if="rzBrowWax.start + rzBrowWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brows <span class="badge">{{(rzBrows.start + rzBrows.finish) / 60}} hour<span ng-if="rzBrows.start + rzBrows.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrows.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrows.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrows.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                     <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Lip Wax <span class="badge">{{(rzLipWax.start + rzLipWax.finish) / 60}} hour<span ng-if="rzLipWax.start + rzLipWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLipWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLipWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLipWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                   
+                                     <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Cheek Wax <span class="badge">{{(rzCheekWax.start + rzCheekWax.finish) / 60}} hour<span ng-if="rzCheekWax.start + rzCheekWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzCheekWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCheekWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzCheekWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Chin Wax <span class="badge">{{(rzChinWax.start + rzChinWax.finish) / 60}} hour<span ng-if="rzChinWax.start + rzChinWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzChinWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzChinWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzChinWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Shaping and Lip Wax Combo <span class="badge">{{(rzBrowShapingandLipWaxCombo.start + rzBrowShapingandLipWaxCombo.finish) / 60}} hour<span ng-if="rzBrowShapingandLipWaxCombo.start + rzBrowShapingandLipWaxCombo.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowShapingandLipWaxCombo.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShapingandLipWaxCombo.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShapingandLipWaxCombo.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                     
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Eyebrow Shaping <span class="badge">{{(rzEyebrowShaping.start + rzEyebrowShaping.finish) / 60}} hour<span ng-if="rzEyebrowShaping.start + rzEyebrowShaping.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzEyebrowShaping.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyebrowShaping.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyebrowShaping.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Ear Wax <span class="badge">{{(rzEarWax.start + rzEarWax.finish) / 60}} hour<span ng-if="rzEarWax.start + rzEarWax.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzEarWax.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEarWax.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEarWax.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
                                     
                                 </div>
                             </div>
