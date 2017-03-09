@@ -239,8 +239,20 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rz30MinuteReflexology = loadServiceTimes(serviceTimes.rz30MinuteReflexology); 
             $scope.rz60MinuteReflexology = loadServiceTimes(serviceTimes.rz60MinuteReflexology);              
             
-
-
+            // Makeup
+            $scope.rzMakeupConsultation = loadServiceTimes(serviceTimes.rzMakeupConsultation);
+            $scope.rzMakeupSpecialEvent = loadServiceTimes(serviceTimes.rzMakeupSpecialEvent); 
+            $scope.rzMakeupBridal = loadServiceTimes(serviceTimes.rzMakeupBridal); 
+            $scope.rzMakeupBridalAttendants = loadServiceTimes(serviceTimes.rzMakeupBridalAttendants); 
+            $scope.rzMakeupBrideOnly = loadServiceTimes(serviceTimes.rzMakeupBrideOnly);              
+            $scope.rzSeasonalColorAnalysis = loadServiceTimes(serviceTimes.rzSeasonalColorAnalysis);
+            $scope.rzMakeupApplication = loadServiceTimes(serviceTimes.rzMakeupApplication); 
+            $scope.rzMakeupApplicationLesson = loadServiceTimes(serviceTimes.rzMakeupApplicationLesson); 
+            $scope.rzMakeupApplicationLessonAirbrush = loadServiceTimes(serviceTimes.rzMakeupApplicationLessonAirbrush); 
+            $scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching = loadServiceTimes(serviceTimes.rzComplimentarySkinAnalysisMineralMakeupColorMatching);    
+            $scope.rzMakeupLessonBridalTrialSession = loadServiceTimes(serviceTimes.rzMakeupLessonBridalTrialSession);
+            $scope.rzOnLocationMakeup = loadServiceTimes(serviceTimes.rzOnLocationMakeup); 
+            $scope.rzLashes = loadServiceTimes(serviceTimes.rzLashes);
             
             
             // Retrieve profile pic URL from Google Storage
@@ -478,6 +490,22 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rz30MinuteReflexology"] = createServiceObj($scope.rz30MinuteReflexology);
             srvcTimes["rz60MinuteReflexology"] = createServiceObj($scope.rz60MinuteReflexology);
             
+            // Makeup
+            srvcTimes["rzMakeupConsultation"] = createServiceObj($scope.rzMakeupConsultation);
+            srvcTimes["rzMakeupSpecialEvent"] = createServiceObj($scope.rzMakeupSpecialEvent);
+            srvcTimes["rzMakeupBridal"] = createServiceObj($scope.rzMakeupBridal);
+            srvcTimes["rzMakeupBridalAttendants"] = createServiceObj($scope.rzMakeupBridalAttendants);
+            srvcTimes["rzMakeupBrideOnly"] = createServiceObj($scope.rzMakeupBrideOnly);
+            srvcTimes["rzSeasonalColorAnalysis"] = createServiceObj($scope.rzSeasonalColorAnalysis);
+            srvcTimes["rzMakeupApplication"] = createServiceObj($scope.rzMakeupApplication);
+            srvcTimes["rzMakeupApplicationLesson"] = createServiceObj($scope.rzMakeupApplicationLesson);
+            srvcTimes["rzMakeupApplicationLessonAirbrush"] = createServiceObj($scope.rzMakeupApplicationLessonAirbrush);
+            srvcTimes["rzComplimentarySkinAnalysisMineralMakeupColorMatching"] = createServiceObj($scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching);          
+            srvcTimes["rzMakeupLessonBridalTrialSession"] = createServiceObj($scope.rzMakeupLessonBridalTrialSession);
+            srvcTimes["rzOnLocationMakeup"] = createServiceObj($scope.rzOnLocationMakeup);
+            srvcTimes["rzLashes"] = createServiceObj($scope.rzLashes);
+
+
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];

@@ -1842,6 +1842,72 @@
                                     </div>
                                     
                                     
+                                    <br><h4>Makeup</h4>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Consultation <span class="badge">{{(rzMakeupConsultation.start + rzMakeupConsultation.finish) / 60}} hour<span ng-if="rzMakeupConsultation.start + rzMakeupConsultation.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupConsultation.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupConsultation.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupConsultation.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Special Event (e.g. formal dance, special occasion) <span class="badge">{{(rzMakeupSpecialEvent.start + rzMakeupSpecialEvent.finish) / 60}} hour<span ng-if="rzMakeupSpecialEvent.start + rzMakeupSpecialEvent.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupConsultation.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupSpecialEvent.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupSpecialEvent.finish" min="0" max="480" step="15"></div></div>
+                                    </div>   
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bridal <span class="badge">{{(rzMakeupBridal.start + rzMakeupBridal.finish) / 60}} hour<span ng-if="rzMakeupBridal.start + rzMakeupBridal.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupBridal.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBridal.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBridal.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bridal (bride + 3 attendants) <span class="badge">{{(rzMakeupBridalAttendants.start + rzMakeupBridalAttendants.finish) / 60}} hour<span ng-if="rzMakeupBridalAttendants.start + rzMakeupBridalAttendants.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupBridalAttendants.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBridalAttendants.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBridalAttendants.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Bridal (bride only) <span class="badge">{{(rzMakeupBrideOnly.start + rzMakeupBrideOnly.finish) / 60}} hour<span ng-if="rzMakeupBrideOnly.start + rzMakeupBrideOnly.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupBrideOnly.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBrideOnly.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupBrideOnly.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Seasonal Color Analysis <span class="badge">{{(rzSeasonalColorAnalysis.start + rzSeasonalColorAnalysis.finish) / 60}} hour<span ng-if="rzSeasonalColorAnalysis.start + rzSeasonalColorAnalysis.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzSeasonalColorAnalysis.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSeasonalColorAnalysis.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzSeasonalColorAnalysis.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Application <span class="badge">{{(rzMakeupApplication.start + rzMakeupApplication.finish) / 60}} hour<span ng-if="rzMakeupApplication.start + rzMakeupApplication.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupApplication.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplication.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplication.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Application Lesson <span class="badge">{{(rzMakeupApplicationLesson.start + rzMakeupApplicationLesson.finish) / 60}} hour<span ng-if="rzMakeupApplicationLesson.start + rzMakeupApplicationLesson.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupApplicationLesson.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplicationLesson.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplicationLesson.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Application Lesson (Airbrush) <span class="badge">{{(rzMakeupApplicationLessonAirbrush.start + rzMakeupApplicationLessonAirbrush.finish) / 60}} hour<span ng-if="rzMakeupApplicationLessonAirbrush.start + rzMakeupApplicationLessonAirbrush.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupApplicationLessonAirbrush.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplicationLessonAirbrush.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupApplicationLessonAirbrush.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Complimentary Skin Analysis/Mineral Makeup Color Matching <span class="badge">{{(rzComplimentarySkinAnalysisMineralMakeupColorMatching.start + rzComplimentarySkinAnalysisMineralMakeupColorMatching.finish) / 60}} hour<span ng-if="rzComplimentarySkinAnalysisMineralMakeupColorMatching.start + rzComplimentarySkinAnalysisMineralMakeupColorMatching.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzComplimentarySkinAnalysisMineralMakeupColorMatching.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzComplimentarySkinAnalysisMineralMakeupColorMatching.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzComplimentarySkinAnalysisMineralMakeupColorMatching.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Makeup Lesson/Bridal Trial Session <span class="badge">{{(rzMakeupLessonBridalTrialSession.start + rzMakeupLessonBridalTrialSession.finish) / 60}} hour<span ng-if="rzMakeupLessonBridalTrialSession.start + rzMakeupLessonBridalTrialSession.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzMakeupLessonBridalTrialSession.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupLessonBridalTrialSession.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzMakeupLessonBridalTrialSession.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>On Location Makeup <span class="badge">{{(rzOnLocationMakeup.start + rzOnLocationMakeup.finish) / 60}} hour<span ng-if="rzOnLocationMakeup.start + rzOnLocationMakeup.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzOnLocationMakeup.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOnLocationMakeup.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzOnLocationMakeup.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Lashes <span class="badge">{{(rzLashes.start + rzLashes.finish) / 60}} hour<span ng-if="rzLashes.start + rzLashes.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLashes.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashes.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashes.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
                                     
                                     
                                 </div>
