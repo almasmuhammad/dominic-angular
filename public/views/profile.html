@@ -1843,6 +1843,7 @@
                                     
                                     
                                     <br><h4>Makeup</h4>
+                                    
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                             <label>Consultation <span class="badge">{{(rzMakeupConsultation.start + rzMakeupConsultation.finish) / 60}} hour<span ng-if="rzMakeupConsultation.start + rzMakeupConsultation.finish != 60">s</span></span></label>
@@ -1909,6 +1910,43 @@
                                             <div><input type="number" name="input" ng-model="rzLashes.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashes.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashes.finish" min="0" max="480" step="15"></div></div>
                                     </div>
                                     
+                                    
+                                    <br><h4>Brow</h4>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Eyelash Extensions <span class="badge">{{(rzEyelashExtensions.start + rzEyelashExtensions.finish) / 60}} hour<span ng-if="rzEyelashExtensions.start + rzEyelashExtensions.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzEyelashExtensions.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyelashExtensions.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyelashExtensions.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Lavish Lashes <span class="badge">{{(rzLavishLashes.start + rzLavishLashes.finish) / 60}} hour<span ng-if="rzLavishLashes.start + rzLavishLashes.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLavishLashes.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLavishLashes.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLavishLashes.finish" min="0" max="480" step="15"></div></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Lash &amp; Brow Tinting - Duo <span class="badge">{{(rzLashBrowTintingDuo.start + rzLashBrowTintingDuo.finish) / 60}} hour<span ng-if="rzLashBrowTintingDuo.start + rzLashBrowTintingDuo.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzLashBrowTintingDuo.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashBrowTintingDuo.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzLashBrowTintingDuo.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Shaping <span class="badge">{{(rzBrowShaping.start + rzBrowShaping.finish) / 60}} hour<span ng-if="rzBrowShaping.start + rzBrowShaping.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowShaping.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShaping.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowShaping.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Tint and Shaping <span class="badge">{{(rzBrowTintandShaping.start + rzBrowTintandShaping.finish) / 60}} hour<span ng-if="rzBrowTintandShaping.start + rzBrowTintandShaping.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowTintandShaping.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowTintandShaping.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowTintandShaping.finish" min="0" max="480" step="15"></div></div>
+                                    </div> 
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Brow Tint <span class="badge">{{(rzBrowTint.start + rzBrowTint.finish) / 60}} hour<span ng-if="rzBrowTint.start + rzBrowTintandShaping.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzBrowTint.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowTint.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzBrowTint.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                            <label>Eye Lash Tint <span class="badge">{{(rzEyeLashTint.start + rzEyeLashTint.finish) / 60}} hour<span ng-if="rzEyeLashTint.start + rzEyeLashTint.finish != 60">s</span></span></label>
+                                            <div><input type="number" name="input" ng-model="rzEyeLashTint.start" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyeLashTint.process" min="0" max="480" step="15"><input type="number" name="input" ng-model="rzEyeLashTint.finish" min="0" max="480" step="15"></div></div>
+                                    </div>                                     
                                     
                                 </div>
                             </div>

@@ -254,6 +254,16 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzOnLocationMakeup = loadServiceTimes(serviceTimes.rzOnLocationMakeup); 
             $scope.rzLashes = loadServiceTimes(serviceTimes.rzLashes);
             
+            // Brow
+            $scope.rzEyelashExtensions = loadServiceTimes(serviceTimes.rzEyelashExtensions);
+            $scope.rzLavishLashes = loadServiceTimes(serviceTimes.rzLavishLashes); 
+            $scope.rzLashBrowTintingDuo = loadServiceTimes(serviceTimes.rzLashBrowTintingDuo);
+            $scope.rzBrowShaping = loadServiceTimes(serviceTimes.rzBrowShaping);
+            $scope.rzBrowTintandShaping = loadServiceTimes(serviceTimes.rzBrowTintandShaping); 
+            $scope.rzBrowTint = loadServiceTimes(serviceTimes.rzBrowTint);
+            $scope.rzEyeLashTint = loadServiceTimes(serviceTimes.rzEyeLashTint);
+            
+            
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -505,7 +515,20 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzOnLocationMakeup"] = createServiceObj($scope.rzOnLocationMakeup);
             srvcTimes["rzLashes"] = createServiceObj($scope.rzLashes);
 
+            // Brow
+            srvcTimes["rzEyelashExtensions"] = createServiceObj($scope.rzEyelashExtensions);
+            srvcTimes["rzLavishLashes"] = createServiceObj($scope.rzLavishLashes);
+            srvcTimes["rzLashBrowTintingDuo"] = createServiceObj($scope.rzLashBrowTintingDuo);            
+            srvcTimes["rzBrowShaping"] = createServiceObj($scope.rzBrowShaping);
+            srvcTimes["rzBrowTintandShaping"] = createServiceObj($scope.rzBrowTintandShaping);
+            srvcTimes["rzBrowTint"] = createServiceObj($scope.rzBrowTint);
+            srvcTimes["rzEyeLashTint"] = createServiceObj($scope.rzEyeLashTint);
 
+
+
+
+
+            
             
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
