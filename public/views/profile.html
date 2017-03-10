@@ -1164,14 +1164,26 @@
                                 <label class="col-md-4 control-label" for="pf_service" ></label>
                                 <div class="col-md-4">
                                     <h2>Service Times</h2>
+                                    <p>Service times enable you to customize how much time should be blocked out to complete a service.  These fine-tuned service times are then used to block out time on your appointment calendar.</p>
+                                    <p>For example, if you set the service time for a men's haircut to 45 minutes, then 45 minutes is blocked on your calendar when someone books a men's haircut.</p>
+                                    <p>Optionally you can specify a "process" time, and a "finish" time.  This is useful when the service has 3 steps (start, process, and finish) and allows you to overlap clients/services.</p>
                                     
-                                    <p><strong>Service</strong>, <strong>Process</strong>, and <strong>Finish</strong> times are shown in minutes and incremented/decremented in 15-minute steps.</p>
+                                    <p>For each service, specify a start time, and optionally specify process and finish times.</p>
                                     <ul>
-                                    <li><strong>Service</strong> time the amount of time to block on your calendar when a client books a particular service.</li>
+                                    <li><strong>Start</strong> time is the amount of time to block on your calendar when a client books a particular service.</li>
                                     <li><strong>Process</strong> time opens up a gap in your schedule for booking another client (overlapping clients).</li>
                                     <li><strong>Finish</strong> time blocks out time from your calendar to finish up a client that requires a processing time.</li>
                                     </ul>
-                                    <span class="badge"> Service </span><span class="specialBadge servPad"> Process (optional) </span><span class="specialBadge servPad"> Finish (optional)</span><br><br>
+                                    
+                                    <p><strong>Start</strong>, <strong>Process</strong>, and <strong>Finish</strong> times are shown in minutes and incremented/decremented in 15-minute steps.</p>
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <p><strong>Explanation of service time input box:</strong></p>
+                                        <label> Service name <span class="badge"> hours to complete (start + finish minutes) </span></label><br>
+                                        <span class="boxed">Start time</span><span class="boxed"> Process time</span><span class="boxed"> Finish time</span><br><br>
+                                        </div>
+                                    </div>
                                     
                                     <br><h4>Hair Color</h4>
                                     
