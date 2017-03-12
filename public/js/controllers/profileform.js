@@ -597,7 +597,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             
         });  // Save profile data
       
-      
 }]); // Controller
 
 
@@ -690,4 +689,3 @@ function startSpinner() {
     
     return spinner;
 }
-      

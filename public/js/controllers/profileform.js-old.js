@@ -525,11 +525,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzEyeLashTint"] = createServiceObj($scope.rzEyeLashTint);
 
 
-
-
-
-            
-            
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
             if (fileToUpload != null) {
@@ -596,6 +591,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             }
             
         });  // Save profile data
+      
       
 }]); // Controller
 
@@ -689,3 +685,4 @@ function startSpinner() {
     
     return spinner;
 }
+      

@@ -3,18 +3,18 @@
     <h2 class="mySplash">Our Staff</h2>
     
     <div class="specialistSearch text-muted row ">
-        <div class="col-md-4" style="margin:8px;">
+        <div class="col-md-4 searchPad" >
         <input class="form-control input-md" id="formGroupInputLarge" type="text" ng-model="query" placeholder="search by name, product or service" data-toggle="tooltip" data-placement="bottom" title='Search by name, service or product.  For example, "Amanda" or "hair stylist" or "Biolage"'>
         </div>
         
-        <label class="formgroup" style="margin:8px;">Sort by 
+        <label class="formgroup searchPad">Sort by 
         <select ng-model="staffOrder">
             <option value="firstname">Name</option>
             <option value="title">Service</option>
         </select>
         </label>
         
-        <label class="formgroup" style="margin:8px;">
+        <label class="formgroup searchPad">
             <input type="radio" ng-model="direction" name="direction" checked> ascending
         </label>
         <label class="formgroup">
