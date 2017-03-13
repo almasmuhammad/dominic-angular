@@ -8,7 +8,6 @@
                         <a class="close" data-dismiss="alert">×</a>Remember to save your updates with the <strong>Save My Profile</strong> button!
                     </div> 
     
-                        
                     <br>My Profile
                     <div class="pull-right"><strong><span id="welcome-name"></span></strong></div>
                 </legend>
@@ -132,64 +131,64 @@
                                 <div class="col-md-4">
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedMonday" type="checkbox" name="pf_cMonday" id="pf_cMonday" value="Monday"> Monday: 
+                                            <input ng-model="checkedMonday" type="checkbox" name="pf_cMonday" id="pf_cbMonday" value="on"> Monday: 
                                             <p id="myWorkHours" ng-hide="!checkedMonday">
-                                                <input type="text" class="time start form-control input-sm" value="8:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="5:00pm"/>
+                                                <input id="pf_txtMondayStart" type="text" class="time start form-control input-sm" value="8:00am"/> to
+                                                <input id="pf_txtMondayEnd" type="text" class="time end form-control input-sm" value="5:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedTuesday"  type="checkbox" name="pf_cTuesday" id="pf_cTuesday" value="Tuesday"> Tuesday: 
+                                            <input ng-model="checkedTuesday"  type="checkbox" name="pf_cTuesday" id="pf_cbTuesday" value="on"> Tuesday: 
                                             <p id="myWorkHours" ng-hide="!checkedTuesday">
-                                                <input type="text" class="time start form-control input-sm" value="8:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="5:00pm"/>
+                                                <input id="pf_txtTuesdayStart" type="text" class="time start form-control input-sm" value="8:00am"/> to
+                                                <input id="pf_txtTuesdayEnd" type="text" class="time end form-control input-sm" value="5:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedWednesday" type="checkbox" name="pf_cWednesday" id="pf_cWednesday" value="Wednesday"> Wednesday: 
+                                            <input ng-model="checkedWednesday" type="checkbox" name="pf_cWednesday" id="pf_cbWednesday" value="on"> Wednesday: 
                                             <p id="myWorkHours" ng-hide="!checkedWednesday">
-                                                <input type="text" class="time start form-control input-sm" value="8:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="5:00pm"/>
+                                                <input id="pf_txtWednesdayStart" type="text" class="time start form-control input-sm" value="8:00am"/> to
+                                                <input id="pf_txtWednesdayEnd" type="text" class="time end form-control input-sm" value="5:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedThursday" type="checkbox" name="pf_cThursday" id="pf_cThursday" value="Wednesday"> Thursday: 
+                                            <input ng-model="checkedThursday" type="checkbox" name="pf_cThursday" id="pf_cbThursday" value="on"> Thursday: 
                                             <p id="myWorkHours" ng-hide="!checkedThursday">
-                                                <input type="text" class="time start form-control input-sm" value="8:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="5:00pm"/>
+                                                <input id="pf_txtThursdayStart" type="text" class="time start form-control input-sm" value="8:00am"/> to
+                                                <input id="pf_txtThursdayEnd" type="text" class="time end form-control input-sm" value="5:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedFriday" type="checkbox" name="pf_cFriday" id="pf_cFriday" value="Friday"> Friday: 
+                                            <input ng-model="checkedFriday" type="checkbox" name="pf_cFriday" id="pf_cbFriday" value="on"> Friday: 
                                             <p id="myWorkHours" ng-hide="!checkedFriday">
-                                                <input type="text" class="time start form-control input-sm" value="8:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="5:00pm"/>
+                                                <input id="pf_txtFridayStart" type="text" class="time start form-control input-sm" value="8:00am"/> to
+                                                <input id="pf_txtFridayEnd" type="text" class="time end form-control input-sm" value="5:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedSaturday" type="checkbox" name="pf_cSaturday" id="pf_cSaturday" value="Saturday"> Saturday: 
+                                            <input ng-model="checkedSaturday" type="checkbox" name="pf_cSaturday" id="pf_cbSaturday" value="on"> Saturday: 
                                             <p id="myWorkHours" ng-hide="!checkedSaturday">
-                                                <input type="text" class="time start form-control input-sm" value="10:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="4:00pm"/>
+                                                <input id="pf_txtSaturdayStart" type="text" class="time start form-control input-sm" value="10:00am"/> to
+                                                <input id="pf_txtSaturdayEnd" type="text" class="time end form-control input-sm" value="4:00pm"/>
                                             </p>
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label for="title-3">
-                                            <input ng-model="checkedSunday" type="checkbox" name="pf_cSunday" id="pf_cSunday" value="Sunday"> Sunday: 
+                                            <input ng-model="checkedSunday" type="checkbox" name="pf_cSunday" id="pf_cbSunday" value="on"> Sunday: 
                                             <p id="myWorkHours"ng-hide="!checkedSunday">
-                                                <input type="text" class="time start form-control input-sm" value="12:00am"/> to
-                                                <input type="text" class="time end form-control input-sm" value="4:00pm"/>
+                                                <input id="pf_txtSundayStart" type="text" class="time start form-control input-sm" value="12:00am"/> to
+                                                <input id="pf_txtSundayEnd" type="text" class="time end form-control input-sm" value="4:00pm"/>
                                             </p>
                                         </label>
                                     </div>

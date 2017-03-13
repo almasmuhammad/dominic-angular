@@ -323,6 +323,47 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_myTitle = getCheckedCheckboxesFor('pf_cbMyTitle');
             const pf_profilePic = pf_txtProfilePic;
             
+            
+            var myHours = {
+                Monday : {
+                    'work': $scope.checkedMonday ? 'on':'off',
+                    'start': pf_txtMondayStart.value,
+                    'end': pf_txtMondayEnd.value
+                },
+                Tuesday : {
+                    'work': $scope.checkedTuesday ? 'on':'off',
+                    'start': pf_txtTuesdayStart.value,
+                    'end': pf_txtTuesdayEnd.value
+                },
+                Wednesday : {
+                    'work': $scope.checkedWednesday ? 'on':'off',
+                    'start': pf_txtWednesdayStart.value,
+                    'end': pf_txtWednesdayEnd.value
+                },
+                Thursday : {
+                    'work': $scope.checkedThursday ? 'on':'off',
+                    'start': pf_txtThursdayStart.value,
+                    'end': pf_txtThursdayEnd.value
+                },
+                Friday : {
+                    'work': $scope.checkedFriday ? 'on':'off',
+                    'start': pf_txtFridayStart.value,
+                    'end': pf_txtFridayEnd.value
+                },
+                Saturday : {
+                    'work': $scope.checkedSaturday ? 'on':'off',
+                    'start': pf_txtSaturdayStart.value,
+                    'end': pf_txtSaturdayEnd.value
+                },
+                Sunday : {
+                    'work': $scope.checkedSunday ? 'on':'off',
+                    'start': pf_txtSundayStart.value,
+                    'end': pf_txtSundayEnd.value
+                }
+            }
+
+            
+            
             /* About text is created from a "tinymce" embedded editor */
             const pf_about = $scope.tinymceModel;    
             
@@ -554,6 +595,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , email: pf_email
                 , mobile: pf_mobile
                 , title: pf_myTitle
+                , hours: myHours
                 , createdate: now
                 , about: pf_about
                 , hairColor: pf_hairColor
