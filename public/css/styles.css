@@ -536,7 +536,8 @@ body { padding-top: 50px; }
 
 .tab-pane {
     padding: 8px;
-    height:494px;
+    /*height:494px;*/
+    height:360px;
     overflow-y:scroll;
     border:1px solid #ccc;
     border-radius: 8px;
