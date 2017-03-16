@@ -34,6 +34,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
         } 
       } //resolve
     })
+    .when('/scheduler', {
+      templateUrl: 'views/scheduler.html',
+      controller: 'SchedulerController',
+      resolve: { 
+        currentAuth: function(Authentication) {
+            return Authentication.requireAuth();
+        }
+      }  //resolve
+    })
     .when('/header', {
       templateUrl: 'views/header.html'
     })
