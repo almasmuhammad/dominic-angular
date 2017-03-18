@@ -656,6 +656,11 @@ table#hours-tab {
     border-radius: 8px;
 }
 
+.myHours {
+    font-size: 1.2em;
+    color:grey;
+}
+
 .section-heading {
       color: #fff !important;
       /*background-color: #ffd1b3 !important;*/

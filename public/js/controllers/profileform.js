@@ -416,8 +416,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_styleseatID = pf_txtStyleSeatID.value;
             const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
             
-            
-            
             // handle Service times (Advanced tab)
             srvcTimes = {};
             

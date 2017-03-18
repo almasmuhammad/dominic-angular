@@ -48,33 +48,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             populateCheckbox('pf_cbFacial', facial);       
                 
             /* About textarea is now a tinymce editor allowing for rich text */
-            $scope.tinymceModel = snapshot.val().about;            
-            
-            /* Hours available */
-            doesExist = snapshot.val().hours;
-            if( doesExist ) {
-                snapshot.val().hours.Monday.work == 'on' ? $scope.checkedMonday = true : $scope.checkedMonday = false;
-                snapshot.val().hours.Tuesday.work == 'on' ? $scope.checkedTuesday = true : $scope.checkedTuesday = false;
-                snapshot.val().hours.Wednesday.work == 'on' ? $scope.checkedWednesday = true : $scope.checkedWednesday = false;
-                snapshot.val().hours.Thursday.work == 'on' ? $scope.checkedThursday = true : $scope.checkedThursday = false;
-                snapshot.val().hours.Friday.work == 'on' ? $scope.checkedFriday = true : $scope.checkedFriday = false;
-                snapshot.val().hours.Saturday.work == 'on' ? $scope.checkedSaturday = true : $scope.checkedSaturday = false;
-                snapshot.val().hours.Sunday.work == 'on' ? $scope.checkedSunday = true : $scope.checkedSunday = false;                
-                $('#pf_txtMondayStart').val(snapshot.val().hours.Monday.start);
-                $('#pf_txtMondayEnd').val(snapshot.val().hours.Monday.end);
-                $('#pf_txtTuesdayStart').val(snapshot.val().hours.Tuesday.start);
-                $('#pf_txtTuesdayEnd').val(snapshot.val().hours.Tuesday.end);
-                $('#pf_txtWednesdayStart').val(snapshot.val().hours.Wednesday.start);
-                $('#pf_txtWednesdayEnd').val(snapshot.val().hours.Wednesday.end);            
-                $('#pf_txtThursdayStart').val(snapshot.val().hours.Thursday.start);
-                $('#pf_txtThursdayEnd').val(snapshot.val().hours.Thursday.end);
-                $('#pf_txtFridayStart').val(snapshot.val().hours.Friday.start);
-                $('#pf_txtFridayEnd').val(snapshot.val().hours.Friday.end);            
-                $('#pf_txtSaturdayStart').val(snapshot.val().hours.Saturday.start);
-                $('#pf_txtSaturdayEnd').val(snapshot.val().hours.Saturday.end);             
-                $('#pf_txtSundayStart').val(snapshot.val().hours.Sunday.start);
-                $('#pf_txtSundayEnd').val(snapshot.val().hours.Sunday.end); 
-            }
+            $scope.tinymceModel = snapshot.val().about;
             
             var referralOn = snapshot.val().referral;
             if (referralOn == "on") {
@@ -118,8 +92,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             serviceTimes = snapshot.val().serviceTimes;
             if( serviceTimes === undefined ) {
                 serviceTimes = [];
-            }       
-           
+            }
             
             // Hair Color
             $scope.rzColorRetouch = loadServiceTimes(serviceTimes.rzColorRetouch);
@@ -350,45 +323,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_myTitle = getCheckedCheckboxesFor('pf_cbMyTitle');
             const pf_profilePic = pf_txtProfilePic;
             
-            var myHours = {
-                Monday : {
-                    'work': $scope.checkedMonday ? 'on':'off',
-                    'start': pf_txtMondayStart.value,
-                    'end': pf_txtMondayEnd.value
-                },
-                Tuesday : {
-                    'work': $scope.checkedTuesday ? 'on':'off',
-                    'start': pf_txtTuesdayStart.value,
-                    'end': pf_txtTuesdayEnd.value
-                },
-                Wednesday : {
-                    'work': $scope.checkedWednesday ? 'on':'off',
-                    'start': pf_txtWednesdayStart.value,
-                    'end': pf_txtWednesdayEnd.value
-                },
-                Thursday : {
-                    'work': $scope.checkedThursday ? 'on':'off',
-                    'start': pf_txtThursdayStart.value,
-                    'end': pf_txtThursdayEnd.value
-                },
-                Friday : {
-                    'work': $scope.checkedFriday ? 'on':'off',
-                    'start': pf_txtFridayStart.value,
-                    'end': pf_txtFridayEnd.value
-                },
-                Saturday : {
-                    'work': $scope.checkedSaturday ? 'on':'off',
-                    'start': pf_txtSaturdayStart.value,
-                    'end': pf_txtSaturdayEnd.value
-                },
-                Sunday : {
-                    'work': $scope.checkedSunday ? 'on':'off',
-                    'start': pf_txtSundayStart.value,
-                    'end': pf_txtSundayEnd.value
-                }
-            }
-
-            
             /* About text is created from a "tinymce" embedded editor */
             const pf_about = $scope.tinymceModel;    
             
@@ -415,6 +349,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_squareID = pf_txtSquareID.value;
             const pf_styleseatID = pf_txtStyleSeatID.value;
             const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
+            
+            
             
             // handle Service times (Advanced tab)
             srvcTimes = {};
@@ -588,7 +524,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["rzBrowTint"] = createServiceObj($scope.rzBrowTint);
             srvcTimes["rzEyeLashTint"] = createServiceObj($scope.rzEyeLashTint);
 
-            
+
             // upload profile pic to Google Storage
             var fileToUpload = document.getElementById("pf_txtProfilePic").files[0];
             if (fileToUpload != null) {
@@ -613,7 +549,6 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , email: pf_email
                 , mobile: pf_mobile
                 , title: pf_myTitle
-                , hours: myHours
                 , createdate: now
                 , about: pf_about
                 , hairColor: pf_hairColor
@@ -656,6 +591,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             }
             
         });  // Save profile data
+      
       
 }]); // Controller
 
@@ -719,7 +655,6 @@ function loadServiceTimes(serviceIn) {
         'process': process,
         'finish': finish
     }; 
-
     return serviceOut;
 }
       
@@ -750,3 +685,4 @@ function startSpinner() {
     
     return spinner;
 }
+      
