@@ -2,41 +2,85 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
 
   function ($scope, $rootScope, $firebaseObject, $routeParams) {
       
-        ref = firebase.database().ref("/days");
-        console.log('ref next');
-        console.log(ref);
+    ref = firebase.database().ref("/days");
+    console.log('ref next');
+    console.log(ref);
+    
+//    var syncObject = $firebaseObject(ref);
+//    syncObject.$bindTo($scope, 'days');
       
-        // function to set the default data
-//firebase.database().ref('/associates/' + profUID).set({      
-      
-        $scope.reset = function () {
-            ref.set({
-                monday: {
-                    name: 'Monday'
-                    , slots: {
-                        0900: {
-                            time: '9:00am'
-                            , booked: false
+     day1 = {'monday' : {
+                'name' : 'Monday', 
+                'slots': {
+                    '8:00am': {
+                        'booked': false, 
+                        'time': '8:00am'
+                        },
+                    '8:15am': {
+                        'booked': false, 
+                        'time': '8:15am'
                         }
-                        , 0110: {
-                            time: '11:00am'
-                            , booked: false
+                    }
+                },
+              'tuesday' : {
+                'name' : 'Tuesday', 
+                'slots': {
+                    '8:00am': {
+                        'booked': false, 
+                        'time': '8:00am'
+                        },
+                    '8:15am': {
+                        'booked': false, 
+                        'time': '8:15am'
                         }
                     }
                 }
-                , tuesday: {
-                    name: 'Tuesday'
-                    , slots: {
-                        0900: {
-                            time: '9:00am'
-                            , booked: false
-                        }
-                        , 0110: {
-                            time: '11:00am'
-                            , booked: false
-                        }
-                    }
-                }
-            });
-        };
+            };
+
+//            day3 = {'wednesday' : {
+//                'name' : 'wednesday', 
+//                'slots': {
+//                    '8:00am': {
+//                        'booked': false, 
+//                        'time': '10:00am'
+//                        },
+//                    '8:15am': {
+//                        'booked': false, 
+//                        'time': '10:15am'
+//                        }
+//                    }
+//                }
+//            };
+      
+//      dayarray = [];
+//      dayarray.push(day1);
+//      dayarray.push(day2);
+//      dayarray.push(day3);
+//      console.log(dayarray[0]);
+
+      $scope.days = day1;
+
+      
+
+      
+//      var dayCount = 1;
+//      
+//    for (i = 1; i < dayCount + 1; i++) { 
+//        var newDate = new Date(Date.now() + i*24*60*60*1000);
+//        console.log('newDate=' + newDate);
+//        day = {newdate : {
+//                'name' : 'Monday', 
+//                'slots': {
+//                    '8:00am': {
+//                        'booked': 'false', 
+//                        'time': '8:00am'
+//                        }
+//                    }
+//                }
+//            };
+//        days.push(day);
+//                                         
+//    }
+
+      
 }]); // Controller
