@@ -3,12 +3,15 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
   function ($scope, $rootScope, $firebaseObject, $routeParams, $firebaseArray) {
         window.scrollTo(0, 0);
 
-        uid = "0yMxewmgTYU8dxG6mq4fLbQxeU02";
-        var days = [];
-        var dayCount = 7; // %% TODO %%           for now, one week
-        var segments = 8; // default to 8 1-hour segments
-        var segmentMinutes = 60; // default segments are 60 minutes
+        // Incoming user id
+        var uid = $routeParams.uID;
       
+        var days = [];
+        var dayCount = 7;           // default number of future days to display
+        var segments = 8;           // default to 8 1-hour segments
+        var segmentMinutes = 60;    // default segments are 60 minutes
+      
+        // Load up the dayCount and segment minutes (segmentTime) from staff member's profile
         firebase.database().ref('/associates/' + uid + '/bookingConfiguration').once('value').then(function (snapshot) {
             if( snapshot.val().dayCount ) {
                 dayCount = snapshot.val().dayCount; 
@@ -16,14 +19,9 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             if( snapshot.val().segmentTime ) {
                 segmentMinutes = snapshot.val().segmentTime; 
             }
-            console.log('dayCount='+dayCount);
-            console.log('segmentMinutes='+segmentMinutes);
         });
       
         firebase.database().ref('/associates/' + uid + '/hours').once('value').then(function (snapshot) {
-            
-            
-
             
             // Work schedule reference
             obj = snapshot.val();
@@ -81,12 +79,12 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         $(document).ready(function() {
             console.log('in doc ready!');
             
-            firebase.database().ref('/associates/' + uid + '/bookings').once('value').then(function (snapshot) {
+            firebase.database().ref('/bookings/' + uid).once('value').then(function (snapshot) {
                 console.log('in snapshot');
                 snapshot.forEach(function(childSnapshot) {
                     var bookingDate = childSnapshot.key;
                     var bookingDetails = childSnapshot.val();
-                    d1 = new Date(bookingDate); 
+                    d1 = new Date(bookingDate);
                     
                     // Loop thru bookings to block out time slots on view 
                     days.forEach(function(day) {
