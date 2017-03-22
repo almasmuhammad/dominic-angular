@@ -29,7 +29,7 @@
                 </span>
                 <h4><span class="glyphicon glyphicon-phone"></span>  {{staffmember.mobile}}</h4>
                 <h4><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{val.email}}">{{staffmember.email}}</a></h4>
-                <div class="well" style="margin:20px; padding:20px;">
+                <div class="well" style="margin:40px; padding-bottom:40px;">
                       
                 <div ng-if="staffmember.hours.Monday.work == 'on' || staffmember.hours.Tuesday.work == 'on' || staffmember.hours.Wednesday.work == 'on' || staffmember.hours.Thursday.work == 'on' || staffmember.hours.Friday.work == 'on' || staffmember.hours.Saturday.work == 'on' || staffmember.hours.Sunday.work == 'on'">
                 <h2>Hours</h2>
@@ -194,6 +194,8 @@
         <div class="buttonPad" ng-if="staffmember.square == 'on' && staffmember.squareID"><a href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
         
         <div class="buttonPad" ng-if="staffmember.styleseat == 'on' && staffmember.styleseatID"><a href="https://www.styleseat.com/m/book/v/{{staffmember.styleseatID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
+        
+        <div class="buttonPad" ng-if="staffmember.onlineBooking == 'on'"><a href="#scheduler/{{staffmember.regUID}}" class="btn btn-primary btn-lg" role="button">Book Now</a></div>
         
   </div> <!-- Panel -->   
     

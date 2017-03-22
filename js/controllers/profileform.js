@@ -112,14 +112,23 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $('#pf_txtSquareID').val(snapshot.val().squareID);
             $('#pf_txtStyleSeatID').val(snapshot.val().styleseatID);
             $('#pf_loyaltydp').val(snapshot.val().loyaltyDiscountExpiration);
+            $('#pf_cbOnlineBooking').val(snapshot.val().onlineBooking);
             
+            // Booking Configuration
+            $scope.dayCount = 7;  // Default to a week if not specified
+            if( snapshot.val().bookingConfiguration ) {
+                $scope.dayCount = snapshot.val().bookingConfiguration.dayCount;
+            }
+            $scope.segmentTime = 60;  // Default 60-minute segment time
+            if( snapshot.val().bookingConfiguration ) {
+                $scope.segmentTime = snapshot.val().bookingConfiguration.segmentTime;
+            }
             
             // Service times specify the time it takes a specialist to complete a service (ombre, men's haircut, etc)
             serviceTimes = snapshot.val().serviceTimes;
             if( serviceTimes === undefined ) {
                 serviceTimes = [];
             }       
-           
             
             // Hair Color
             $scope.rzColorRetouch = loadServiceTimes(serviceTimes.rzColorRetouch);
@@ -409,12 +418,22 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             const pf_loyalty = getCheckedCheckboxesFor('pf_cbLoyalDiscount');
             const pf_square = getCheckedCheckboxesFor('pf_cbSquare');
             const pf_styleseat = getCheckedCheckboxesFor('pf_cbStyleSeat');
+            const pf_OnlineBooking = getCheckedCheckboxesFor('pf_cbOnlineBooking');
             const pf_refDiscount = pf_txtRefDiscount.value;
             const pf_ncDiscount = pf_txtNcDiscount.value;
             const pf_loyalDiscount = pf_txtLoyalDiscount.value;
             const pf_squareID = pf_txtSquareID.value;
             const pf_styleseatID = pf_txtStyleSeatID.value;
             const pf_loyaltyDiscountExpiration = pf_loyaltydp.value;
+            
+            // Booking Configuration
+            pf_dayCount = $scope.dayCount;
+            pf_segmentTime = $scope.segmentTime;
+            var bookingConfig = {
+                'dayCount': pf_dayCount,
+                'segmentTime': pf_segmentTime
+            }
+            
             
             // handle Service times (Advanced tab)
             srvcTimes = {};
@@ -635,10 +654,12 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 , squareID: pf_squareID
                 , styleseat: pf_styleseat
                 , styleseatID: pf_styleseatID
+                , onlineBooking: pf_OnlineBooking
                 , refdiscountPct: pf_refDiscount
                 , ncdiscountPct: pf_ncDiscount
                 , loyaldiscountPct: pf_loyalDiscount
                 , loyaltyDiscountExpiration: pf_loyaltyDiscountExpiration
+                , bookingConfiguration: bookingConfig
                 , serviceTimes: srvcTimes
                 , regUID: profUID
             });

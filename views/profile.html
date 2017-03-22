@@ -1211,8 +1211,18 @@
                         </div>  <!-- Discount tab -->
                         
                         
-                        <div id="menu10" class="tab-pane fade">
-                            <!-- Booking tab -->
+                        <div id="menu10" class="tab-pane fade">    
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="pf_cbOnlineBooking">Web Booking</label>
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        <label for="toggle-0">
+                                            <input type="checkbox" name="pf_cbOnlineBooking" id="pf_cbOnlineBooking" value="on"> Online Booking (via this web site)</label>
+                                    </div>
+                                </div>
+                            </div>                             
+                            <br>
+                            
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="pf_pcSquare">Square</label>
                                 <div class="col-md-4">
@@ -1241,6 +1251,20 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="pf_service" ></label>
                                 <div class="col-md-4">
+                                    <h2>Booking Configuration</h2>
+                                    <p><strong>Day Count</strong> specifies how many days are displayed on your booking calendar.  The default is 2 weeks, allowing clients to book up to 2 weeks out.</p>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label> Day Count </label>
+                                        <div><input type="number" name="input" ng-model="dayCount" min="1" max="28" data-toggle="tooltip" data-placement="top" title='Day Count'></div></div>
+                                    </div>
+                                    <p><strong>Segment Time</strong> specifies how your time blocks are shown on your calendar.  For example, if you specify 60 minutes as your Segment Time, your booking calendar will display hourly time slots (e.g. 8:00am, 9:00am, 10:00am, etc).  If you specify 15 for Segment Time, then times would display as 8:00am, 8:15am, 8:30am, 8:45am, etc.</p>
+                                    <div class="panel panel-default">
+                                        <div class="servPad">
+                                        <label> Segment Time </label>
+                                        <div><input type="number" name="input" ng-model="segmentTime" min="15" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Segment Time'></div></div>
+                                    </div>
+                                    
                                     <h2>Service Times</h2>
                                     <p>Service times enable you to customize how much time should be blocked out to complete a service.  These fine-tuned service times are then used to block out time on your appointment calendar.</p>
                                     <p>For example, if you set the service time for a men's haircut to 45 minutes, then 45 minutes is blocked on your calendar when someone books a men's haircut.</p>

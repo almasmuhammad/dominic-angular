@@ -41,6 +41,7 @@
                     <a href="#staffdetail/{{staffmember.regUID}}" class="btn btn-default">View Profile</a>
                     <a ng-if="staffmember.square == 'on' && staffmember.squareID" href="https://squareup.com/appointments/book/{{staffmember.squareID}}" class="btn btn-default">Book Now</a>
                     <a ng-if="staffmember.styleseat == 'on' && staffmember.styleseatID" href="https://www.styleseat.com/m/book/v/{{staffmember.styleseatID}}" class="btn btn-default">Book Now</a>
+                    <a ng-if="staffmember.onlineBooking == 'on'" href="#scheduler/{{staffmember.regUID}}" class="btn btn-default">Book Now</a>
                 </div>
   
             </div>

@@ -1,36 +1,17 @@
 <div id="staffdetail" ng-controller="SchedulerController">
     <div class="container marketing bg-grey" style="padding-bottom: 18px;">
         <div class="page-header text-center">
-            <h1>Book Appoinment</h1> </div>
-
-        
-<div class="row times">
-    
-<div>{{days}}</div>    
-    
-    <div>{{days2}}</div>  
-    
-  <div class="col-xs-4 text-center" ng-repeat="day in days">
-            
-    <h2>{{ day.name }}</h2>
-    
-    <div class="time-slot" ng-repeat="slot in day.slots"> 
-        <h4>{{slot}}</h4>
-    </div>
-      
-    <div class="time-slot" ng-repeat="slot in day.slots">     
-
-      <input type="checkbox" id="{{ day.name }}-{{ $index }}" ng-model="slot.booked" ng-disabled="slot.booked">
-
-      <label for="{{ day.name }}-{{ $index }}">{{ slot.time }}<br>
-        <span ng-if="slot.booked">Booked</span>
-        <span ng-if="!slot.booked">Available</span>
-      </label>
-
-    </div>
-  </div>       
-    
-</div>        
-        
+            <h1>Select date and time</h1> </div>
+        <div class="row times">
+            <div class="col-xs-4 text-center" ng-repeat="day in days">
+                <h2>{{ day.dayofWeek }}</h2>
+                <h4>{{ day.todaysDate }}</h4>
+                <div class="time-slot" ng-repeat="slot in day.timeslots">
+                    <input type="checkbox" id="{{ day.dow }}-{{ $index }}" ng-model="slot.booked" ng-disabled="slot.booked">
+                    <label for="{{ day.dow }}-{{ $index }}">{{ slot.start }}
+                        <br> <span ng-if="slot.booked">Booked</span> <span ng-if="!slot.booked">Available</span> </label>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

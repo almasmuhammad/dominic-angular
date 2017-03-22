@@ -34,7 +34,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         } 
       } //resolve
     })
-    .when('/scheduler', {
+    .when('/scheduler/:uID', {
       templateUrl: 'views/scheduler.html',
       controller: 'SchedulerController',
       resolve: { 

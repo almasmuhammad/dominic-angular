@@ -1,86 +1,114 @@
-myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObject', '$routeParams',
+myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObject', '$routeParams', '$firebaseArray',
 
-  function ($scope, $rootScope, $firebaseObject, $routeParams) {
+  function ($scope, $rootScope, $firebaseObject, $routeParams, $firebaseArray) {
+        window.scrollTo(0, 0);
+
+        uid = "0yMxewmgTYU8dxG6mq4fLbQxeU02";
+        var days = [];
+        var dayCount = 7; // %% TODO %%           for now, one week
+        var segments = 8; // default to 8 1-hour segments
+        var segmentMinutes = 60; // default segments are 60 minutes
       
-    ref = firebase.database().ref("/days");
-    console.log('ref next');
-    console.log(ref);
-    
-//    var syncObject = $firebaseObject(ref);
-//    syncObject.$bindTo($scope, 'days');
+        firebase.database().ref('/associates/' + uid + '/bookingConfiguration').once('value').then(function (snapshot) {
+            if( snapshot.val().dayCount ) {
+                dayCount = snapshot.val().dayCount; 
+            }
+            if( snapshot.val().segmentTime ) {
+                segmentMinutes = snapshot.val().segmentTime; 
+            }
+            console.log('dayCount='+dayCount);
+            console.log('segmentMinutes='+segmentMinutes);
+        });
       
-     day1 = {'monday' : {
-                'name' : 'Monday', 
-                'slots': {
-                    '8:00am': {
-                        'booked': false, 
-                        'time': '8:00am'
-                        },
-                    '8:15am': {
-                        'booked': false, 
-                        'time': '8:15am'
-                        }
-                    }
-                },
-              'tuesday' : {
-                'name' : 'Tuesday', 
-                'slots': {
-                    '8:00am': {
-                        'booked': false, 
-                        'time': '8:00am'
-                        },
-                    '8:15am': {
-                        'booked': false, 
-                        'time': '8:15am'
-                        }
-                    }
-                }
+        firebase.database().ref('/associates/' + uid + '/hours').once('value').then(function (snapshot) {
+            
+            
+
+            
+            // Work schedule reference
+            obj = snapshot.val();
+            var myWorkSchedule = new Object();
+            myWorkSchedule["Monday"] = {'work': obj.Monday.work, 'start': obj.Monday.start, 'end': obj.Monday.end};
+            myWorkSchedule["Tuesday"] = {'work': obj.Tuesday.work, 'start': obj.Tuesday.start, 'end': obj.Tuesday.end};
+            myWorkSchedule["Wednesday"] = {'work': obj.Wednesday.work, 'start': obj.Wednesday.start, 'end': obj.Wednesday.end};
+            myWorkSchedule["Thursday"] = {'work': obj.Thursday.work, 'start': obj.Thursday.start, 'end': obj.Thursday.end};
+            myWorkSchedule["Friday"] = {'work': obj.Friday.work, 'start': obj.Friday.start, 'end': obj.Friday.end};
+            myWorkSchedule["Saturday"] = {'work': obj.Saturday.work, 'start': obj.Saturday.start, 'end': obj.Saturday.end};
+            myWorkSchedule["Sunday"] = {'work': obj.Sunday.work, 'start': obj.Sunday.start, 'end': obj.Sunday.end};
+
+            var d1 = Date.today();
+            for (i = 0; i < dayCount; i++) {
+                var todaysDate = d1.toString("d-MMM-yyyy");
+                var dayofWeek = d1.getDayName(); 
+                var starttime = myWorkSchedule[dayofWeek].start;
+                var endtime = myWorkSchedule[dayofWeek].end;
+                var dow = d1.getDay();
+                
+                d1 = Date.parse(todaysDate + ',' + starttime);
+                d2 = Date.parse(todaysDate + ',' + endtime);
+                
+                // Calculate segments based on duration between starttime and endtime, divided by segment minutes
+                workMinutes = getMinutesBetweenDates(d1, d2);
+                segments = workMinutes / segmentMinutes;
+                
+                slots = [];
+                for (j = 0; j < segments; j++) {
+                    slot = d1.clone();
+                    
+                    // if this is a staffer's workday, then set 'booked' to false so clients can book appointments
+                    isWorkday = myWorkSchedule[dayofWeek].work == 'on' ? false : true;
+                    slots.push({
+                        'booked': isWorkday
+                        , 'start': slot.toString("HH:mm tt")
+                        , 'timestamp': slot
+                    });
+                    d1.addMinutes(segmentMinutes);
+                };
+                day = {
+                    'todaysDate': todaysDate
+                    , 'dayofWeek': dayofWeek
+                    , 'dow': dow
+                    , 'timeslots': slots
+                };
+                days.push(day);
+                // Next day.
+                d1.addDays(1);
             };
-
-//            day3 = {'wednesday' : {
-//                'name' : 'wednesday', 
-//                'slots': {
-//                    '8:00am': {
-//                        'booked': false, 
-//                        'time': '10:00am'
-//                        },
-//                    '8:15am': {
-//                        'booked': false, 
-//                        'time': '10:15am'
-//                        }
-//                    }
-//                }
-//            };
+            $scope.days = days;
+        });
       
-//      dayarray = [];
-//      dayarray.push(day1);
-//      dayarray.push(day2);
-//      dayarray.push(day3);
-//      console.log(dayarray[0]);
-
-      $scope.days = day1;
-
+        // Once page loads, read this associate's booking data and update view
+        $(document).ready(function() {
+            console.log('in doc ready!');
+            
+            firebase.database().ref('/associates/' + uid + '/bookings').once('value').then(function (snapshot) {
+                console.log('in snapshot');
+                snapshot.forEach(function(childSnapshot) {
+                    var bookingDate = childSnapshot.key;
+                    var bookingDetails = childSnapshot.val();
+                    d1 = new Date(bookingDate); 
+                    
+                    // Loop thru bookings to block out time slots on view 
+                    days.forEach(function(day) {
+                        day.timeslots.forEach(function(slot) {
+                            if( slot.timestamp == d1.toString() ) {
+                                slot.booked = true;
+                            };
+                        });
+                    });
+       
+                });
+                
+                // Update the view
+                $rootScope.$apply();
+            });  
+            
+        });
       
-
       
-//      var dayCount = 1;
-//      
-//    for (i = 1; i < dayCount + 1; i++) { 
-//        var newDate = new Date(Date.now() + i*24*60*60*1000);
-//        console.log('newDate=' + newDate);
-//        day = {newdate : {
-//                'name' : 'Monday', 
-//                'slots': {
-//                    '8:00am': {
-//                        'booked': 'false', 
-//                        'time': '8:00am'
-//                        }
-//                    }
-//                }
-//            };
-//        days.push(day);
-//                                         
-//    }
-
       
+      function getMinutesBetweenDates(startDate, endDate) {
+        var diff = endDate.getTime() - startDate.getTime();
+        return (diff / 60000);
+      }
 }]); // Controller
