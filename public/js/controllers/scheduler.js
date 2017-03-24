@@ -10,6 +10,92 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         var dayCount = 7;           // default number of future days to display
         var segments = 8;           // default to 8 1-hour segments
         var segmentMinutes = 60;    // default segments are 60 minutes
+        
+        $scope.items = [];
+        firebase.database().ref('/associates/' + uid + '/hairCut').once('value').then(function (snapshot) {
+            haircuts = snapshot.val();
+            if(haircuts) {
+                haircuts.forEach(function(cut){
+                    $scope.items.push({value: cut.replace(/\ /gi,"_"), text: cut}); 
+                });
+            }
+        });
+        firebase.database().ref('/associates/' + uid + '/hairColor').once('value').then(function (snapshot) {
+            hairColor = snapshot.val();
+            if(hairColor) {
+                hairColor.forEach(function(color){
+                    $scope.items.push({value: color.replace(/\ /gi,"_"), text: color}); 
+                });
+            };
+
+        });
+        firebase.database().ref('/associates/' + uid + '/hairText').once('value').then(function (snapshot) {
+            hairText = snapshot.val();
+            if(hairText) {
+                hairText.forEach(function(texture){
+                    $scope.items.push({value: texture.replace(/\ /gi,"_"), text: texture}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/wax').once('value').then(function (snapshot) {
+            wax = snapshot.val();
+            if(wax) {
+                wax.forEach(function(wak){
+                    $scope.items.push({value: wak.replace(/\ /gi,"_"), text: wak}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/brow').once('value').then(function (snapshot) {
+            brow = snapshot.val();
+            if(brow) {
+                wax.forEach(function(bro){
+                    $scope.items.push({value: bro.replace(/\ /gi,"_"), text: bro}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/facial').once('value').then(function (snapshot) {
+            facial = snapshot.val();
+            if(facial) {
+                facial.forEach(function(face){
+                    $scope.items.push({value: face.replace(/\ /gi,"_"), text: face}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/makeup').once('value').then(function (snapshot) {
+            makeup = snapshot.val();
+            if(makeup) {
+                makeup.forEach(function(make){
+                    $scope.items.push({value: make.replace(/\ /gi,"_"), text: make}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/mani').once('value').then(function (snapshot) {
+            mani = snapshot.val();
+            if(mani) {
+                mani.forEach(function(man){
+                    $scope.items.push({value: man.replace(/\ /gi,"_"), text: man}); 
+                });
+            };
+        });
+        firebase.database().ref('/associates/' + uid + '/pedi').once('value').then(function (snapshot) {
+            pedi = snapshot.val();
+            if(pedi) {
+                pedi.forEach(function(ped){
+                    $scope.items.push({value: ped.replace(/\ /gi,"_"), text: ped}); 
+                });
+            };
+        }); 
+        firebase.database().ref('/associates/' + uid + '/massage').once('value').then(function (snapshot) {
+            massage = snapshot.val();
+            if(massage) {
+                massage.forEach(function(mas){
+                    $scope.items.push({value: mas.replace(/\ /gi,"_"), text: mas}); 
+                });
+            };
+        });
+      
+      
+      
       
         // Load up the dayCount and segment minutes (segmentTime) from staff member's profile
         firebase.database().ref('/associates/' + uid + '/bookingConfiguration').once('value').then(function (snapshot) {

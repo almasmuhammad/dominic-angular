@@ -2,6 +2,8 @@
     <div class="container marketing bg-grey" style="padding-bottom: 18px;">
         <div class="page-header text-center">
             <h1>Select date and time</h1> </div>
+        <label>Select a service:</label>
+        <select ng-model="selectItem" ng-options="item as item.text for item in items"> </select>
         <div class="row times">
             <div class="col-xs-4 text-center" ng-repeat="day in days">
                 <h2>{{ day.dayofWeek }}</h2>
