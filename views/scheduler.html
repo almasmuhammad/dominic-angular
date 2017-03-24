@@ -1,11 +1,15 @@
 <div id="staffdetail" ng-controller="SchedulerController">
     <div class="container marketing bg-grey" style="padding-bottom: 18px;">
-        <div class="page-header text-center">
-            <h1>Select date and time</h1> </div>
-        <label>Select a service:</label>
-        <select ng-model="selectItem" ng-options="item as item.text for item in items"> </select>
+        <div class="row times page-header">
+            <div class="text-center">
+            <img height="200" width="200" class="center-block img-responsive img-rounded specialistPic" src="images/default_avatar.png" id="sched_imgProfilePic" alt="Profile picture">
+            <h1>{{firstname}} {{lastname}}</h1>
+            </div></div>
+        
+        <div class="clearfix"></div>
+        <div class="text-center"><label style="font-size:1.8em; padding-right:10px;">Select service: </label><select style="font-size:1.5em;" id="service_select" ng-model="selectItem" ng-options="item as item.text group by item.category for item in items"> </select></div>
         <div class="row times">
-            <div class="col-xs-4 text-center" ng-repeat="day in days">
+            <div class="col-lg-2 col-md-4 col-xs-6 text-center" ng-repeat="day in days">
                 <h2>{{ day.dayofWeek }}</h2>
                 <h4>{{ day.todaysDate }}</h4>
                 <div class="time-slot" ng-repeat="slot in day.timeslots">
@@ -17,3 +21,9 @@
         </div>
     </div>
 </div>
+
+<!--script>
+    $(function () {
+        $("#service_select").selectmenu();
+    });
+</script-->

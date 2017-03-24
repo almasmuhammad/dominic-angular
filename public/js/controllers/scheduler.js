@@ -11,12 +11,32 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         var segments = 8;           // default to 8 1-hour segments
         var segmentMinutes = 60;    // default segments are 60 minutes
         
+      
+        // Get firstname and lastname
+        firebase.database().ref('/associates/' + uid + '/firstname').once('value').then(function (snapshot) {
+            $scope.firstname = snapshot.val();
+        });
+        firebase.database().ref('/associates/' + uid + '/lastname').once('value').then(function (snapshot) {
+            $scope.lastname = snapshot.val();
+        });
+      
+        // Retrieve profile pic URL from Google Storage
+        var storageRef = firebase.storage().ref().child('/images/' + uid);
+            
+        storageRef.getDownloadURL().then(function (url) {
+            document.getElementById("sched_imgProfilePic").src = url;
+        }).catch(function (error) {
+            console.log("error getting user's profile pic!");
+            console.log(error);
+        });
+      
+      
         $scope.items = [];
         firebase.database().ref('/associates/' + uid + '/hairCut').once('value').then(function (snapshot) {
             haircuts = snapshot.val();
             if(haircuts) {
                 haircuts.forEach(function(cut){
-                    $scope.items.push({value: cut.replace(/\ /gi,"_"), text: cut}); 
+                    $scope.items.push({category: 'Haircut', value: cut.replace(/\ /gi,"_"), text: cut}); 
                 });
             }
         });
@@ -24,7 +44,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             hairColor = snapshot.val();
             if(hairColor) {
                 hairColor.forEach(function(color){
-                    $scope.items.push({value: color.replace(/\ /gi,"_"), text: color}); 
+                    $scope.items.push({category: 'Hair Color', value: color.replace(/\ /gi,"_"), text: color}); 
                 });
             };
 
@@ -33,7 +53,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             hairText = snapshot.val();
             if(hairText) {
                 hairText.forEach(function(texture){
-                    $scope.items.push({value: texture.replace(/\ /gi,"_"), text: texture}); 
+                    $scope.items.push({category: 'Hair Texturizing', value: texture.replace(/\ /gi,"_"), text: texture}); 
                 });
             };
         });
@@ -41,7 +61,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             wax = snapshot.val();
             if(wax) {
                 wax.forEach(function(wak){
-                    $scope.items.push({value: wak.replace(/\ /gi,"_"), text: wak}); 
+                    $scope.items.push({category: 'Wax', value: wak.replace(/\ /gi,"_"), text: wak}); 
                 });
             };
         });
@@ -49,7 +69,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             brow = snapshot.val();
             if(brow) {
                 wax.forEach(function(bro){
-                    $scope.items.push({value: bro.replace(/\ /gi,"_"), text: bro}); 
+                    $scope.items.push({category: 'Brows', value: bro.replace(/\ /gi,"_"), text: bro}); 
                 });
             };
         });
@@ -57,7 +77,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             facial = snapshot.val();
             if(facial) {
                 facial.forEach(function(face){
-                    $scope.items.push({value: face.replace(/\ /gi,"_"), text: face}); 
+                    $scope.items.push({category: 'Facial', value: face.replace(/\ /gi,"_"), text: face}); 
                 });
             };
         });
@@ -65,7 +85,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             makeup = snapshot.val();
             if(makeup) {
                 makeup.forEach(function(make){
-                    $scope.items.push({value: make.replace(/\ /gi,"_"), text: make}); 
+                    $scope.items.push({category: 'Makeup', value: make.replace(/\ /gi,"_"), text: make}); 
                 });
             };
         });
@@ -73,7 +93,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             mani = snapshot.val();
             if(mani) {
                 mani.forEach(function(man){
-                    $scope.items.push({value: man.replace(/\ /gi,"_"), text: man}); 
+                    $scope.items.push({category: 'Manicure', value: man.replace(/\ /gi,"_"), text: man}); 
                 });
             };
         });
@@ -81,7 +101,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             pedi = snapshot.val();
             if(pedi) {
                 pedi.forEach(function(ped){
-                    $scope.items.push({value: ped.replace(/\ /gi,"_"), text: ped}); 
+                    $scope.items.push({category: 'Pedicure', value: ped.replace(/\ /gi,"_"), text: ped}); 
                 });
             };
         }); 
@@ -89,7 +109,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             massage = snapshot.val();
             if(massage) {
                 massage.forEach(function(mas){
-                    $scope.items.push({value: mas.replace(/\ /gi,"_"), text: mas}); 
+                    $scope.items.push({category: 'Massage', value: mas.replace(/\ /gi,"_"), text: mas}); 
                 });
             };
         });

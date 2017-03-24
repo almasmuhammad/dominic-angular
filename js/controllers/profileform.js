@@ -308,7 +308,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
                 document.getElementById("pf_imgProfilePic").src = url;
                 // profile pic handler for deleting
                 $('.img-wrap .close').on('click', function () {
-                    console.log(storageRef);
+                    //console.log(storageRef);
                     // Confirm delete
                     $('#modalDeleteConfirm').modal('show');
                     $('#pf_modalYes').on('click', function () {
