@@ -1,13 +1,17 @@
 <div id="staffdetail" ng-controller="SchedulerController">
     <div class="container marketing bg-grey" style="padding-bottom: 18px;">
         <div class="row times page-header">
-            <div class="text-center">
+            
+            <div class="text-center" style="padding:20px;"><div class="badge center-block" style="font-size:2em;">{{firstname}} {{lastname}}</div></div>
             <img height="200" width="200" class="center-block img-responsive img-rounded specialistPic" src="images/default_avatar.png" id="sched_imgProfilePic" alt="Profile picture">
-            <h1>{{firstname}} {{lastname}}</h1>
-            </div></div>
+            
+            
+            <div class="text-center" style="padding:20px;"><div class="text-center"><label class="text-muted" style="font-size:1.8em; padding-right:10px;">Select service: </label><select style="font-size:1.5em; color:grey;" id="service_select" ng-model="selectItem" ng-options="item as item.text group by item.category for item in items"> </select></div></div>
+        </div>
         
         <div class="clearfix"></div>
-        <div class="text-center"><label style="font-size:1.8em; padding-right:10px;">Select service: </label><select style="font-size:1.5em;" id="service_select" ng-model="selectItem" ng-options="item as item.text group by item.category for item in items"> </select></div>
+
+        <p class="center-block badge" style="font-size:1.8em; padding-bottom:10px;"><strong>Select date and time:</strong></p>
         <div class="row times">
             <div class="col-lg-2 col-md-4 col-xs-6 text-center" ng-repeat="day in days">
                 <h2>{{ day.dayofWeek }}</h2>
@@ -22,8 +26,5 @@
     </div>
 </div>
 
-<!--script>
-    $(function () {
-        $("#service_select").selectmenu();
-    });
-</script-->
+
+
