@@ -214,5 +214,13 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
       function getMinutesBetweenDates(startDate, endDate) {
         var diff = endDate.getTime() - startDate.getTime();
         return (diff / 60000);
-      }
+      };
+      
+      
+      $scope.$watch('selectItem', function(newValue) {
+            console.log(newValue);
+          
+          
+      });
+      
 }]); // Controller
