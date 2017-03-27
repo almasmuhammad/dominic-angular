@@ -205,7 +205,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 
                 // Update the view
                 $rootScope.$apply();
-            });  
+            });             
             
         });
       
@@ -219,8 +219,13 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
       
       $scope.$watch('selectItem', function(newValue) {
             console.log(newValue);
-          
-          
+      });
+      
+      $("#service_select").on(function() {
+          alert('hello');
+            $('html, body').animate({
+                scrollTop: $("#myDiv").offset().top
+            }, 2000);
       });
       
 }]); // Controller
