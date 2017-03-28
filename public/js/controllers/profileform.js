@@ -139,8 +139,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzFullHighlights = loadServiceTimes(serviceTimes.Full_Highlights);
             $scope.rzFaceFramingHighlights = loadServiceTimes(serviceTimes.Face_Framing_Highlights);
             $scope.rzAllOverColor = loadServiceTimes(serviceTimes.All_Over_Color);
-            $scope.rzTLinePartOnlyTouchUp = loadServiceTimes(serviceTimes.TLine_Part_Only_TouchUp);
-            $scope.rz10Foil = loadServiceTimes(serviceTimes.Foil10);
+            $scope.rzTLinePartOnlyTouchUp = loadServiceTimes(serviceTimes.T_Line_Part_Only_Touch_Up);
+            $scope.rzTenFoil = loadServiceTimes(serviceTimes.TenFoil);
             $scope.rzCustomColor = loadServiceTimes(serviceTimes.Custom_Color);
             $scope.rzDimensionalHighlights = loadServiceTimes(serviceTimes.Dimensional_Highlights);
             $scope.rzOmbre = loadServiceTimes(serviceTimes.Ombre);
@@ -170,6 +170,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzThermalStyle = loadServiceTimes(serviceTimes.Thermal_Style);
             $scope.rzUpdo = loadServiceTimes(serviceTimes.Updo);
             $scope.rzMensHaircut = loadServiceTimes(serviceTimes.Men_s_Haircut);
+            $scope.rzMensHaircutStyle = loadServiceTimes(serviceTimes.Men_s_Haircut___Style);
+            
             $scope.rzChildrensHaircut = loadServiceTimes(serviceTimes.Children_s_Haircut);
             $scope.rzChildrensHaircutStyle = loadServiceTimes(serviceTimes.Children_s_Haircut___Style);   
             $scope.rzClipperCut = loadServiceTimes(serviceTimes.Clipper_Cut); 
@@ -196,7 +198,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzRelaxerColor = loadServiceTimes(serviceTimes.Relaxer___Color);
             $scope.rzRelaxerRetouchColorCut = loadServiceTimes(serviceTimes.Relaxer_Retouch___Color___Cut);
             $scope.rzLiftAndTone = loadServiceTimes(serviceTimes.Lift_And_Tone);
-            $scope.rzBangTrimComplimentary = loadServiceTimes(serviceTimes.Bang_Trim___Complimentary_Current_Clients_only);
+            //$scope.rzBangTrimComplimentary = loadServiceTimes(serviceTimes.Bang_Trim___Complimentary_Current_Clients_only);
             $scope.rzFullKeratinCutStyle = loadServiceTimes(serviceTimes.Full_Keratin___Cut___Style); 
             $scope.rzExpressColorCutStyle = loadServiceTimes(serviceTimes.Express_Color___Cut___Style);
             $scope.rzFringeBangTrim = loadServiceTimes(serviceTimes.Fringe_Bang_Trim);
@@ -207,7 +209,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzLanzaHealingService = loadServiceTimes(serviceTimes.L_anza_Healing_Service);
             $scope.rzSpecialOccasionDownstyle = loadServiceTimes(serviceTimes.Special_Occasion_Downstyle);
             $scope.rzSpecialOccasionUpstyle = loadServiceTimes(serviceTimes.Special_Occasion_Upstyle);
-            $scope.rzShampooBlowdryStyle = loadServiceTimes(serviceTimes.Shampoo__Blowdry___Style);
+            $scope.rzShampooBlowdryStyle = loadServiceTimes(serviceTimes.Shampoo__Blow_dry___Style);
             $scope.rzShampooWrapStyle = loadServiceTimes(serviceTimes.Shampoo__Wrap___Style);
             $scope.rzDryStyling = loadServiceTimes(serviceTimes.Dry_Styling);
             
@@ -233,7 +235,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzSpa = loadServiceTimes(serviceTimes.Spa);            
             $scope.rzPolish = loadServiceTimes(serviceTimes.Polish);
             $scope.rzPolishChange = loadServiceTimes(serviceTimes.Polish_Change); 
-            $scope.rzBevelPolishChange = loadServiceTimes(serviceTimes.Bevel_Polish_Change);   
+            $scope.rzBevelPolishChange = loadServiceTimes(serviceTimes.Bevel___Polish_Change);   
             $scope.rzParaffinTreatment = loadServiceTimes(serviceTimes.Paraffin_Treatment);
             $scope.rzNewSetAcrylicPinkWhite = loadServiceTimes(serviceTimes.New_Set_Acrylic_Pink___White);            
             $scope.rzPinkWhiteBalance = loadServiceTimes(serviceTimes.Pink___White_Balance);
@@ -280,12 +282,12 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             $scope.rzMakeupSpecialEvent = loadServiceTimes(serviceTimes.Makeup_Special_Event); 
             $scope.rzMakeupBridal = loadServiceTimes(serviceTimes.Makeup_Bridal); 
             $scope.rzMakeupBridalAttendants = loadServiceTimes(serviceTimes.Makeup_Bridal__bride___3_attendants_); 
-            $scope.rzMakeupBrideOnly = loadServiceTimes(serviceTimes.Makeup__Bride_Only_);              
+            $scope.rzMakeupBrideOnly = loadServiceTimes(serviceTimes.Makeup_Bridal__bride_only_);              
             $scope.rzSeasonalColorAnalysis = loadServiceTimes(serviceTimes.Makeup_Seasonal_Color_Analysis);
             $scope.rzMakeupApplication = loadServiceTimes(serviceTimes.Makeup_Application); 
             $scope.rzMakeupApplicationLesson = loadServiceTimes(serviceTimes.Makeup_Application_Lesson); 
             $scope.rzMakeupApplicationLessonAirbrush = loadServiceTimes(serviceTimes.Makeup_Application_Lesson__Airbrush_); 
-            $scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching = loadServiceTimes(serviceTimes.Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching);    
+            //$scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching = loadServiceTimes(serviceTimes.Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching);    
             $scope.rzMakeupLessonBridalTrialSession = loadServiceTimes(serviceTimes.Makeup_Lesson_Bridal_Trial_Session);
             $scope.rzOnLocationMakeup = loadServiceTimes(serviceTimes.On_Location_Makeup); 
             $scope.rzLashes = loadServiceTimes(serviceTimes.Makeup_Lashes);
@@ -447,8 +449,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["Full_Highlights"] = createServiceObj($scope.rzFullHighlights);
             srvcTimes["Face_Framing_Highlights"] = createServiceObj($scope.rzFaceFramingHighlights);
             srvcTimes["All_Over_Color"] = createServiceObj($scope.rzAllOverColor);
-            srvcTimes["TLine_Part_Only_TouchUp"] = createServiceObj($scope.rzTLinePartOnlyTouchUp);
-            srvcTimes["Foil10"] = createServiceObj($scope.rz10Foil);
+            srvcTimes["T_Line_Part_Only_Touch_Up"] = createServiceObj($scope.rzTLinePartOnlyTouchUp);
+            srvcTimes["Ten_Foil"] = createServiceObj($scope.rzTenFoil);
             srvcTimes["Custom_Color"] = createServiceObj($scope.rzCustomColor);
             srvcTimes["Dimensional_Highlights"] = createServiceObj($scope.rzDimensionalHighlights);
             srvcTimes["Ombre"] = createServiceObj($scope.rzOmbre);
@@ -471,13 +473,14 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["Natural_Hair_Straightening_Iron_Work"] = createServiceObj($scope.rzNaturalHairStraighteningIronWork);
             
             // Hair Cuts
-            srvcTimes["Women_s_Haircut_Style"] = createServiceObj($scope.rzWomensHaircutStyle);
+            srvcTimes["Women_s_Haircut___Style"] = createServiceObj($scope.rzWomensHaircutStyle);
             srvcTimes["Women_s_Haircut"] = createServiceObj($scope.rzWomensHaircut);
             srvcTimes["Bang_Trim"] = createServiceObj($scope.rzBangTrim);
             srvcTimes["Shampoo_Style"] = createServiceObj($scope.rzShampooStyle);
             srvcTimes["Thermal_Style"] = createServiceObj($scope.rzThermalStyle);
             srvcTimes["Updo"] = createServiceObj($scope.rzUpdo);
             srvcTimes["Men_s_Haircut"] = createServiceObj($scope.rzMensHaircut);
+            srvcTimes["Men_s_Haircut___Style"] = createServiceObj($scope.rzMensHaircutStyle);
             srvcTimes["Children_s_Haircut"] = createServiceObj($scope.rzChildrensHaircut);
             srvcTimes["Children_s_Haircut___Style"] = createServiceObj($scope.rzChildrensHaircutStyle);
             srvcTimes["Clipper_Cut"] = createServiceObj($scope.rzClipperCut);
@@ -504,18 +507,18 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["Relaxer___Color"] = createServiceObj($scope.rzRelaxerColor);
             srvcTimes["Relaxer_Retouch___Color___Cut"] = createServiceObj($scope.rzRelaxerRetouchColorCut);
             srvcTimes["Lift_And_Tone"] = createServiceObj($scope.rzLiftAndTone);
-            srvcTimes["Bang_Trim___Complimentary_Current_Clients_only"] = createServiceObj($scope.rzBangTrimComplimentary);            
+            //srvcTimes["Bang_Trim___Complimentary_Current_Clients_only"] = createServiceObj($scope.rzBangTrimComplimentary);            
             srvcTimes["Full_Keratin___Cut___Style"] = createServiceObj($scope.rzFullKeratinCutStyle);
             srvcTimes["Fringe_Bang_Trim"] = createServiceObj($scope.rzFringeBangTrim);
             srvcTimes["Express_Color___Cut___Style"] = createServiceObj($scope.rzExpressColorCutStyle);
             srvcTimes["Retouch_Ombre"] = createServiceObj($scope.rzRetouchOmbre);
             srvcTimes["Partial_Balayage___Haircut"] = createServiceObj($scope.rzPartialBalayageHaircut);
             srvcTimes["OLAPLEX_Add_in"] = createServiceObj($scope.rzOLAPLEXAddin);
-            srvcTimes["Lanza_Ultimate_Treatment"] = createServiceObj($scope.rzLanzaUltimateTreatment);
+            srvcTimes["L_anza_Ultimate_Treatment"] = createServiceObj($scope.rzLanzaUltimateTreatment);
             srvcTimes["L_anza_Healing_Service"] = createServiceObj($scope.rzLanzaHealingService);
             srvcTimes["Special_Occasion_Downstyle"] = createServiceObj($scope.rzSpecialOccasionDownstyle);
             srvcTimes["Special_Occasion_Upstyle"] = createServiceObj($scope.rzSpecialOccasionUpstyle);
-            srvcTimes["Shampoo__Blowdry___Style"] = createServiceObj($scope.rzShampooBlowdryStyle);
+            srvcTimes["Shampoo__Blow_dry___Style"] = createServiceObj($scope.rzShampooBlowdryStyle);
             srvcTimes["Shampoo__Wrap___Style"] = createServiceObj($scope.rzShampooWrapStyle);
             srvcTimes["Dry_Styling"] = createServiceObj($scope.rzDryStyling);
             
@@ -541,7 +544,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["Spa"] = createServiceObj($scope.rzSpa);
             srvcTimes["Polish"] = createServiceObj($scope.rzPolish);
             srvcTimes["Polish_Change"] = createServiceObj($scope.rzPolishChange);
-            srvcTimes["Bevel_Polish_Change"] = createServiceObj($scope.rzBevelPolishChange);
+            srvcTimes["Bevel___Polish_Change"] = createServiceObj($scope.rzBevelPolishChange);
             srvcTimes["Paraffin_Treatment"] = createServiceObj($scope.rzParaffinTreatment);
             srvcTimes["New_Set_Acrylic_Pink___White"] = createServiceObj($scope.rzNewSetAcrylicPinkWhite);
             srvcTimes["Pink___White_Balance"] = createServiceObj($scope.rzPinkWhiteBalance);
@@ -572,28 +575,28 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             srvcTimes["Ear_Wax"] = createServiceObj($scope.rzEarWax);
             
             // Massage
-            srvcTimes["Massage30"] = createServiceObj($scope.rz30MinuteMassage);
-            srvcTimes["Massage60"] = createServiceObj($scope.rz60MinuteMassage);
-            srvcTimes["Massage90"] = createServiceObj($scope.rz90MinuteMassage);
-            srvcTimes["Massage120"] = createServiceObj($scope.rz120MinuteMassage);
-            srvcTimes["Hot_Stone30"] = createServiceObj($scope.rz30MinuteHotStone);
-            srvcTimes["Hot_Stone60"] = createServiceObj($scope.rz60MinuteHotStone);
-            srvcTimes["Hot_Stone90"] = createServiceObj($scope.rz90MinuteHotStone);
-            srvcTimes["Hot_Stone120"] = createServiceObj($scope.rz120MinuteHotStone);
-            srvcTimes["Reflexology30"] = createServiceObj($scope.rz30MinuteReflexology);
-            srvcTimes["Reflexology60"] = createServiceObj($scope.rz60MinuteReflexology);
+            srvcTimes["Massage___30_Minutes"] = createServiceObj($scope.rz30MinuteMassage);
+            srvcTimes["Massage___60_Minutes"] = createServiceObj($scope.rz60MinuteMassage);
+            srvcTimes["Massage___90_Minutes"] = createServiceObj($scope.rz90MinuteMassage);
+            srvcTimes["Massage___120_Minutes"] = createServiceObj($scope.rz120MinuteMassage);
+            srvcTimes["Hot_Stone___30_Minutes"] = createServiceObj($scope.rz30MinuteHotStone);
+            srvcTimes["Hot_Stone___60_Minutes"] = createServiceObj($scope.rz60MinuteHotStone);
+            srvcTimes["Hot_Stone___90_Minutes"] = createServiceObj($scope.rz90MinuteHotStone);
+            srvcTimes["Hot_Stone___120_Minutes"] = createServiceObj($scope.rz120MinuteHotStone);
+            srvcTimes["Reflexology___30_Minutes"] = createServiceObj($scope.rz30MinuteReflexology);
+            srvcTimes["Reflexology___60_Minutes"] = createServiceObj($scope.rz60MinuteReflexology);
             
             // Makeup
             srvcTimes["Makeup_Consultation"] = createServiceObj($scope.rzMakeupConsultation);
             srvcTimes["Makeup_Special_Event"] = createServiceObj($scope.rzMakeupSpecialEvent);
             srvcTimes["Makeup_Bridal"] = createServiceObj($scope.rzMakeupBridal);
             srvcTimes["Makeup_Bridal__bride___3_attendants_"] = createServiceObj($scope.rzMakeupBridalAttendants);
-            srvcTimes["Makeup__Bride_Only_"] = createServiceObj($scope.rzMakeupBrideOnly);
+            srvcTimes["Makeup_Bridal__bride_only_"] = createServiceObj($scope.rzMakeupBrideOnly);
             srvcTimes["Makeup_Seasonal_Color_Analysis"] = createServiceObj($scope.rzSeasonalColorAnalysis);
             srvcTimes["Makeup_Application"] = createServiceObj($scope.rzMakeupApplication);
             srvcTimes["Makeup_Application_Lesson"] = createServiceObj($scope.rzMakeupApplicationLesson);
             srvcTimes["Makeup_Application_Lesson__Airbrush_"] = createServiceObj($scope.rzMakeupApplicationLessonAirbrush);
-            srvcTimes["Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching "] = createServiceObj($scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching);          
+            //srvcTimes["Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching "] = createServiceObj($scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching);          
             srvcTimes["Makeup_Lesson_Bridal_Trial_Session"] = createServiceObj($scope.rzMakeupLessonBridalTrialSession);
             srvcTimes["On_Location_Makeup"] = createServiceObj($scope.rzOnLocationMakeup);
             srvcTimes["Makeup_Lashes"] = createServiceObj($scope.rzLashes);
