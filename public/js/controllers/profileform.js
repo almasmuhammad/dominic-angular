@@ -123,6 +123,8 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             if( snapshot.val().bookingConfiguration ) {
                 $scope.segmentTime = snapshot.val().bookingConfiguration.segmentTime;
             }
+            snapshot.val().bookingConfiguration.allowOverflow == 'on' ? $scope.allowOver = true : $scope.allowOver = false; 
+            
             
             // Service times specify the time it takes a specialist to complete a service (ombre, men's haircut, etc)
             serviceTimes = snapshot.val().serviceTimes;
@@ -433,9 +435,9 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             pf_segmentTime = $scope.segmentTime;
             var bookingConfig = {
                 'dayCount': pf_dayCount,
-                'segmentTime': pf_segmentTime
+                'segmentTime': pf_segmentTime,
+                'allowOverflow': $scope.allowOver ? 'on':'off',
             }
-            
             
             // handle Service times (Advanced tab)
             srvcTimes = {};

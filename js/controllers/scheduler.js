@@ -6,12 +6,8 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         // Incoming user id
         var uid = $routeParams.uID;
       
-        var days = [];  // Array holding the staffer's schedule
-      
-        //var dayCount = 7;           // default number of future days to display
-        //var segments = 8;           // default to 8 1-hour segments
-        //var serviceTime = 60;    // default segments are 60 minutes
-      
+        var days = [];  // Array holding the staffer's schedule 
+        var segmentMinutes = 0;
       
         // Get firstname and lastname
         firebase.database().ref('/associates/' + uid + '/firstname').once('value').then(function (snapshot) {
@@ -168,10 +164,11 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             if (snapshot.val().dayCount) {
                 dayCount = snapshot.val().dayCount;
             }
-            // DEPRECATED NOW THAT WE'RE BUILDING CALENDAR BASED ON SERVICE TIME
-            //if (snapshot.val().segmentTime) {
-            //    segmentMinutes = snapshot.val().segmentTime;
-            //}
+            
+            // default slot time - configurable in Profile/Advanced tab
+            if (snapshot.val().segmentTime) {
+                segmentMinutes = snapshot.val().segmentTime;
+            }
         });
       
         // Build staffer's work schedule -- used in generate calendar routine
@@ -247,11 +244,10 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 console.log('newValue.value=' + newValue.text);
                 $scope.myService = newValue.text;
                 firebase.database().ref('/associates/' + uid + '/serviceTimes/' + newValue.value).once('value').then(function (snapshot) {
-                    console.log('in get service time');
-                    console.log(snapshot.val().start);
                     serviceTime = snapshot.val().start;
                     $scope.serviceTime = serviceTime/60;
-                    generateBookingCalendar(dayCount, serviceTime, myWorkSchedule);
+                    var mySlotMinutes = segmentMinutes == 0 ? serviceTime : segmentMinutes;
+                    generateBookingCalendar(dayCount, mySlotMinutes, myWorkSchedule, serviceTime);  
                 });
             };
         });
@@ -267,13 +263,20 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         // GenerateBookingCalendar build the calendar view based on how many days staffer specified in profile (advanced),
         // and the segment time (service time) associate to the service the user selected.  The result is a calendar where
         // available time slots can be selected for booking!
-        function generateBookingCalendar(dayCount, serviceTime, myWorkSchedule) {
+        function generateBookingCalendar(dayCount, slotMinutes, myWorkSchedule, serviceTime) {
             console.log('in generateBookingCalendar');
             console.log('dayCount='+dayCount);
+            console.log('slotMinutes='+slotMinutes);
             console.log('serviceTime='+serviceTime);
+            
+            slotsRequired = Math.ceil(serviceTime / slotMinutes);
+            console.log('slotsRequired='+slotsRequired);
+            
             days = [];
-            var d1 = Date.today();
+            //var d1 = Date.today();
             for (i = 0; i < dayCount; i++) {
+                var d1 = Date.today();
+                d1.addDays(i);
                 var todaysDate = d1.toString("d-MMM-yyyy");
                 var dayofWeek = d1.getDayName();
                 var starttime = myWorkSchedule[dayofWeek].start;
@@ -281,20 +284,22 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 var dow = d1.getDay();
                 d1 = Date.parse(todaysDate + ',' + starttime);
                 d2 = Date.parse(todaysDate + ',' + endtime);
+                
                 // Calculate segments based on duration between starttime and endtime, divided by segment minutes
                 workMinutes = getMinutesBetweenDates(d1, d2);
-                segments = workMinutes / serviceTime;
+                segments = workMinutes / slotMinutes;
                 slots = [];
                 for (j = 0; j < segments; j++) {
                     slot = d1.clone();
+                    
                     // if this is a staffer's workday, then set 'booked' to false so clients can book appointments
                     isWorkday = myWorkSchedule[dayofWeek].work == 'on' ? false : true;
                     slots.push({
                         'booked': isWorkday
-                        , 'start': slot.toString("HH:mm tt")
+                        , 'start': slot.toString("hh:mm tt")
                         , 'timestamp': slot
                     });
-                    d1.addMinutes(serviceTime);
+                    d1.addMinutes(slotMinutes);
                 };
                 day = {
                     'todaysDate': todaysDate
@@ -303,38 +308,56 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                     , 'timeslots': slots
                 };
                 days.push(day);
-                // Next day.
-                d1.addDays(1);
             };
             $scope.days = days;
+            
             
             // Now we block out time slots based on current bookings
             firebase.database().ref('/bookings/' + uid).once('value').then(function (snapshot) {
                 console.log('in snapshot');
-                snapshot.forEach(function (childSnapshot) {
+                snapshot.forEach(function (childSnapshot) {                    
                     var bookingDate = childSnapshot.key;
                     var bookingDetails = childSnapshot.val();
+                    var startOfBooking = new Date(bookingDate);
+                    var pastBooking = startOfBooking.compareTo(Date.today()) == -1 ? true : false;
                     
-                    startOfBooking = new Date(bookingDate);
-                    endOfBooking = startOfBooking.clone().addMinutes(bookingDetails.minutesToComplete-1);
+                    if( !pastBooking ) {
+                        var endOfBooking = startOfBooking.clone().addMinutes(bookingDetails.minutesToComplete - 1);
                     
-                    console.log("startOfBooking="+startOfBooking.toString());
-                    console.log("endOfBooking="+endOfBooking.toString());
-                    
-                    // Loop thru bookings to block out time slots on view 
-                    days.forEach(function (day) {
-                        day.timeslots.forEach(function (slot) {
-                            
-                            //if (slot.timestamp == startOfBooking.toString()) {
-                            
-                            console.log("slot.timestamp="+slot.timestamp.toString());
-                            
-                            if( slot.timestamp.between(startOfBooking, endOfBooking)) {
-                                slot.booked = true;
-                            };
+                        // Loop thru bookings to block out time slots on view 
+                        days.forEach(function (day) {
+                            day.timeslots.forEach(function (slot) {
+                                if( slot.timestamp.between(startOfBooking, endOfBooking)) {
+                                    slot.booked = true;
+                                };
+                            });
                         });
-                    });
+                    
+                        // Make a second pass and block out slots where there's not enough contiguous time for service
+                        days.forEach(function (day) {
+                            day.timeslots.forEach(function (slot, index) {
+                                if( !day.timeslots[index].booked ) {        // Open slot?
+                                    for(i = 0; i < slotsRequired; i++) {
+                                        tempix = index + i;
+                                        if( tempix < day.timeslots.length ) {
+                                            startofAppointment = new Date(day.timeslots[tempix].timestamp);
+                                            endofAppointment = startofAppointment.clone().addMinutes(slotMinutes);
+                                            
+                                            // End of a booking falls between an appointment slot (we have not blocke out yet, so BLOCK!)
+                                            if( endOfBooking.between(startofAppointment, endofAppointment)) {
+                                                //console.log('block out!!');
+                                                //console.log(day.timeslots[tempix]);
+                                                day.timeslots[index].booked = true;
+                                            };
+                                        };
+                                    };
+                                };
+                            });                    
+                        });
+                    };  // if not pastBooking
+
                 });
+                
                 // Update the view
                 $rootScope.$apply();
             });

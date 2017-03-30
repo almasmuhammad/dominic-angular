@@ -1258,11 +1258,20 @@
                                         <label> Day Count </label>
                                         <div><input type="number" name="input" ng-model="dayCount" min="1" max="28" data-toggle="tooltip" data-placement="top" title='Day Count'></div></div>
                                     </div>
-                                    <p><strong>Segment Time</strong> specifies how your time blocks are shown on your calendar.  For example, if you specify 60 minutes as your Segment Time, your booking calendar will display hourly time slots (e.g. 8:00am, 9:00am, 10:00am, etc).  If you specify 15 for Segment Time, then times would display as 8:00am, 8:15am, 8:30am, 8:45am, etc.</p>
+                                    <p><strong>Segment Time</strong> specifies how your time blocks are shown on your calendar.  For example, if you specify 60 minutes as your Segment Time, your booking calendar will display hourly time slots (e.g. 8:00am, 9:00am, 10:00am, etc).  If you specify 15 for Segment Time, then times would display as 8:00am, 8:15am, 8:30am, 8:45am, etc.  <br>To let segment time default to service time, specify zero for the segment time.</p>
                                     <div class="panel panel-default">
                                         <div class="servPad">
                                         <label> Segment Time </label>
-                                        <div><input type="number" name="input" ng-model="segmentTime" min="15" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Segment Time'></div></div>
+                                        <div><input type="number" name="input" ng-model="segmentTime" min="0" max="480" step="15" data-toggle="tooltip" data-placement="top" title='Segment Time'></div></div>
+                                    </div>
+                                    
+                                    <div class="panel panel-default">
+                                        <div class="servPad"><label>Allow last booking to overflow stop hour</label></div>
+                                        <div class="checkbox" style="margin-left:20px; margin-bottom:20px;">
+                                            <label for="last-book">
+                                            <input ng-model="allowOver" type="checkbox" name="pf_cbAllowLastBookingOverflow" id="pf_cbAllowLastBookingOverflow" value="on">
+                                             Allow Last Booking Overflow? </label>
+                                        </div>                                    
                                     </div>
                                     
                                     <h2>Service Times</h2>
