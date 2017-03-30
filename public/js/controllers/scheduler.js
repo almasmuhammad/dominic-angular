@@ -271,6 +271,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             
             slotsRequired = Math.ceil(serviceTime / slotMinutes);
             console.log('slotsRequired='+slotsRequired);
+            console.log(myWorkSchedule);
             
             days = [];
             //var d1 = Date.today();
@@ -282,8 +283,15 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 var starttime = myWorkSchedule[dayofWeek].start;
                 var endtime = myWorkSchedule[dayofWeek].end;
                 var dow = d1.getDay();
-                d1 = Date.parse(todaysDate + ',' + starttime);
-                d2 = Date.parse(todaysDate + ',' + endtime);
+
+                // Inject space into time to appease date parser
+                starttime = starttime.replace('am', ' am');
+                starttime = starttime.replace('pm', ' pm');
+                endtime = endtime.replace('am', ' am');
+                endtime = endtime.replace('pm', ' pm');
+                
+                d1 = new Date(todaysDate + ' ' + starttime);
+                d2 = new Date(todaysDate + ' ' + endtime);
                 
                 // Calculate segments based on duration between starttime and endtime, divided by segment minutes
                 workMinutes = getMinutesBetweenDates(d1, d2);
