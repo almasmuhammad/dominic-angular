@@ -31,9 +31,9 @@
         <div ng-hide="selectItem == Object()" style="margin-top:100px">
             
         <p id="myId" class="center-block badge" style="font-size:1.8em; padding-bottom:10px;"><strong>Select date and time</strong></p>
-        <p class="text-center text-muted" style="font-size:1.5em; padding-bottom:10px;">You've selected <strong>{{firstname}}</strong> for a <strong>{{myService}}</strong> <span class="badge" style="margin-top:-8px; font-size: .7em;">{{serviceTime}} hour<span ng-if="serviceTime > 1 || serviceTime < 1">s</span> to complete</span></p>
+        <p class="text-center text-muted" style="font-size:1.5em; padding-bottom:10px;">You've selected <strong>{{firstname}}</strong> for a <strong>{{myService}}</strong> <span class="badge" style="margin-top:-8px; font-size: .7em;">{{serviceTime}} hour<span ng-if="serviceTime > 1 || serviceTime < 1">s</span></span></p>
         <div class="row times">
-            <div class="col-lg-2 col-md-4 col-xs-6 text-center" ng-repeat="day in days">
+            <div class="col-lg-2 col-md-4 col-xs-12 text-center" ng-repeat="day in days">
                 <h2>{{ day.dayofWeek }}</h2>
                 <h4>{{ day.todaysDate }}</h4>
                 <div class="time-slot" ng-repeat="slot in day.timeslots">
@@ -49,13 +49,18 @@
 
 <!-- Booking Confirm Modal -->
 <div class="modal fade" id="modalBookingConfirm">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <p id="modalSuccessAlert-body">Confirm appointment by clicking <strong>Yes</strong>.  <br><br>Click <strong>No</strong> to go back to the Book an Appointment page.</p>
+                <p id="modalSuccessAlert-body"></p>
             </div>
-            <div><span id="apptDate"></span> <span id="apptService"></span></div>
-            <div class="modal-footer"> <span class="pull-left" id="modalDeleteConfirm-footer"></span>
+            
+            <p class="text-center" style="font-size:2.25em">Appointment Details:</p>
+            <div style="text-align: center"><p style="font-size:2.2em" class="text-muted">{{firstname}} {{lastname}}</p>
+            <p style="font-size:2em" id="confservice" class="center-text text-muted"></p>
+            <p style="font-size:1.8em" id="confbookdate" class="center-text text-muted"></p></div>
+            
+            <div class="modal-footer"><span id="modalDeleteConfirm-footer" class="pull-left">Confirm your appointment?</span>
                 <button type="button" id="pf_modalYes" class="btn btn-warning btn-md" data-dismiss="modal">Yes</button>
                 <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
             </div>

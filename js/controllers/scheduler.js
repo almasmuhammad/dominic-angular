@@ -4,10 +4,13 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         window.scrollTo(0, 0);
       
         $scope.confirmBooking = function(slot) {
-            console.log(slot);
-            $('#fullName').text($scope.firstname);
-            $("#apptDate").text(slot.start);
-            $("#apptService").text("service here");
+            d1 = slot.timestamp.toDateString();
+            d1 = slot.timestamp.toString("dddd, MMMM d yyyy - h:mm tt")
+            console.log(d1);
+            console.log($scope.myService);
+         
+            $("#confbookdate").text(d1);
+            $("#confservice").text($scope.myService);
             $('#modalBookingConfirm').modal('show');
         };
       
