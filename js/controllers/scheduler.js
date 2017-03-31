@@ -3,6 +3,15 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
   function ($scope, $rootScope, $firebaseObject, $routeParams, $firebaseArray) {
         window.scrollTo(0, 0);
       
+        $scope.confirmBooking = function(slot) {
+            console.log(slot);
+            $('#fullName').text($scope.firstname);
+            $("#apptDate").text(slot.start);
+            $("#apptService").text("service here");
+            $('#modalBookingConfirm').modal('show');
+        };
+      
+      
         // Incoming user id
         var uid = $routeParams.uID;
       
@@ -241,7 +250,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         $scope.$watch('selectItem', function (newValue) {
             // If user has selected (or re-selected) a service, then get service time and build time slots
             if (newValue) {
-                console.log('newValue.value=' + newValue.text);
+                //console.log('newValue.value=' + newValue.text);
                 $scope.myService = newValue.text;
                 firebase.database().ref('/associates/' + uid + '/serviceTimes/' + newValue.value).once('value').then(function (snapshot) {
                     serviceTime = snapshot.val().start;
@@ -264,17 +273,13 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         // and the segment time (service time) associate to the service the user selected.  The result is a calendar where
         // available time slots can be selected for booking!
         function generateBookingCalendar(dayCount, slotMinutes, myWorkSchedule, serviceTime) {
-            console.log('in generateBookingCalendar');
-            console.log('dayCount='+dayCount);
-            console.log('slotMinutes='+slotMinutes);
-            console.log('serviceTime='+serviceTime);
+            //console.log('in generateBookingCalendar');
+            //console.log('dayCount='+dayCount);
+            //console.log('slotMinutes='+slotMinutes);
+            //console.log('serviceTime='+serviceTime);
             
-            slotsRequired = Math.ceil(serviceTime / slotMinutes);
-            console.log('slotsRequired='+slotsRequired);
-            console.log(myWorkSchedule);
-            
-            days = [];
-            //var d1 = Date.today();
+            var slotsRequired = Math.ceil(serviceTime / slotMinutes);
+            var days = [];
             for (i = 0; i < dayCount; i++) {
                 var d1 = Date.today();
                 d1.addDays(i);
@@ -370,6 +375,5 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 $rootScope.$apply();
             });
         }; // generateBookingCalendar
-      } // end main function
-
+      } // end main function                                    
 ]); // Controller

@@ -37,7 +37,7 @@
                 <h2>{{ day.dayofWeek }}</h2>
                 <h4>{{ day.todaysDate }}</h4>
                 <div class="time-slot" ng-repeat="slot in day.timeslots">
-                    <input type="checkbox" id="{{ day.dow }}-{{ $index }}" ng-model="slot.booked" ng-disabled="slot.booked">
+                    <input ng-click="confirmBooking(slot)" type="checkbox" id="{{ day.dow }}-{{ $index }}" ng-model="slot.booked" ng-disabled="slot.booked">
                     <label for="{{ day.dow }}-{{ $index }}">{{ slot.start }}
                         <br> <span ng-if="slot.booked">Booked</span> <span ng-if="!slot.booked">Available</span> </label>
                 </div>
@@ -46,6 +46,25 @@
         </div>       
     </div>
 </div>
+
+<!-- Booking Confirm Modal -->
+<div class="modal fade" id="modalBookingConfirm">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p id="modalSuccessAlert-body">Confirm appointment by clicking <strong>Yes</strong>.  <br><br>Click <strong>No</strong> to go back to the Book an Appointment page.</p>
+            </div>
+            <div><span id="apptDate"></span> <span id="apptService"></span></div>
+            <div class="modal-footer"> <span class="pull-left" id="modalDeleteConfirm-footer"></span>
+                <button type="button" id="pf_modalYes" class="btn btn-warning btn-md" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-info btn-md" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Booking Confirm Modal -->
 
 <script>
       function myScrollNext() {
