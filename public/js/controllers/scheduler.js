@@ -12,6 +12,15 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             $("#confbookdate").text(d1);
             $("#confservice").text($scope.myService);
             $('#modalBookingConfirm').modal('show');
+            $('#pf_modalYes').on('click', function () {
+                // save booking
+            });
+            
+            // If user click's NO, make timeslot available again
+            $('#pf_modalNo').on('click', function () {
+                slot.booked = false;
+                $scope.$apply();
+            });
         };
       
       
