@@ -1,19 +1,35 @@
-myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObject', '$routeParams', '$firebaseArray',
+myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObject', '$routeParams', '$firebaseArray', '$location',
 
-  function ($scope, $rootScope, $firebaseObject, $routeParams, $firebaseArray) {
+  function ($scope, $rootScope, $firebaseObject, $routeParams, $firebaseArray, $location) {
         window.scrollTo(0, 0);
       
         $scope.confirmBooking = function(slot) {
-            d1 = slot.timestamp.toDateString();
-            d1 = slot.timestamp.toString("dddd, MMMM d yyyy - h:mm tt")
-            console.log(d1);
-            console.log($scope.myService);
-         
+            
+            // Display booking details
+            d1 = slot.timestamp.toString("dddd, MMMM d yyyy - h:mm tt");
             $("#confbookdate").text(d1);
             $("#confservice").text($scope.myService);
             $('#modalBookingConfirm').modal('show');
+            
+            // If user clicks Yes, save the booking
             $('#pf_modalYes').on('click', function () {
                 // save booking
+                nowTime = new Date();
+                firebase.database().ref('/bookings/' + uid + '/' + slot.timestamp).set({
+                    client: $rootScope.currentUser.uid,
+                    service: $scope.myService,
+                    minutesToComplete: $scope.serviceTime * 60,
+                    dateBooked: nowTime.toString()
+                });
+                
+                $('#modalSuccessAlert2').removeClass('modal-sm').addClass('modal-md');
+                $('#modalSuccessAlert-title').text("You're appoinment has been booked!");
+                $('#modalSuccessAlert-body').text("Please check your inbox for a confirmation email.  Thank you!");
+                $('#modalSuccessAlert').modal('show');
+                
+                $('#pf_modalClose').on('click', function () {
+                    window.location.href = "/";
+                });
             });
             
             // If user click's NO, make timeslot available again
