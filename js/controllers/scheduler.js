@@ -45,6 +45,7 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
       
         var days = [];  // Array holding the staffer's schedule 
         var segmentMinutes = 0;
+        var allowOverflow = false;
       
         // Get firstname and lastname
         firebase.database().ref('/associates/' + uid + '/firstname').once('value').then(function (snapshot) {
@@ -206,6 +207,13 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
             if (snapshot.val().segmentTime) {
                 segmentMinutes = snapshot.val().segmentTime;
             }
+            
+            // Allow last slot to overflow beyond work hours?
+            if (snapshot.val().allowOverflow) {
+                if( snapshot.val().allowOverflow == 'on' ) {
+                    allowOverflow = true;
+                }
+            }
         });
       
         // Build staffer's work schedule -- used in generate calendar routine
@@ -301,10 +309,6 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         // and the segment time (service time) associate to the service the user selected.  The result is a calendar where
         // available time slots can be selected for booking!
         function generateBookingCalendar(dayCount, slotMinutes, myWorkSchedule, serviceTime) {
-            //console.log('in generateBookingCalendar');
-            //console.log('dayCount='+dayCount);
-            //console.log('slotMinutes='+slotMinutes);
-            //console.log('serviceTime='+serviceTime);
             
             var slotsRequired = Math.ceil(serviceTime / slotMinutes);
             var days = [];
@@ -367,10 +371,19 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                     
                         // Loop thru bookings to block out time slots on view 
                         days.forEach(function (day) {
-                            day.timeslots.forEach(function (slot) {
+                            day.timeslots.forEach(function (slot, index) {
                                 if( slot.timestamp.between(startOfBooking, endOfBooking)) {
                                     slot.booked = true;
                                 };
+                                
+                                if( day.timeslots.length - 1 === index ) { // Last slot of the day?
+                                    // if this service takes longer than the last timeslot of the day, block if no overflow 
+                                    if( serviceTime > slotMinutes ) {
+                                        if( !allowOverflow ) {
+                                            slot.booked = true;
+                                        }
+                                    }
+                                }
                             });
                         });
                     
