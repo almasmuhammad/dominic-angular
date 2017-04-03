@@ -18,11 +18,12 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 firebase.database().ref('/bookings/' + uid + '/' + slot.timestamp).set({
                     date: slot.timestamp.toString("dddd, MMMM d yyyy - h:mm tt"),
                     sortDate: slot.timestamp.getTime(),
-                    client: "Replace Me",
+                    client: $scope.client,
                     regUser: $rootScope.currentUser.uid,
                     service: $scope.myService,
                     minutesToComplete: $scope.serviceTime * 60,
-                    dateBooked: nowTime.toString()
+                    dateBooked: nowTime.toString(),
+                    email: $scope.useremail
                 });
                 
                 $('#modalSuccessAlert2').removeClass('modal-sm').addClass('modal-md');
@@ -50,7 +51,18 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
         var segmentMinutes = 0;
         var allowOverflow = false;
       
-        // Get firstname and lastname
+        // Get client's firstname and lastname
+        userReg = $rootScope.currentUser.uid;
+        firebase.database().ref('/users/' + userReg).once('value').then(function (snapshot) {
+            console.log(snapshot.val());
+            first = snapshot.val().firstname;
+            last = snapshot.val().lastname;
+            $scope.client = first + " " + last;
+            $scope.useremail = snapshot.val().email;
+        });      
+        
+      
+        // Get staffer's firstname and lastname
         firebase.database().ref('/associates/' + uid + '/firstname').once('value').then(function (snapshot) {
             $scope.firstname = snapshot.val();
         });
