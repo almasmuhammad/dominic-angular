@@ -43,6 +43,15 @@ myApp.config(['$routeProvider', function($routeProvider) {
         }
       }  //resolve
     })
+    .when('/bookings', {
+      templateUrl: 'views/bookings.html',
+      controller: 'BookingController',
+      resolve: { 
+        currentAuth: function(Authentication) {
+            return Authentication.requireAuth();
+        }
+      }  //resolve
+    })
     .when('/header', {
       templateUrl: 'views/header.html'
     })
