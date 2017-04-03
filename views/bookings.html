@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="appointment in appointments | orderBy: 'bookingDate'">
+                    <tr ng-repeat="appointment in appointments | orderBy: 'sortDate'">
                         <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteStaffmember(appoinment)">Delete</button></td>
                         <td>{{appointment.date}}</td>
                         <td>{{appointment.client}}</td>

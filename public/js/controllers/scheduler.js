@@ -16,7 +16,8 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                 // save booking
                 nowTime = new Date();
                 firebase.database().ref('/bookings/' + uid + '/' + slot.timestamp).set({
-                    date: slot.timestamp.toString(),
+                    date: slot.timestamp.toString("dddd, MMMM d yyyy - h:mm tt"),
+                    sortDate: slot.timestamp.getTime(),
                     client: "Replace Me",
                     regUser: $rootScope.currentUser.uid,
                     service: $scope.myService,
