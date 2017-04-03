@@ -12,18 +12,16 @@
                         <th>Client</th>
                         <th>Service</th>
                         <th>Duration</th>
-                        <th>email</th>
                         <th>Booked On</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="appointment in appointments | orderBy: 'bookingDate'">
                         <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteStaffmember(appoinment)">Delete</button></td>
-                        <td>{{appointment.day}}</td>
-                        <td>{{appointment.name}}</td>
+                        <td>{{appointment.date}}</td>
+                        <td>{{appointment.client}}</td>
                         <td>{{appointment.service}}</td>
                         <td>{{appointment.minutesToComplete}}</td>
-                        <td>{{appointment.email}}</td>
                         <td>{{appointment.dateBooked}}</td>
                     </tr>
                 </tbody>
