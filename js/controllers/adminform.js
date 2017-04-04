@@ -66,6 +66,7 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
                     });
                 });
             });
+            $scope.$apply();
         });
       $scope.appointments = appointments; 
       
