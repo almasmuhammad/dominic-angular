@@ -14,13 +14,28 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
         var spinner = startSpinner();
         firebase.database().ref('/associates/' + profUID).once('value').then(function (snapshot) {
             console.log('in populate profile form');
+            
+            // If no snapshot, this is the very first time in for staff member so initialize critical items
+            if( !snapshot.val() ) {
+                console.log('in initial & POPULATE service times');
+                serviceTimes = [];
+                populateServiceTimes(serviceTimes);
+                $scope.dayCount = 7; // Default to a week if not specified
+                $scope.segmentTime = 60; // Default 60-minute segment time
+                $scope.allowOver = false;
+                $scope.tinymceModel = " ";
+            }
+            
             var myProfileActive = snapshot.val().profile;
             populateCheckbox('pf_cbActive', myProfileActive);
+            
             $('#pf_txtFirstName').val(snapshot.val().firstname);
-            $('#pf_txtLastName').val(snapshot.val().lastname);
+            $('#pf_txtLastName').val(snapshot.val().lastname);            
             $('#pf_txtEmail').val(snapshot.val().email);
             $('#pf_txtMobile').val(snapshot.val().mobile);
             var myTitle = snapshot.val().title;
+               
+            
             populateCheckbox('pf_cbMyTitle', myTitle);
             var hairColor = snapshot.val().hairColor;
             populateCheckbox('pf_cbHairColor', hairColor);
@@ -48,7 +63,7 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             populateCheckbox('pf_cbFacial', facial);       
                 
             /* About textarea is now a tinymce editor allowing for rich text */
-            $scope.tinymceModel = snapshot.val().about;            
+            $scope.tinymceModel = snapshot.val().about;
             
             /* Hours available */
             doesExist = snapshot.val().hours;
@@ -125,185 +140,14 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             }
             snapshot.val().bookingConfiguration.allowOverflow == 'on' ? $scope.allowOver = true : $scope.allowOver = false; 
             
-            
             // Service times specify the time it takes a specialist to complete a service (ombre, men's haircut, etc)
             serviceTimes = snapshot.val().serviceTimes;
             if( serviceTimes === undefined ) {
                 serviceTimes = [];
-            }       
+            }                  
             
-            // Hair Color
-            $scope.rzColorRetouch = loadServiceTimes(serviceTimes.Color_Retouch);
-            $scope.rzWeaving = loadServiceTimes(serviceTimes.Weaving);
-            $scope.rzVirginHairColor = loadServiceTimes(serviceTimes.Virgin_Hair_Color);
-            $scope.rzPartialWeaving = loadServiceTimes(serviceTimes.Partial_Weaving);
-            $scope.rzBalayage = loadServiceTimes(serviceTimes.Balayage);
-            $scope.rzFullHighlights = loadServiceTimes(serviceTimes.Full_Highlights);
-            $scope.rzFaceFramingHighlights = loadServiceTimes(serviceTimes.Face_Framing_Highlights);
-            $scope.rzAllOverColor = loadServiceTimes(serviceTimes.All_Over_Color);
-            $scope.rzTLinePartOnlyTouchUp = loadServiceTimes(serviceTimes.T_Line_Part_Only_Touch_Up);
-            $scope.rzTenFoil = loadServiceTimes(serviceTimes.TenFoil);
-            $scope.rzCustomColor = loadServiceTimes(serviceTimes.Custom_Color);
-            $scope.rzDimensionalHighlights = loadServiceTimes(serviceTimes.Dimensional_Highlights);
-            $scope.rzOmbre = loadServiceTimes(serviceTimes.Ombre);
-            $scope.rzEyebrowTinting = loadServiceTimes(serviceTimes.Eyebrow_Tinting);
-            $scope.rzExpressColor = loadServiceTimes(serviceTimes.Express_Color);
-            $scope.rzCorrectiveColor = loadServiceTimes(serviceTimes.Corrective_Color);
-            $scope.rzWeaveSlicing = loadServiceTimes(serviceTimes.Weave_Slicing);
-            $scope.rzClearShineColorTreatment = loadServiceTimes(serviceTimes.Clear_Shine_Color_Treatment);
-            $scope.rzColorEnhancingShineTreatment = loadServiceTimes(serviceTimes.Color_Enhancing_Shine_Treatment);
-            $scope.rzMensColor = loadServiceTimes(serviceTimes.Men_s_Color);
-            
-            // Hair Texturizers
-            $scope.rzBodyWave = loadServiceTimes(serviceTimes.Body_Wave);
-            $scope.rzPermanent = loadServiceTimes(serviceTimes.Permanent);
-            $scope.rzPermanentWave = loadServiceTimes(serviceTimes.Permanent_Wave);
-            $scope.rzKeratinTreatment = loadServiceTimes(serviceTimes.Keratin_Treatment);
-            $scope.rzKeraFusion = loadServiceTimes(serviceTimes.KeraFusion);
-            $scope.rzRelaxer = loadServiceTimes(serviceTimes.Relaxer);
-            $scope.rzReversePerm = loadServiceTimes(serviceTimes.Reverse_Perm);
-            $scope.rzNaturalHairStraighteningIronWork = loadServiceTimes(serviceTimes.Natural_Hair_Straightening_Iron_Work);
-            
-            // Hair Cuts
-            $scope.rzWomensHaircutStyle = loadServiceTimes(serviceTimes.Women_s_Haircut_Style);
-            $scope.rzWomensHaircut = loadServiceTimes(serviceTimes.Women_s_Haircut);
-            $scope.rzBangTrim = loadServiceTimes(serviceTimes.Bang_Trim);
-            $scope.rzShampooStyle = loadServiceTimes(serviceTimes.Shampoo_Style);
-            $scope.rzThermalStyle = loadServiceTimes(serviceTimes.Thermal_Style);
-            $scope.rzUpdo = loadServiceTimes(serviceTimes.Updo);
-            $scope.rzMensHaircut = loadServiceTimes(serviceTimes.Men_s_Haircut);
-            $scope.rzMensHaircutStyle = loadServiceTimes(serviceTimes.Men_s_Haircut___Style);
-            
-            $scope.rzChildrensHaircut = loadServiceTimes(serviceTimes.Children_s_Haircut);
-            $scope.rzChildrensHaircutStyle = loadServiceTimes(serviceTimes.Children_s_Haircut___Style);   
-            $scope.rzClipperCut = loadServiceTimes(serviceTimes.Clipper_Cut); 
-            $scope.rzWomensPrecisionHaircut = loadServiceTimes(serviceTimes.Women_s_Precision_Haircut);
-            $scope.rzLightDryTrim = loadServiceTimes(serviceTimes.Light_Dry_Trim);
-            $scope.rzPartialHighlightsCutStyle = loadServiceTimes(serviceTimes.Partial_Highlights___Cut___Style);
-            $scope.rzPartialHighlightsStyle = loadServiceTimes(serviceTimes.Partial_Highlights___Style);
-            $scope.rzFullHighlightsCutStyle = loadServiceTimes(serviceTimes.Full_Highlights___Cut___Style);   
-            $scope.rzFullHighlightsStyle = loadServiceTimes(serviceTimes.Full_Highlights___Style);            
-            $scope.rzColorRetouchCutStyle = loadServiceTimes(serviceTimes.Color_Retouch___Cut___Style);
-            $scope.rzColorRetouchStyle = loadServiceTimes(serviceTimes.Color_Retouch___Style);
-            $scope.rzAllOverColorCutStyle = loadServiceTimes(serviceTimes.All_Over_Color___Cut___Style);
-            $scope.rzAllOverColorStyle = loadServiceTimes(serviceTimes.All_Over_Color___Style);   
-            $scope.rzGlossingCutStyle = loadServiceTimes(serviceTimes.Glossing___Cut___Style); 
-            $scope.rzGlossingStyle = loadServiceTimes(serviceTimes.Glossing___Style);   
-            $scope.rzBalayageCutStyle = loadServiceTimes(serviceTimes.Balayage___Cut___Style); 
-            $scope.rzBalayageStyle = loadServiceTimes(serviceTimes.Balayage___Style); 
-            $scope.rzFaceFramingHighlightsCutStyle = loadServiceTimes(serviceTimes.Face_Framing_Highlights___Cut___Style); 
-            $scope.rzFaceFramingHighlightsStyle = loadServiceTimes(serviceTimes.Face_Framing_Highlights___Style);
-            $scope.rzPermCutStyle = loadServiceTimes(serviceTimes.Perm___Cut___Style);
-            $scope.rzPermStyle = loadServiceTimes(serviceTimes.Perm___Style);
-            $scope.rzRelaxerRetouch = loadServiceTimes(serviceTimes.Relaxer_Retouch);
-            $scope.rzRelaxerRetouchHaircut = loadServiceTimes(serviceTimes.Relaxer_Retouch___Haircut); 
-            $scope.rzRelaxerColor = loadServiceTimes(serviceTimes.Relaxer___Color);
-            $scope.rzRelaxerRetouchColorCut = loadServiceTimes(serviceTimes.Relaxer_Retouch___Color___Cut);
-            $scope.rzLiftAndTone = loadServiceTimes(serviceTimes.Lift_And_Tone);
-            //$scope.rzBangTrimComplimentary = loadServiceTimes(serviceTimes.Bang_Trim___Complimentary_Current_Clients_only);
-            $scope.rzFullKeratinCutStyle = loadServiceTimes(serviceTimes.Full_Keratin___Cut___Style); 
-            $scope.rzExpressColorCutStyle = loadServiceTimes(serviceTimes.Express_Color___Cut___Style);
-            $scope.rzFringeBangTrim = loadServiceTimes(serviceTimes.Fringe_Bang_Trim);
-            $scope.rzRetouchOmbre = loadServiceTimes(serviceTimes.Retouch_Ombre);
-            $scope.rzPartialBalayageHaircut = loadServiceTimes(serviceTimes.Partial_Balayage___Haircut);
-            $scope.rzOLAPLEXAddin = loadServiceTimes(serviceTimes.OLAPLEX_Add_in); 
-            $scope.rzLanzaUltimateTreatment = loadServiceTimes(serviceTimes.L_anza_Ultimate_Treatment);
-            $scope.rzLanzaHealingService = loadServiceTimes(serviceTimes.L_anza_Healing_Service);
-            $scope.rzSpecialOccasionDownstyle = loadServiceTimes(serviceTimes.Special_Occasion_Downstyle);
-            $scope.rzSpecialOccasionUpstyle = loadServiceTimes(serviceTimes.Special_Occasion_Upstyle);
-            $scope.rzShampooBlowdryStyle = loadServiceTimes(serviceTimes.Shampoo__Blow_dry___Style);
-            $scope.rzShampooWrapStyle = loadServiceTimes(serviceTimes.Shampoo__Wrap___Style);
-            $scope.rzDryStyling = loadServiceTimes(serviceTimes.Dry_Styling);
-            
-            // Hair Additions
-            $scope.rzHairExtensionConsultation = loadServiceTimes(serviceTimes.Hair_Extension_Consultation);
-            $scope.rzExtensions = loadServiceTimes(serviceTimes.Extensions);
-            $scope.rzCoutureSewIn = loadServiceTimes(serviceTimes.Couture_Sew_In);
-            $scope.rzBraidlessSewIn = loadServiceTimes(serviceTimes.Braidless_Sew_In);
-            $scope.rzCoutureLaceWigPrepandInstall = loadServiceTimes(serviceTimes.Couture_Lace_Wig_Prep_and_Install);
-            $scope.rzTighteningStyle = loadServiceTimes(serviceTimes.Tightening___Style);
-            $scope.rzRemovalStyle = loadServiceTimes(serviceTimes.Removal___Style);
-            $scope.rzHotheadHairExtensions = loadServiceTimes(serviceTimes.Hothead_Hair_Extensions);
-            $scope.rzIntegration = loadServiceTimes(serviceTimes.Integration);
-            $scope.rzTightening = loadServiceTimes(serviceTimes.Tightening);
-            $scope.rzRemoval = loadServiceTimes(serviceTimes.Removal);
-            $scope.rzKlixExtensions = loadServiceTimes(serviceTimes.Klix_Extensions);            
-            $scope.rzKlixExtensionTightening = loadServiceTimes(serviceTimes.Klix_Extension_Tightening);
-            $scope.rzColoredExtensionAccents = loadServiceTimes(serviceTimes.Colored_Extension_Accents); 
-            $scope.rzCinderellaHairExtensions = loadServiceTimes(serviceTimes.Cinderella_Hair_Extensions);
-            
-            // Mani
-            $scope.rzShellac = loadServiceTimes(serviceTimes.Shellac);
-            $scope.rzSpa = loadServiceTimes(serviceTimes.Spa);            
-            $scope.rzPolish = loadServiceTimes(serviceTimes.Polish);
-            $scope.rzPolishChange = loadServiceTimes(serviceTimes.Polish_Change); 
-            $scope.rzBevelPolishChange = loadServiceTimes(serviceTimes.Bevel___Polish_Change);   
-            $scope.rzParaffinTreatment = loadServiceTimes(serviceTimes.Paraffin_Treatment);
-            $scope.rzNewSetAcrylicPinkWhite = loadServiceTimes(serviceTimes.New_Set_Acrylic_Pink___White);            
-            $scope.rzPinkWhiteBalance = loadServiceTimes(serviceTimes.Pink___White_Balance);
-            $scope.rzBalance = loadServiceTimes(serviceTimes.Balance); 
-            $scope.rzNailRepair = loadServiceTimes(serviceTimes.Nail_Repair);
-            
-            // Pedi
-            $scope.rzPediSpa = loadServiceTimes(serviceTimes.Pedicure_Spa); 
-            $scope.rzSpecial = loadServiceTimes(serviceTimes.Pedicure_Special);            
-            
-            // Wax
-            $scope.rzBrowShapingWax = loadServiceTimes(serviceTimes.Brow_Shaping_Wax);
-            $scope.rzBikiniWax = loadServiceTimes(serviceTimes.Bikini_Wax);            
-            $scope.rzBikiniWaxBrazilian = loadServiceTimes(serviceTimes.Bikini_Wax__Brazilian_);
-            $scope.rzFullLegWax = loadServiceTimes(serviceTimes.Full_Leg_Wax); 
-            $scope.rzFullLegWaxHalfLeg = loadServiceTimes(serviceTimes.Full_Leg_Wax__Half_Leg_);
-            $scope.rzBackWax = loadServiceTimes(serviceTimes.Back_Wax);
-            $scope.rzUnderarms = loadServiceTimes(serviceTimes.Underarms);            
-            $scope.rzArms = loadServiceTimes(serviceTimes.Arms);
-            $scope.rzLipCheeksorChin = loadServiceTimes(serviceTimes.Lip__Cheeks_or_Chin); 
-            $scope.rzBrowWax = loadServiceTimes(serviceTimes.Brow_Wax);             
-            $scope.rzBrows = loadServiceTimes(serviceTimes.Brows);
-            $scope.rzLipWax = loadServiceTimes(serviceTimes.Lip_Wax);            
-            $scope.rzCheekWax = loadServiceTimes(serviceTimes.Cheek_Wax);
-            $scope.rzChinWax = loadServiceTimes(serviceTimes.Chin_Wax); 
-            $scope.rzBrowShapingandLipWaxCombo = loadServiceTimes(serviceTimes.Brow_Shaping_and_Lip_Wax_Combo); 
-            $scope.rzEyebrowShaping = loadServiceTimes(serviceTimes.Eyebrow_Shaping); 
-            $scope.rzEarWax = loadServiceTimes(serviceTimes.rzEarWax);
-            
-            // Massage
-            $scope.rz30MinuteMassage = loadServiceTimes(serviceTimes.Massage30);
-            $scope.rz60MinuteMassage = loadServiceTimes(serviceTimes.Massage60); 
-            $scope.rz90MinuteMassage = loadServiceTimes(serviceTimes.Massage90); 
-            $scope.rz120MinuteMassage = loadServiceTimes(serviceTimes.Massage120); 
-            $scope.rz30MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone30);            
-            $scope.rz60MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone60);
-            $scope.rz90MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone90); 
-            $scope.rz120MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone120); 
-            $scope.rz30MinuteReflexology = loadServiceTimes(serviceTimes.Reflexology30); 
-            $scope.rz60MinuteReflexology = loadServiceTimes(serviceTimes.Reflexology60);              
-            
-            // Makeup
-            $scope.rzMakeupConsultation = loadServiceTimes(serviceTimes.Makeup_Consultation);
-            $scope.rzMakeupSpecialEvent = loadServiceTimes(serviceTimes.Makeup_Special_Event); 
-            $scope.rzMakeupBridal = loadServiceTimes(serviceTimes.Makeup_Bridal); 
-            $scope.rzMakeupBridalAttendants = loadServiceTimes(serviceTimes.Makeup_Bridal__bride___3_attendants_); 
-            $scope.rzMakeupBrideOnly = loadServiceTimes(serviceTimes.Makeup_Bridal__bride_only_);              
-            $scope.rzSeasonalColorAnalysis = loadServiceTimes(serviceTimes.Makeup_Seasonal_Color_Analysis);
-            $scope.rzMakeupApplication = loadServiceTimes(serviceTimes.Makeup_Application); 
-            $scope.rzMakeupApplicationLesson = loadServiceTimes(serviceTimes.Makeup_Application_Lesson); 
-            $scope.rzMakeupApplicationLessonAirbrush = loadServiceTimes(serviceTimes.Makeup_Application_Lesson__Airbrush_); 
-            //$scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching = loadServiceTimes(serviceTimes.Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching);    
-            $scope.rzMakeupLessonBridalTrialSession = loadServiceTimes(serviceTimes.Makeup_Lesson_Bridal_Trial_Session);
-            $scope.rzOnLocationMakeup = loadServiceTimes(serviceTimes.On_Location_Makeup); 
-            $scope.rzLashes = loadServiceTimes(serviceTimes.Makeup_Lashes);
-            
-            // Brow
-            $scope.rzEyelashExtensions = loadServiceTimes(serviceTimes.Eyelash_Extensions);
-            $scope.rzLavishLashes = loadServiceTimes(serviceTimes.Lavish_Lashes); 
-            $scope.rzLashBrowTintingDuo = loadServiceTimes(serviceTimes.Lash___Brow_Tinting___Duo);
-            $scope.rzBrowShaping = loadServiceTimes(serviceTimes.Brow_Shaping);
-            $scope.rzBrowTintandShaping = loadServiceTimes(serviceTimes.Brow_Tint_and_Shaping); 
-            $scope.rzBrowTint = loadServiceTimes(serviceTimes.Brow_Tint);
-            $scope.rzEyeLashTint = loadServiceTimes(serviceTimes.Eye_Lash_Tint);
-            
-            
+            // Now load all the service times (or initialize if non-existent)
+            populateServiceTimes(serviceTimes);
             
             // Retrieve profile pic URL from Google Storage
             var storageRef = firebase.storage().ref().child('/images/' + profUID);
@@ -682,6 +526,172 @@ myApp.controller('ProfileFormController', ['$scope', '$rootScope', '$firebaseAut
             }
             
         });  // Save profile data
+  
+      
+      
+function populateServiceTimes() {  
+    // Hair Color
+    $scope.rzColorRetouch = loadServiceTimes(serviceTimes.Color_Retouch);
+    $scope.rzWeaving = loadServiceTimes(serviceTimes.Weaving);
+    $scope.rzVirginHairColor = loadServiceTimes(serviceTimes.Virgin_Hair_Color);
+    $scope.rzPartialWeaving = loadServiceTimes(serviceTimes.Partial_Weaving);
+    $scope.rzBalayage = loadServiceTimes(serviceTimes.Balayage);
+    $scope.rzFullHighlights = loadServiceTimes(serviceTimes.Full_Highlights);
+    $scope.rzFaceFramingHighlights = loadServiceTimes(serviceTimes.Face_Framing_Highlights);
+    $scope.rzAllOverColor = loadServiceTimes(serviceTimes.All_Over_Color);
+    $scope.rzTLinePartOnlyTouchUp = loadServiceTimes(serviceTimes.T_Line_Part_Only_Touch_Up);
+    $scope.rzTenFoil = loadServiceTimes(serviceTimes.TenFoil);
+    $scope.rzCustomColor = loadServiceTimes(serviceTimes.Custom_Color);
+    $scope.rzDimensionalHighlights = loadServiceTimes(serviceTimes.Dimensional_Highlights);
+    $scope.rzOmbre = loadServiceTimes(serviceTimes.Ombre);
+    $scope.rzEyebrowTinting = loadServiceTimes(serviceTimes.Eyebrow_Tinting);
+    $scope.rzExpressColor = loadServiceTimes(serviceTimes.Express_Color);
+    $scope.rzCorrectiveColor = loadServiceTimes(serviceTimes.Corrective_Color);
+    $scope.rzWeaveSlicing = loadServiceTimes(serviceTimes.Weave_Slicing);
+    $scope.rzClearShineColorTreatment = loadServiceTimes(serviceTimes.Clear_Shine_Color_Treatment);
+    $scope.rzColorEnhancingShineTreatment = loadServiceTimes(serviceTimes.Color_Enhancing_Shine_Treatment);
+    $scope.rzMensColor = loadServiceTimes(serviceTimes.Men_s_Color);
+    // Hair Texturizers
+    $scope.rzBodyWave = loadServiceTimes(serviceTimes.Body_Wave);
+    $scope.rzPermanent = loadServiceTimes(serviceTimes.Permanent);
+    $scope.rzPermanentWave = loadServiceTimes(serviceTimes.Permanent_Wave);
+    $scope.rzKeratinTreatment = loadServiceTimes(serviceTimes.Keratin_Treatment);
+    $scope.rzKeraFusion = loadServiceTimes(serviceTimes.KeraFusion);
+    $scope.rzRelaxer = loadServiceTimes(serviceTimes.Relaxer);
+    $scope.rzReversePerm = loadServiceTimes(serviceTimes.Reverse_Perm);
+    $scope.rzNaturalHairStraighteningIronWork = loadServiceTimes(serviceTimes.Natural_Hair_Straightening_Iron_Work);
+    // Hair Cuts
+    $scope.rzWomensHaircutStyle = loadServiceTimes(serviceTimes.Women_s_Haircut_Style);
+    $scope.rzWomensHaircut = loadServiceTimes(serviceTimes.Women_s_Haircut);
+    $scope.rzBangTrim = loadServiceTimes(serviceTimes.Bang_Trim);
+    $scope.rzShampooStyle = loadServiceTimes(serviceTimes.Shampoo_Style);
+    $scope.rzThermalStyle = loadServiceTimes(serviceTimes.Thermal_Style);
+    $scope.rzUpdo = loadServiceTimes(serviceTimes.Updo);
+    $scope.rzMensHaircut = loadServiceTimes(serviceTimes.Men_s_Haircut);
+    $scope.rzMensHaircutStyle = loadServiceTimes(serviceTimes.Men_s_Haircut___Style);
+    $scope.rzChildrensHaircut = loadServiceTimes(serviceTimes.Children_s_Haircut);
+    $scope.rzChildrensHaircutStyle = loadServiceTimes(serviceTimes.Children_s_Haircut___Style);
+    $scope.rzClipperCut = loadServiceTimes(serviceTimes.Clipper_Cut);
+    $scope.rzWomensPrecisionHaircut = loadServiceTimes(serviceTimes.Women_s_Precision_Haircut);
+    $scope.rzLightDryTrim = loadServiceTimes(serviceTimes.Light_Dry_Trim);
+    $scope.rzPartialHighlightsCutStyle = loadServiceTimes(serviceTimes.Partial_Highlights___Cut___Style);
+    $scope.rzPartialHighlightsStyle = loadServiceTimes(serviceTimes.Partial_Highlights___Style);
+    $scope.rzFullHighlightsCutStyle = loadServiceTimes(serviceTimes.Full_Highlights___Cut___Style);
+    $scope.rzFullHighlightsStyle = loadServiceTimes(serviceTimes.Full_Highlights___Style);
+    $scope.rzColorRetouchCutStyle = loadServiceTimes(serviceTimes.Color_Retouch___Cut___Style);
+    $scope.rzColorRetouchStyle = loadServiceTimes(serviceTimes.Color_Retouch___Style);
+    $scope.rzAllOverColorCutStyle = loadServiceTimes(serviceTimes.All_Over_Color___Cut___Style);
+    $scope.rzAllOverColorStyle = loadServiceTimes(serviceTimes.All_Over_Color___Style);
+    $scope.rzGlossingCutStyle = loadServiceTimes(serviceTimes.Glossing___Cut___Style);
+    $scope.rzGlossingStyle = loadServiceTimes(serviceTimes.Glossing___Style);
+    $scope.rzBalayageCutStyle = loadServiceTimes(serviceTimes.Balayage___Cut___Style);
+    $scope.rzBalayageStyle = loadServiceTimes(serviceTimes.Balayage___Style);
+    $scope.rzFaceFramingHighlightsCutStyle = loadServiceTimes(serviceTimes.Face_Framing_Highlights___Cut___Style);
+    $scope.rzFaceFramingHighlightsStyle = loadServiceTimes(serviceTimes.Face_Framing_Highlights___Style);
+    $scope.rzPermCutStyle = loadServiceTimes(serviceTimes.Perm___Cut___Style);
+    $scope.rzPermStyle = loadServiceTimes(serviceTimes.Perm___Style);
+    $scope.rzRelaxerRetouch = loadServiceTimes(serviceTimes.Relaxer_Retouch);
+    $scope.rzRelaxerRetouchHaircut = loadServiceTimes(serviceTimes.Relaxer_Retouch___Haircut);
+    $scope.rzRelaxerColor = loadServiceTimes(serviceTimes.Relaxer___Color);
+    $scope.rzRelaxerRetouchColorCut = loadServiceTimes(serviceTimes.Relaxer_Retouch___Color___Cut);
+    $scope.rzLiftAndTone = loadServiceTimes(serviceTimes.Lift_And_Tone);
+    //$scope.rzBangTrimComplimentary = loadServiceTimes(serviceTimes.Bang_Trim___Complimentary_Current_Clients_only);
+    $scope.rzFullKeratinCutStyle = loadServiceTimes(serviceTimes.Full_Keratin___Cut___Style);
+    $scope.rzExpressColorCutStyle = loadServiceTimes(serviceTimes.Express_Color___Cut___Style);
+    $scope.rzFringeBangTrim = loadServiceTimes(serviceTimes.Fringe_Bang_Trim);
+    $scope.rzRetouchOmbre = loadServiceTimes(serviceTimes.Retouch_Ombre);
+    $scope.rzPartialBalayageHaircut = loadServiceTimes(serviceTimes.Partial_Balayage___Haircut);
+    $scope.rzOLAPLEXAddin = loadServiceTimes(serviceTimes.OLAPLEX_Add_in);
+    $scope.rzLanzaUltimateTreatment = loadServiceTimes(serviceTimes.L_anza_Ultimate_Treatment);
+    $scope.rzLanzaHealingService = loadServiceTimes(serviceTimes.L_anza_Healing_Service);
+    $scope.rzSpecialOccasionDownstyle = loadServiceTimes(serviceTimes.Special_Occasion_Downstyle);
+    $scope.rzSpecialOccasionUpstyle = loadServiceTimes(serviceTimes.Special_Occasion_Upstyle);
+    $scope.rzShampooBlowdryStyle = loadServiceTimes(serviceTimes.Shampoo__Blow_dry___Style);
+    $scope.rzShampooWrapStyle = loadServiceTimes(serviceTimes.Shampoo__Wrap___Style);
+    $scope.rzDryStyling = loadServiceTimes(serviceTimes.Dry_Styling);
+    // Hair Additions
+    $scope.rzHairExtensionConsultation = loadServiceTimes(serviceTimes.Hair_Extension_Consultation);
+    $scope.rzExtensions = loadServiceTimes(serviceTimes.Extensions);
+    $scope.rzCoutureSewIn = loadServiceTimes(serviceTimes.Couture_Sew_In);
+    $scope.rzBraidlessSewIn = loadServiceTimes(serviceTimes.Braidless_Sew_In);
+    $scope.rzCoutureLaceWigPrepandInstall = loadServiceTimes(serviceTimes.Couture_Lace_Wig_Prep_and_Install);
+    $scope.rzTighteningStyle = loadServiceTimes(serviceTimes.Tightening___Style);
+    $scope.rzRemovalStyle = loadServiceTimes(serviceTimes.Removal___Style);
+    $scope.rzHotheadHairExtensions = loadServiceTimes(serviceTimes.Hothead_Hair_Extensions);
+    $scope.rzIntegration = loadServiceTimes(serviceTimes.Integration);
+    $scope.rzTightening = loadServiceTimes(serviceTimes.Tightening);
+    $scope.rzRemoval = loadServiceTimes(serviceTimes.Removal);
+    $scope.rzKlixExtensions = loadServiceTimes(serviceTimes.Klix_Extensions);
+    $scope.rzKlixExtensionTightening = loadServiceTimes(serviceTimes.Klix_Extension_Tightening);
+    $scope.rzColoredExtensionAccents = loadServiceTimes(serviceTimes.Colored_Extension_Accents);
+    $scope.rzCinderellaHairExtensions = loadServiceTimes(serviceTimes.Cinderella_Hair_Extensions);
+    // Mani
+    $scope.rzShellac = loadServiceTimes(serviceTimes.Shellac);
+    $scope.rzSpa = loadServiceTimes(serviceTimes.Spa);
+    $scope.rzPolish = loadServiceTimes(serviceTimes.Polish);
+    $scope.rzPolishChange = loadServiceTimes(serviceTimes.Polish_Change);
+    $scope.rzBevelPolishChange = loadServiceTimes(serviceTimes.Bevel___Polish_Change);
+    $scope.rzParaffinTreatment = loadServiceTimes(serviceTimes.Paraffin_Treatment);
+    $scope.rzNewSetAcrylicPinkWhite = loadServiceTimes(serviceTimes.New_Set_Acrylic_Pink___White);
+    $scope.rzPinkWhiteBalance = loadServiceTimes(serviceTimes.Pink___White_Balance);
+    $scope.rzBalance = loadServiceTimes(serviceTimes.Balance);
+    $scope.rzNailRepair = loadServiceTimes(serviceTimes.Nail_Repair);
+    // Pedi
+    $scope.rzPediSpa = loadServiceTimes(serviceTimes.Pedicure_Spa);
+    $scope.rzSpecial = loadServiceTimes(serviceTimes.Pedicure_Special);
+    // Wax
+    $scope.rzBrowShapingWax = loadServiceTimes(serviceTimes.Brow_Shaping_Wax);
+    $scope.rzBikiniWax = loadServiceTimes(serviceTimes.Bikini_Wax);
+    $scope.rzBikiniWaxBrazilian = loadServiceTimes(serviceTimes.Bikini_Wax__Brazilian_);
+    $scope.rzFullLegWax = loadServiceTimes(serviceTimes.Full_Leg_Wax);
+    $scope.rzFullLegWaxHalfLeg = loadServiceTimes(serviceTimes.Full_Leg_Wax__Half_Leg_);
+    $scope.rzBackWax = loadServiceTimes(serviceTimes.Back_Wax);
+    $scope.rzUnderarms = loadServiceTimes(serviceTimes.Underarms);
+    $scope.rzArms = loadServiceTimes(serviceTimes.Arms);
+    $scope.rzLipCheeksorChin = loadServiceTimes(serviceTimes.Lip__Cheeks_or_Chin);
+    $scope.rzBrowWax = loadServiceTimes(serviceTimes.Brow_Wax);
+    $scope.rzBrows = loadServiceTimes(serviceTimes.Brows);
+    $scope.rzLipWax = loadServiceTimes(serviceTimes.Lip_Wax);
+    $scope.rzCheekWax = loadServiceTimes(serviceTimes.Cheek_Wax);
+    $scope.rzChinWax = loadServiceTimes(serviceTimes.Chin_Wax);
+    $scope.rzBrowShapingandLipWaxCombo = loadServiceTimes(serviceTimes.Brow_Shaping_and_Lip_Wax_Combo);
+    $scope.rzEyebrowShaping = loadServiceTimes(serviceTimes.Eyebrow_Shaping);
+    $scope.rzEarWax = loadServiceTimes(serviceTimes.rzEarWax);
+    // Massage
+    $scope.rz30MinuteMassage = loadServiceTimes(serviceTimes.Massage30);
+    $scope.rz60MinuteMassage = loadServiceTimes(serviceTimes.Massage60);
+    $scope.rz90MinuteMassage = loadServiceTimes(serviceTimes.Massage90);
+    $scope.rz120MinuteMassage = loadServiceTimes(serviceTimes.Massage120);
+    $scope.rz30MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone30);
+    $scope.rz60MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone60);
+    $scope.rz90MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone90);
+    $scope.rz120MinuteHotStone = loadServiceTimes(serviceTimes.Hot_Stone120);
+    $scope.rz30MinuteReflexology = loadServiceTimes(serviceTimes.Reflexology30);
+    $scope.rz60MinuteReflexology = loadServiceTimes(serviceTimes.Reflexology60);
+    // Makeup
+    $scope.rzMakeupConsultation = loadServiceTimes(serviceTimes.Makeup_Consultation);
+    $scope.rzMakeupSpecialEvent = loadServiceTimes(serviceTimes.Makeup_Special_Event);
+    $scope.rzMakeupBridal = loadServiceTimes(serviceTimes.Makeup_Bridal);
+    $scope.rzMakeupBridalAttendants = loadServiceTimes(serviceTimes.Makeup_Bridal__bride___3_attendants_);
+    $scope.rzMakeupBrideOnly = loadServiceTimes(serviceTimes.Makeup_Bridal__bride_only_);
+    $scope.rzSeasonalColorAnalysis = loadServiceTimes(serviceTimes.Makeup_Seasonal_Color_Analysis);
+    $scope.rzMakeupApplication = loadServiceTimes(serviceTimes.Makeup_Application);
+    $scope.rzMakeupApplicationLesson = loadServiceTimes(serviceTimes.Makeup_Application_Lesson);
+    $scope.rzMakeupApplicationLessonAirbrush = loadServiceTimes(serviceTimes.Makeup_Application_Lesson__Airbrush_);
+    //$scope.rzComplimentarySkinAnalysisMineralMakeupColorMatching = loadServiceTimes(serviceTimes.Complimentary_Skin_Analysis_Mineral_Makeup_Color_Matching);    
+    $scope.rzMakeupLessonBridalTrialSession = loadServiceTimes(serviceTimes.Makeup_Lesson_Bridal_Trial_Session);
+    $scope.rzOnLocationMakeup = loadServiceTimes(serviceTimes.On_Location_Makeup);
+    $scope.rzLashes = loadServiceTimes(serviceTimes.Makeup_Lashes);
+    // Brow
+    $scope.rzEyelashExtensions = loadServiceTimes(serviceTimes.Eyelash_Extensions);
+    $scope.rzLavishLashes = loadServiceTimes(serviceTimes.Lavish_Lashes);
+    $scope.rzLashBrowTintingDuo = loadServiceTimes(serviceTimes.Lash___Brow_Tinting___Duo);
+    $scope.rzBrowShaping = loadServiceTimes(serviceTimes.Brow_Shaping);
+    $scope.rzBrowTintandShaping = loadServiceTimes(serviceTimes.Brow_Tint_and_Shaping);
+    $scope.rzBrowTint = loadServiceTimes(serviceTimes.Brow_Tint);
+    $scope.rzEyeLashTint = loadServiceTimes(serviceTimes.Eye_Lash_Tint);
+}      
+      
       
 }]); // Controller
 
@@ -776,3 +786,4 @@ function startSpinner() {
     
     return spinner;
 }
+
