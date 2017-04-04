@@ -47,6 +47,26 @@ myApp.controller('AdminController', ['$scope', '$rootScope', '$firebaseAuth', '$
               item.associate = 'on';
           }
           $scope.users.$save(item);
-      }      
+      }           
+      
+      var appointments = [];
+        firebase.database().ref('/bookings').once('value').then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                childSnapshot.forEach(function(bookingDetails) {
+                    var bd = bookingDetails.val();
+                    appointments.push({
+                        'client': bd.client
+                        , 'date': bd.date
+                        , 'dateBooked': bd.dateBooked
+                        , email: bd.email
+                        , minutesToComplete: bd.minutesToComplete
+                        , service: bd.service
+                        , sortDate: bd.sortDate
+                        , specialist: bd.specialist
+                    });
+                });
+            });
+        });
+      $scope.appointments = appointments; 
       
 }]); // Controller

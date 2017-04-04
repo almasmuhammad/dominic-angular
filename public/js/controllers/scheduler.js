@@ -23,7 +23,8 @@ myApp.controller('SchedulerController', ['$scope', '$rootScope', '$firebaseObjec
                     service: $scope.myService,
                     minutesToComplete: $scope.serviceTime * 60,
                     dateBooked: nowTime.toString(),
-                    email: $scope.useremail
+                    email: $scope.useremail,
+                    specialist: $scope.firstname + ' ' + $scope.lastname
                 });
                 
                 $('#modalSuccessAlert2').removeClass('modal-sm').addClass('modal-md');

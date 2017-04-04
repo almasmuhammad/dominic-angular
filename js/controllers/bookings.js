@@ -14,7 +14,6 @@ myApp.controller('BookingController', ['$scope', '$rootScope', '$firebaseAuth', 
           console.log('modalBookingDeleteConfirm appointment!!');
           
           // Confirm staffer delete
-console.log(appt);
           $('#theclientname').text(appt.client);
           $('#thebookdate').text(appt.date);
           
