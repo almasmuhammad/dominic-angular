@@ -1,6 +1,7 @@
 {
     "jscodehints.detectedExclusions": [
         "/Users/patsweeney/Desktop/Dominic-Web-Site/public/js/lib/angular-ui-tinymce/tinymce.js",
-        "/Users/patsweeney/Desktop/Dominic-Web-Site/public/js/tinymce/tinymce.min.js"
+        "/Users/patsweeney/Desktop/Dominic-Web-Site/public/js/tinymce/tinymce.min.js",
+        "/Users/patsweeney/Desktop/Dominic-Web-Site/public/js/spin.min.js"
     ]
 }

@@ -62,6 +62,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/map.html',
       controller: 'MapController'
     })
+    .when('/envision', {
+      templateUrl: 'views/envision.html',
+      controller: 'EnvisionController'
+    })
     .when('/services', {
       templateUrl: 'views/services.html',
     })

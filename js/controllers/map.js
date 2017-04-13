@@ -13,5 +13,6 @@ myApp.controller('MapController', ['$scope'
         var marker = new google.maps.Marker({
             position: myCenter
         , });
-        marker.setMap(map);
+        marker.setMap(map);   
+      
 }]); // Controller
